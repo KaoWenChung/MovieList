@@ -12,7 +12,8 @@ final class AppDIContainer {
 
     // MARK: - Network
     lazy var apiDataTransferService = {
-        let config = APIDataNetworkConfigurable(baseURL: URL(string: appConfiguration.baseURL)!)
+        let config = APIDataNetworkConfigurable(baseURL: URL(string: appConfiguration.baseURL)!,
+                                                queryParameters: ["apikey": appConfiguration.apiKey])
         let apiDataNetwork = NetworkService(config: config)
         return DataTransferService(networkService: apiDataNetwork)
     }()
@@ -27,4 +28,9 @@ final class AppDIContainer {
     let imageCache = ImageCache()
 
     // MARK: - DIContainers of scenes
+    func makeMoviesSceneDIContainer() -> MoviesSceneDIContainer {
+        let dependencies = MoviesSceneDIContainer.Dependencies(apiDataTransferService: apiDataTransferService,
+                                                               imageDataTransferService: imageDataTransferService)
+        return MoviesSceneDIContainer(dependencies: dependencies)
+    }
 }

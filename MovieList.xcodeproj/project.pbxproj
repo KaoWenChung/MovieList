@@ -34,6 +34,11 @@
 		214F3EA92985C21400DF06AE /* ResponseRequestableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EA82985C21400DF06AE /* ResponseRequestableType.swift */; };
 		214F3EAB2985C23300DF06AE /* DataTransferServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EAA2985C23300DF06AE /* DataTransferServiceType.swift */; };
 		214F3EAD2985C25400DF06AE /* NetworkServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EAC2985C25400DF06AE /* NetworkServiceType.swift */; };
+		214F3EB22985CFC100DF06AE /* MoviesSearchFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EB12985CFC100DF06AE /* MoviesSearchFlowCoordinator.swift */; };
+		214F3EB82985D9EB00DF06AE /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EB62985D9EB00DF06AE /* MovieListViewController.swift */; };
+		214F3EB92985D9EB00DF06AE /* MovieListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 214F3EB72985D9EB00DF06AE /* MovieListViewController.xib */; };
+		214F3EBB2985DAF500DF06AE /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EBA2985DAF500DF06AE /* MovieListViewModel.swift */; };
+		214F3EBE2985DD6F00DF06AE /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EBD2985DD6F00DF06AE /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +71,11 @@
 		214F3EA82985C21400DF06AE /* ResponseRequestableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRequestableType.swift; sourceTree = "<group>"; };
 		214F3EAA2985C23300DF06AE /* DataTransferServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferServiceType.swift; sourceTree = "<group>"; };
 		214F3EAC2985C25400DF06AE /* NetworkServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceType.swift; sourceTree = "<group>"; };
+		214F3EB12985CFC100DF06AE /* MoviesSearchFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchFlowCoordinator.swift; sourceTree = "<group>"; };
+		214F3EB62985D9EB00DF06AE /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		214F3EB72985D9EB00DF06AE /* MovieListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListViewController.xib; sourceTree = "<group>"; };
+		214F3EBA2985DAF500DF06AE /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
+		214F3EBD2985DD6F00DF06AE /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +143,9 @@
 		214F3E692984389600DF06AE /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				214F3E632984350000DF06AE /* LoginViewController.swift */,
-				214F3E642984350000DF06AE /* LoginViewController.xib */,
+				214F3EBC2985DD6600DF06AE /* Utils */,
+				214F3EAF2985CF8600DF06AE /* LoginScene */,
+				214F3EAE2985CF8300DF06AE /* MoviesScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -290,6 +301,66 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
+		214F3EAE2985CF8300DF06AE /* MoviesScene */ = {
+			isa = PBXGroup;
+			children = (
+				214F3EB32985CFE800DF06AE /* MoviesList */,
+				214F3EB02985CFA700DF06AE /* Flows */,
+			);
+			path = MoviesScene;
+			sourceTree = "<group>";
+		};
+		214F3EAF2985CF8600DF06AE /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E632984350000DF06AE /* LoginViewController.swift */,
+				214F3E642984350000DF06AE /* LoginViewController.xib */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		214F3EB02985CFA700DF06AE /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				214F3EB12985CFC100DF06AE /* MoviesSearchFlowCoordinator.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		214F3EB32985CFE800DF06AE /* MoviesList */ = {
+			isa = PBXGroup;
+			children = (
+				214F3EB52985CFEF00DF06AE /* ViewModel */,
+				214F3EB42985CFEB00DF06AE /* View */,
+			);
+			path = MoviesList;
+			sourceTree = "<group>";
+		};
+		214F3EB42985CFEB00DF06AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				214F3EB62985D9EB00DF06AE /* MovieListViewController.swift */,
+				214F3EB72985D9EB00DF06AE /* MovieListViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		214F3EB52985CFEF00DF06AE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				214F3EBA2985DAF500DF06AE /* MovieListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		214F3EBC2985DD6600DF06AE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				214F3EBD2985DD6F00DF06AE /* Observable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -351,6 +422,7 @@
 				214F3E5C298434D200DF06AE /* LaunchScreen.storyboard in Resources */,
 				214F3E59298434D200DF06AE /* Assets.xcassets in Resources */,
 				214F3E662984350000DF06AE /* LoginViewController.xib in Resources */,
+				214F3EB92985D9EB00DF06AE /* MovieListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,11 +436,13 @@
 				214F3EAD2985C25400DF06AE /* NetworkServiceType.swift in Sources */,
 				214F3E8129858FAF00DF06AE /* CancellableType.swift in Sources */,
 				214F3E7D29858E5500DF06AE /* Endpoint.swift in Sources */,
+				214F3EB82985D9EB00DF06AE /* MovieListViewController.swift in Sources */,
 				214F3E7629858C2B00DF06AE /* MoviesSearchRequestDTO.swift in Sources */,
 				214F3E8B2985942700DF06AE /* APIEndpoints.swift in Sources */,
 				214F3E652984350000DF06AE /* LoginViewController.swift in Sources */,
 				214F3E50298434D000DF06AE /* AppDelegate.swift in Sources */,
 				214F3E9F2985BB0E00DF06AE /* MoviesSceneDIContainer.swift in Sources */,
+				214F3EB22985CFC100DF06AE /* MoviesSearchFlowCoordinator.swift in Sources */,
 				214F3E982985B9EA00DF06AE /* SearchMoviesUseCase.swift in Sources */,
 				214F3E942985B90700DF06AE /* MoviesRepository.swift in Sources */,
 				214F3EAB2985C23300DF06AE /* DataTransferServiceType.swift in Sources */,
@@ -376,12 +450,14 @@
 				214F3E7B29858E3F00DF06AE /* NetworkService.swift in Sources */,
 				214F3E922985B83900DF06AE /* Movie.swift in Sources */,
 				214F3EA72985C11F00DF06AE /* ImageCache.swift in Sources */,
+				214F3EBB2985DAF500DF06AE /* MovieListViewModel.swift in Sources */,
 				214F3E9D2985BAF800DF06AE /* AppDIContainer.swift in Sources */,
 				214F3EA92985C21400DF06AE /* ResponseRequestableType.swift in Sources */,
 				214F3E89298593FD00DF06AE /* RepositoryTask.swift in Sources */,
 				214F3E7F29858E6800DF06AE /* NetworkConfig.swift in Sources */,
 				214F3E8329858FBD00DF06AE /* ConnectionErrorType.swift in Sources */,
 				214F3E962985B96200DF06AE /* MoviesRepositoryType.swift in Sources */,
+				214F3EBE2985DD6F00DF06AE /* Observable.swift in Sources */,
 				214F3E7929858E1E00DF06AE /* DataTransferService.swift in Sources */,
 				214F3EA32985BB2A00DF06AE /* AppConfigurations.swift in Sources */,
 				214F3EA12985BB1800DF06AE /* AppFlowCoordinator.swift in Sources */,
