@@ -1,12 +1,12 @@
 //
-//  DefaultMoviesRepository.swift
+//  MoviesRepository.swift
 //  MovieList
 //
 //  Created by wyn on 2023/1/28.
 //
 
 
-final class DefaultMoviesRepository {
+struct MoviesRepository {
     private let dataTransferService: DataTransferServiceType
 
     init(dataTransferService: DataTransferServiceType) {
@@ -14,7 +14,7 @@ final class DefaultMoviesRepository {
     }
 }
 
-extension DefaultMoviesRepository: MoviesRepositoryType {
+extension MoviesRepository: MoviesRepositoryType {
     public func fetchMoviesList(page: Int,
                                 completion: @escaping (Result<MoviesPage, Error>) -> Void) -> CancellableType? {
         let task = RepositoryTask()

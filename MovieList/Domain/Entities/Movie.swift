@@ -7,11 +7,11 @@
 
 struct Movie {
     let title: String?
-    let releaseYear: String?
+    let year: String?
+    let poster: String?
 }
 
 struct MoviesPage {
-    let page: Int
     let totalPages: Int
     let movies: [Movie]
 }

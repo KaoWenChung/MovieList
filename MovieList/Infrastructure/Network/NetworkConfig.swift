@@ -8,21 +8,18 @@
 import Foundation
 
 public protocol NetworkConfigurableType {
-    var baseURL: URL { get }
-    var headers: [String: String] { get }
+    // When we pass the full path by Endpoint, we don't need to set baseURL. For example, poster images
+    var baseURL: URL? { get }
     var queryParameters: [String: String] { get }
 }
 
-public struct ApiDataNetworkConfig: NetworkConfigurableType {
-    public let baseURL: URL
-    public let headers: [String: String]
-    public let queryParameters: [String: String]
+public struct APIDataNetworkConfigurable: NetworkConfigurableType {
+    public let baseURL: URL?
+    public let queryParameters: [String : String]
     
-     public init(baseURL: URL,
-                 headers: [String: String] = [:],
-                 queryParameters: [String: String] = [:]) {
+    public init(baseURL: URL? = nil,
+                queryParameters: [String : String] = [:]) {
         self.baseURL = baseURL
-        self.headers = headers
         self.queryParameters = queryParameters
     }
 }

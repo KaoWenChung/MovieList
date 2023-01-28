@@ -10,7 +10,7 @@ protocol SearchMoviesUseCaseType {
                  completion: @escaping (Result<MoviesPage, Error>) -> Void) -> CancellableType?
 }
 
-final class DefaultSearchMoviesUseCase: SearchMoviesUseCaseType {
+final class SearchMoviesUseCase: SearchMoviesUseCaseType {
     private let moviesRepository: MoviesRepositoryType
 
     init(moviesRepository: MoviesRepositoryType) {

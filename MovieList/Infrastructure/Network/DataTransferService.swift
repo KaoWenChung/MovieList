@@ -14,35 +14,12 @@ public enum DataTransferError: Error {
     case resolvedNetworkFailure(Error)
 }
 
-public protocol DataTransferServiceType {
-    typealias CompletionHandler<T> = (Result<T, DataTransferError>) -> Void
-    
-    @discardableResult
-    func request<T: Decodable, E: ResponseRequestableType>(with endpoint: E,
-                                                       completion: @escaping CompletionHandler<T>) -> NetworkCancellableType? where E.Response == T
-    @discardableResult
-    func request<E: ResponseRequestableType>(with endpoint: E,
-                                         completion: @escaping CompletionHandler<Void>) -> NetworkCancellableType? where E.Response == Void
-}
-
-public protocol DataTransferErrorResolverType {
-    func resolve(error: NetworkError) -> Error
-}
-
-public protocol ResponseDecoderType {
-    func decode<T: Decodable>(_ data: Data) throws -> T
-}
-
-public protocol DataTransferErrorLoggerType {
-    func log(error: Error)
-}
-
-public final class DefaultDataTransferService {
+public final class DataTransferService {
     private let networkService: NetworkServiceType
     private let errorResolver: DataTransferErrorResolverType
     private let errorLogger: DataTransferErrorLoggerType
     
-    public init(with networkService: NetworkServiceType,
+    public init(networkService: NetworkServiceType,
                 errorResolver: DataTransferErrorResolverType = DefaultDataTransferErrorResolver(),
                 errorLogger: DataTransferErrorLoggerType = DefaultDataTransferErrorLogger()) {
         self.networkService = networkService
@@ -51,7 +28,7 @@ public final class DefaultDataTransferService {
     }
 }
 
-extension DefaultDataTransferService: DataTransferServiceType {
+extension DataTransferService: DataTransferServiceType {
     public func request<T: Decodable, E: ResponseRequestableType>(with endpoint: E,
                                                               completion: @escaping CompletionHandler<T>) -> NetworkCancellableType? where E.Response == T {
 

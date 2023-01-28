@@ -21,34 +21,15 @@ public protocol NetworkCancellableType {
 
 extension URLSessionTask: NetworkCancellableType { }
 
-public protocol NetworkServiceType {
-    typealias CompletionHandler = (Result<Data?, NetworkError>) -> Void
-    
-    func request(endpoint: RequestableType, completion: @escaping CompletionHandler) -> NetworkCancellableType?
-}
-
-public protocol NetworkSessionManagerType {
-    typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
-    
-    func request(_ request: URLRequest,
-                 completion: @escaping CompletionHandler) -> NetworkCancellableType
-}
-
-public protocol NetworkErrorLoggerType {
-    func log(request: URLRequest)
-    func log(responseData data: Data?, response: URLResponse?)
-    func log(error: Error)
-}
-
 // MARK: - Implementation
-public struct DefaultNetworkService {
+public struct NetworkService {
     
     private let config: NetworkConfigurableType
     private let sessionManager: NetworkSessionManagerType
     private let logger: NetworkErrorLoggerType
     
     public init(config: NetworkConfigurableType,
-                sessionManager: NetworkSessionManagerType = DefaultNetworkSessionManager(),
+                sessionManager: NetworkSessionManagerType = NetworkSessionManager(),
                 logger: NetworkErrorLoggerType = DefaultNetworkErrorLogger()) {
         self.sessionManager = sessionManager
         self.config = config
@@ -90,7 +71,7 @@ public struct DefaultNetworkService {
     }
 }
 
-extension DefaultNetworkService: NetworkServiceType {
+extension NetworkService: NetworkServiceType {
     
     public func request(endpoint: RequestableType, completion: @escaping CompletionHandler) -> NetworkCancellableType? {
         do {
@@ -108,7 +89,7 @@ extension DefaultNetworkService: NetworkServiceType {
 // for example, Alamofire SessionManager with its RequestAdapter and RequestRetrier.
 // And it can be incjected into NetworkService instead of default one.
 
-public class DefaultNetworkSessionManager: NetworkSessionManagerType {
+public class NetworkSessionManager: NetworkSessionManagerType {
     public init() {}
     public func request(_ request: URLRequest,
                         completion: @escaping CompletionHandler) -> NetworkCancellableType {
