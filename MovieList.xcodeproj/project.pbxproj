@@ -12,6 +12,17 @@
 		214F3E5C298434D200DF06AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E5A298434D200DF06AE /* LaunchScreen.storyboard */; };
 		214F3E652984350000DF06AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E632984350000DF06AE /* LoginViewController.swift */; };
 		214F3E662984350000DF06AE /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E642984350000DF06AE /* LoginViewController.xib */; };
+		214F3E722985503100DF06AE /* MoviesSearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E712985503100DF06AE /* MoviesSearchResponseDTO.swift */; };
+		214F3E7629858C2B00DF06AE /* MoviesSearchRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7529858C2B00DF06AE /* MoviesSearchRequestDTO.swift */; };
+		214F3E7929858E1E00DF06AE /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7829858E1E00DF06AE /* DataTransferService.swift */; };
+		214F3E7B29858E3F00DF06AE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7A29858E3F00DF06AE /* NetworkService.swift */; };
+		214F3E7D29858E5500DF06AE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7C29858E5500DF06AE /* Endpoint.swift */; };
+		214F3E7F29858E6800DF06AE /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7E29858E6800DF06AE /* NetworkConfig.swift */; };
+		214F3E8129858FAF00DF06AE /* CancellableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E8029858FAF00DF06AE /* CancellableType.swift */; };
+		214F3E8329858FBD00DF06AE /* ConnectionErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */; };
+		214F3E89298593FD00DF06AE /* RepositoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E88298593FD00DF06AE /* RepositoryTask.swift */; };
+		214F3E8B2985942700DF06AE /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E8A2985942700DF06AE /* APIEndpoints.swift */; };
+		214F3E8E2985956D00DF06AE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E8D2985956D00DF06AE /* Dictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +33,17 @@
 		214F3E5D298434D200DF06AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		214F3E632984350000DF06AE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		214F3E642984350000DF06AE /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		214F3E712985503100DF06AE /* MoviesSearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchResponseDTO.swift; sourceTree = "<group>"; };
+		214F3E7529858C2B00DF06AE /* MoviesSearchRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchRequestDTO.swift; sourceTree = "<group>"; };
+		214F3E7829858E1E00DF06AE /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
+		214F3E7A29858E3F00DF06AE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		214F3E7C29858E5500DF06AE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		214F3E7E29858E6800DF06AE /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		214F3E8029858FAF00DF06AE /* CancellableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableType.swift; sourceTree = "<group>"; };
+		214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorType.swift; sourceTree = "<group>"; };
+		214F3E88298593FD00DF06AE /* RepositoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTask.swift; sourceTree = "<group>"; };
+		214F3E8A2985942700DF06AE /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		214F3E8D2985956D00DF06AE /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +76,161 @@
 		214F3E4E298434D000DF06AE /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
-				214F3E4F298434D000DF06AE /* AppDelegate.swift */,
-				214F3E58298434D200DF06AE /* Assets.xcassets */,
-				214F3E632984350000DF06AE /* LoginViewController.swift */,
-				214F3E642984350000DF06AE /* LoginViewController.xib */,
-				214F3E5A298434D200DF06AE /* LaunchScreen.storyboard */,
 				214F3E5D298434D200DF06AE /* Info.plist */,
+				214F3E67298437DF00DF06AE /* Application */,
+				214F3E6D298438D300DF06AE /* Common */,
+				214F3E6C298438C900DF06AE /* Infrastructure */,
+				214F3E6B298438C300DF06AE /* Data */,
+				214F3E6A298438B700DF06AE /* Domain */,
+				214F3E692984389600DF06AE /* Presentation */,
+				214F3E682984387400DF06AE /* Resources */,
 			);
 			path = MovieList;
+			sourceTree = "<group>";
+		};
+		214F3E67298437DF00DF06AE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E4F298434D000DF06AE /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		214F3E682984387400DF06AE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E5A298434D200DF06AE /* LaunchScreen.storyboard */,
+				214F3E58298434D200DF06AE /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		214F3E692984389600DF06AE /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E632984350000DF06AE /* LoginViewController.swift */,
+				214F3E642984350000DF06AE /* LoginViewController.xib */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		214F3E6A298438B700DF06AE /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E7029854FCF00DF06AE /* Interfaces */,
+				214F3E6F29854FC700DF06AE /* UseCases */,
+				214F3E6E29854FBA00DF06AE /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		214F3E6B298438C300DF06AE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E85298593E200DF06AE /* PersistentStorages */,
+				214F3E84298593DB00DF06AE /* Repositories */,
+				214F3E7329858BE600DF06AE /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		214F3E6C298438C900DF06AE /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E7729858DE200DF06AE /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		214F3E6D298438D300DF06AE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E8C2985956400DF06AE /* Extension */,
+				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
+				214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		214F3E6E29854FBA00DF06AE /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		214F3E6F29854FC700DF06AE /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		214F3E7029854FCF00DF06AE /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		214F3E7329858BE600DF06AE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E7429858BEF00DF06AE /* DataMapping */,
+				214F3E8A2985942700DF06AE /* APIEndpoints.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		214F3E7429858BEF00DF06AE /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E712985503100DF06AE /* MoviesSearchResponseDTO.swift */,
+				214F3E7529858C2B00DF06AE /* MoviesSearchRequestDTO.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		214F3E7729858DE200DF06AE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E7829858E1E00DF06AE /* DataTransferService.swift */,
+				214F3E7A29858E3F00DF06AE /* NetworkService.swift */,
+				214F3E7C29858E5500DF06AE /* Endpoint.swift */,
+				214F3E7E29858E6800DF06AE /* NetworkConfig.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		214F3E84298593DB00DF06AE /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E86298593ED00DF06AE /* Utils */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		214F3E85298593E200DF06AE /* PersistentStorages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PersistentStorages;
+			sourceTree = "<group>";
+		};
+		214F3E86298593ED00DF06AE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E88298593FD00DF06AE /* RepositoryTask.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		214F3E8C2985956400DF06AE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				214F3E8D2985956D00DF06AE /* Dictionary.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +304,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214F3E8129858FAF00DF06AE /* CancellableType.swift in Sources */,
+				214F3E7D29858E5500DF06AE /* Endpoint.swift in Sources */,
+				214F3E7629858C2B00DF06AE /* MoviesSearchRequestDTO.swift in Sources */,
+				214F3E8B2985942700DF06AE /* APIEndpoints.swift in Sources */,
 				214F3E652984350000DF06AE /* LoginViewController.swift in Sources */,
+				214F3E8E2985956D00DF06AE /* Dictionary.swift in Sources */,
 				214F3E50298434D000DF06AE /* AppDelegate.swift in Sources */,
+				214F3E722985503100DF06AE /* MoviesSearchResponseDTO.swift in Sources */,
+				214F3E7B29858E3F00DF06AE /* NetworkService.swift in Sources */,
+				214F3E89298593FD00DF06AE /* RepositoryTask.swift in Sources */,
+				214F3E7F29858E6800DF06AE /* NetworkConfig.swift in Sources */,
+				214F3E8329858FBD00DF06AE /* ConnectionErrorType.swift in Sources */,
+				214F3E7929858E1E00DF06AE /* DataTransferService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
