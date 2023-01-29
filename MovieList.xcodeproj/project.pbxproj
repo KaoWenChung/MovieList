@@ -12,8 +12,8 @@
 		214F3E5C298434D200DF06AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E5A298434D200DF06AE /* LaunchScreen.storyboard */; };
 		214F3E652984350000DF06AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E632984350000DF06AE /* LoginViewController.swift */; };
 		214F3E662984350000DF06AE /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E642984350000DF06AE /* LoginViewController.xib */; };
-		214F3E722985503100DF06AE /* MoviesSearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E712985503100DF06AE /* MoviesSearchResponseDTO.swift */; };
-		214F3E7629858C2B00DF06AE /* MoviesSearchRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7529858C2B00DF06AE /* MoviesSearchRequestDTO.swift */; };
+		214F3E722985503100DF06AE /* MoviesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E712985503100DF06AE /* MoviesResponseDTO.swift */; };
+		214F3E7629858C2B00DF06AE /* MoviesRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7529858C2B00DF06AE /* MoviesRequestDTO.swift */; };
 		214F3E7929858E1E00DF06AE /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7829858E1E00DF06AE /* DataTransferService.swift */; };
 		214F3E7B29858E3F00DF06AE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7A29858E3F00DF06AE /* NetworkService.swift */; };
 		214F3E7D29858E5500DF06AE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E7C29858E5500DF06AE /* Endpoint.swift */; };
@@ -49,8 +49,8 @@
 		214F3E5D298434D200DF06AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		214F3E632984350000DF06AE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		214F3E642984350000DF06AE /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		214F3E712985503100DF06AE /* MoviesSearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchResponseDTO.swift; sourceTree = "<group>"; };
-		214F3E7529858C2B00DF06AE /* MoviesSearchRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchRequestDTO.swift; sourceTree = "<group>"; };
+		214F3E712985503100DF06AE /* MoviesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResponseDTO.swift; sourceTree = "<group>"; };
+		214F3E7529858C2B00DF06AE /* MoviesRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRequestDTO.swift; sourceTree = "<group>"; };
 		214F3E7829858E1E00DF06AE /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		214F3E7A29858E3F00DF06AE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		214F3E7C29858E5500DF06AE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -226,8 +226,8 @@
 		214F3E7429858BEF00DF06AE /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
-				214F3E712985503100DF06AE /* MoviesSearchResponseDTO.swift */,
-				214F3E7529858C2B00DF06AE /* MoviesSearchRequestDTO.swift */,
+				214F3E712985503100DF06AE /* MoviesResponseDTO.swift */,
+				214F3E7529858C2B00DF06AE /* MoviesRequestDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -304,8 +304,8 @@
 		214F3EAE2985CF8300DF06AE /* MoviesScene */ = {
 			isa = PBXGroup;
 			children = (
-				214F3EB32985CFE800DF06AE /* MoviesList */,
 				214F3EB02985CFA700DF06AE /* Flows */,
+				214F3EB32985CFE800DF06AE /* MoviesList */,
 			);
 			path = MoviesScene;
 			sourceTree = "<group>";
@@ -437,7 +437,7 @@
 				214F3E8129858FAF00DF06AE /* CancellableType.swift in Sources */,
 				214F3E7D29858E5500DF06AE /* Endpoint.swift in Sources */,
 				214F3EB82985D9EB00DF06AE /* MovieListViewController.swift in Sources */,
-				214F3E7629858C2B00DF06AE /* MoviesSearchRequestDTO.swift in Sources */,
+				214F3E7629858C2B00DF06AE /* MoviesRequestDTO.swift in Sources */,
 				214F3E8B2985942700DF06AE /* APIEndpoints.swift in Sources */,
 				214F3E652984350000DF06AE /* LoginViewController.swift in Sources */,
 				214F3E50298434D000DF06AE /* AppDelegate.swift in Sources */,
@@ -446,7 +446,7 @@
 				214F3E982985B9EA00DF06AE /* SearchMoviesUseCase.swift in Sources */,
 				214F3E942985B90700DF06AE /* MoviesRepository.swift in Sources */,
 				214F3EAB2985C23300DF06AE /* DataTransferServiceType.swift in Sources */,
-				214F3E722985503100DF06AE /* MoviesSearchResponseDTO.swift in Sources */,
+				214F3E722985503100DF06AE /* MoviesResponseDTO.swift in Sources */,
 				214F3E7B29858E3F00DF06AE /* NetworkService.swift in Sources */,
 				214F3E922985B83900DF06AE /* Movie.swift in Sources */,
 				214F3EA72985C11F00DF06AE /* ImageCache.swift in Sources */,

@@ -7,6 +7,24 @@
 
 import UIKit
 
-protocol MoviesSearchFlowCoordinatorDependencies  {}
+protocol MoviesSearchFlowCoordinatorDependencies  {
+    func makeMovieListViewController(actions: MovieListViewModelActions) -> MovieListViewController
+}
 
-final class MoviesSearchFlowCoordinator {}
+final class MoviesSearchFlowCoordinator {
+    private weak var navigationController: UINavigationController?
+    private let dependencies: MoviesSearchFlowCoordinatorDependencies
+
+    init(navigationController: UINavigationController?,
+         dependencies: MoviesSearchFlowCoordinatorDependencies) {
+        self.navigationController = navigationController
+        self.dependencies = dependencies
+    }
+
+    func start() {
+        let actions = MovieListViewModelActions()
+        let vc = dependencies.makeMovieListViewController(actions: actions)
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}

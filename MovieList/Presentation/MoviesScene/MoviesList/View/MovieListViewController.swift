@@ -14,10 +14,11 @@ final class MovieListViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
+
     required init?(coder: NSCoder) {
-        viewModel = MovieListViewModel()
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
@@ -44,6 +45,4 @@ extension MovieListViewController: UITableViewDataSource {
         cell.textLabel?.text = viewModel.movieList.value[indexPath.row].title
         return cell
     }
-    
-    
 }

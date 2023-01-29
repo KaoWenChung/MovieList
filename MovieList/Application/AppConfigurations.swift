@@ -31,7 +31,7 @@ final class AppConfiguration {
 
     private func getBaseURL() -> String {
         #if DEBUG
-        return "http://www.omdbapi.com"
+        return "https://www.omdbapi.com"
         #endif
     }
 }

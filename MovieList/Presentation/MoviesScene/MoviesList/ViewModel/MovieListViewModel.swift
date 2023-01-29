@@ -5,6 +5,8 @@
 //  Created by wyn on 2023/1/28.
 //
 
+import Foundation
+
 struct MovieListViewModelActions {
 }
 
@@ -22,18 +24,49 @@ protocol MovieListViewModelType: MovieListViewModelInput, MovieListViewModelOutp
 
 
 final class MovieListViewModel {
+    // MARK: UseCase
+    private let searchMoviesUseCase: SearchMoviesUseCaseType
+    private let actions: MovieListViewModelActions
+
+    // MARK: Properties
+    private var moviesLoadTask: CancellableType? { willSet { moviesLoadTask?.cancel() } }
+    private var currentPage: Int = 0
+    private var totalPages: Int = 1
+    private var hasMorePages: Bool { currentPage < totalPages }
+    private var nextPage: Int { hasMorePages ? currentPage + 1 : currentPage }
+
     // MARK: Output
     let error: Observable<String> = Observable("")
     let movieList: Observable<[MovieListCellViewModel]> = Observable([])
     var errorTitle: String = ""
+
+    init(searchMoviesUseCase: SearchMoviesUseCaseType,
+         actions: MovieListViewModelActions) {
+        self.searchMoviesUseCase = searchMoviesUseCase
+        self.actions = actions
+    }
+
+    private func handle(error: Error) {
+        self.error.value = error.isInternetConnectionError ?
+            NSLocalizedString("No internet connection", comment: "") :
+            NSLocalizedString("Failed loading movies", comment: "")
+    }
+
+    private func appendPage(_ page: MoviesPage) {
+        print(page)
+    }
 }
 
 extension MovieListViewModel: MovieListViewModelType {
     func viewDidLoad() {
-        movieList.value = [MovieListCellViewModel(title: "wow"),
-                     MovieListCellViewModel(title: "www1"),
-                     MovieListCellViewModel(title: "www2"),
-                     MovieListCellViewModel(title: "www3")]
+        moviesLoadTask = searchMoviesUseCase.execute(requestValue: .init(search: "Love", year: "2000", page: 1)) { result in
+            switch result {
+            case .success(let page):
+                self.appendPage(page)
+            case .failure(let error):
+                self.handle(error: error)
+            }
+        }
     }
 }
 

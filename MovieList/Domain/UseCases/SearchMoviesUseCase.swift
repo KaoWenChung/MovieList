@@ -6,7 +6,7 @@
 //
 
 protocol SearchMoviesUseCaseType {
-    func execute(requestValue: SearchMoviesUseCaseRequestValue,
+    func execute(requestValue: SearchMoviesRequestValue,
                  completion: @escaping (Result<MoviesPage, Error>) -> Void) -> CancellableType?
 }
 
@@ -17,20 +17,14 @@ final class SearchMoviesUseCase: SearchMoviesUseCaseType {
         self.moviesRepository = moviesRepository
     }
 
-    func execute(requestValue: SearchMoviesUseCaseRequestValue,
+    func execute(requestValue: SearchMoviesRequestValue,
                  completion: @escaping (Result<MoviesPage, Error>) -> Void) -> CancellableType? {
-        return moviesRepository.fetchMoviesList(page: requestValue.page,
-                                                completion: { result in
-
-            if case .success = result {
-//                self.moviesQueriesRepository.saveRecentQuery(query: requestValue.query) { _ in }
-            }
-            completion(result)
-        })
+        return moviesRepository.fetchMoviesList(request: requestValue, completion: completion)
     }
 }
 
-struct SearchMoviesUseCaseRequestValue {
+struct SearchMoviesRequestValue {
+    let search: String
     let year: String
     let page: Int
 }

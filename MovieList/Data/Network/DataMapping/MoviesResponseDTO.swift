@@ -5,10 +5,10 @@
 //  Created by wyn on 2023/1/28.
 //
 
-struct MoviesSearchResponseDTO: Decodable {
-    let response: Bool?
-    let search: [SearchDTO]?
-    let totalResults: String?
+struct MoviesResponseDTO: Decodable {
+    let response: String
+    let search: [SearchDTO]
+    let totalResults: String
     
     enum CodingKeys: String, CodingKey {
         case response = "Response"
@@ -17,14 +17,14 @@ struct MoviesSearchResponseDTO: Decodable {
     }
 }
 
-extension MoviesSearchResponseDTO {
+extension MoviesResponseDTO {
     struct SearchDTO: Decodable {
         let poster: String?
         let title: String?
         let type: String?
         let year: String?
         let imdbID: String?
-        
+
         enum CodingKeys: String, CodingKey {
             case poster = "Poster"
             case title = "Title"
@@ -32,5 +32,18 @@ extension MoviesSearchResponseDTO {
             case year = "Year"
             case imdbID
         }
+    }
+}
+
+extension MoviesResponseDTO {
+    func toDomain() -> MoviesPage {
+        MoviesPage(totalPages: Int(totalResults) ?? 0,
+                   movies: search.map { $0.toDomain()})
+    }
+}
+
+extension MoviesResponseDTO.SearchDTO {
+    func toDomain() -> Movie {
+        Movie(title: title, year: year, poster: poster)
     }
 }

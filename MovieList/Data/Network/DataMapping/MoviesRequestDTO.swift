@@ -5,15 +5,18 @@
 //  Created by wyn on 2023/1/28.
 //
 
-struct MoviesSearchRequestDTO: Encodable {
-    let apikey: String
+struct MoviesRequestDTO: Encodable {
     let search: String
     let year: String
     let page: Int
     enum CodingKeys: String, CodingKey {
-        case apikey
         case search = "s"
         case year = "y"
         case page
+    }
+    init(requestValue: SearchMoviesRequestValue) {
+        search = requestValue.search
+        year = requestValue.year
+        page = requestValue.page
     }
 }

@@ -6,5 +6,9 @@
 //
 
 struct APIEndpoints {
-    
+    static func getMovies(with moviesRequestDTO: MoviesRequestDTO) -> Endpoint<MoviesResponseDTO> {
+        return Endpoint(path: "",
+                        method: .get,
+                        queryParametersEncodable: moviesRequestDTO)
+    }
 }
