@@ -10,15 +10,12 @@ import FirebaseAuth
 struct FirebaseRegisterRepository {}
 
 extension FirebaseRegisterRepository: RegisterRepositoryType {
-    public func register(account: AccountValue, completion: @escaping (Result<String, Error>) -> Void) {
-        print(account)
+    public func register(account: AccountValue, completion: @escaping (Result<Void, Error>) -> Void) {
         Auth.auth().createUser(withEmail: account.email, password: account.password) { (authResult, error) in
-            if let user = authResult?.user {
-                print(user)
-                completion(.success(user.description))
-            }
-            if let error {
+            if let error = error {
                 completion(.failure(error))
+            } else {
+                completion(.success(()))
             }
         }
     }

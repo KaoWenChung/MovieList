@@ -26,6 +26,5 @@ final class MoviesSearchFlowCoordinator {
         let vc = dependencies.makeMovieListViewController(actions: actions)
 
         navigationController?.setViewControllers([vc], animated: true)
-//        navigationController?.pushViewController(vc, animated: true)
     }
 }

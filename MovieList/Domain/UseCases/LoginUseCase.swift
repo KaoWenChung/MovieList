@@ -7,7 +7,7 @@
 
 protocol LoginUseCaseType {
     func execute(requestValue: AccountValue,
-                 completion: @escaping (Result<String, Error>) -> Void)
+                 completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class LoginUseCase: LoginUseCaseType {
@@ -16,7 +16,7 @@ final class LoginUseCase: LoginUseCaseType {
     init(loginRepository: LoginRepositoryType) {
         self.loginRepository = loginRepository
     }
-    func execute(requestValue: AccountValue, completion: @escaping (Result<String, Error>) -> Void) {
+    func execute(requestValue: AccountValue, completion: @escaping (Result<Void, Error>) -> Void) {
         loginRepository.login(account: requestValue, completion: completion)
     }
 }

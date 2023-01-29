@@ -10,6 +10,7 @@ import UIKit
 final class MovieListViewController: UIViewController, Alertable {
     @IBOutlet weak private var tableView: UITableView!
     private let viewModel: MovieListViewModelType
+
     init(viewModel: MovieListViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -50,6 +51,7 @@ extension MovieListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieListTableViewCell.name, for: indexPath) as? MovieListTableViewCell else { return UITableViewCell() }
         cell.fill(viewModel.movieList.value[indexPath.row])
+        // load the next page if needed
         if indexPath.row == viewModel.movieList.value.count - 1 {
             viewModel.loadNextPage()
         }

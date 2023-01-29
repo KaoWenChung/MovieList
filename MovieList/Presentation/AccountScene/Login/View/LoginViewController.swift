@@ -39,6 +39,9 @@ final class LoginViewController: UIViewController, Alertable {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         let account = AccountValue(email: email, password: password)
         viewModel.login(account)
+        let accessToken = password
+        let data = Data(accessToken.utf8)
+        KeychainHelper.save(data, service: "access-token", account: email)
     }
 
     @IBAction private func didSelectSignUpHandler() {

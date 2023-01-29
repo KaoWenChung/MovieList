@@ -7,5 +7,5 @@
 
 protocol LoginRepositoryType {
     func login(account: AccountValue,
-               completion: @escaping (Result<String, Error>) -> Void)
+               completion: @escaping (Result<Void, Error>) -> Void)
 }

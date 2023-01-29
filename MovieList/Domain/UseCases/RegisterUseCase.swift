@@ -7,7 +7,7 @@
 
 protocol RegisterUseCaseType {
     func execute(requestValue: AccountValue,
-                 completion: @escaping (Result<String, Error>) -> Void)
+                 completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 struct RegisterUseCase: RegisterUseCaseType {
@@ -16,7 +16,7 @@ struct RegisterUseCase: RegisterUseCaseType {
     init(registerRepository: RegisterRepositoryType) {
         self.registerRepository = registerRepository
     }
-    func execute(requestValue: AccountValue, completion: @escaping (Result<String, Error>) -> Void) {
+    func execute(requestValue: AccountValue, completion: @escaping (Result<Void, Error>) -> Void) {
         registerRepository.register(account: requestValue, completion: completion)
     }
 }
