@@ -9,12 +9,16 @@ struct MovieListCellViewModel {
     let imageRepository: ImageRepositoryType
     let title: String
     let year: String
-    let poster: String
+    let poster: String?
     init(_ movie: Movie, imageRepository: ImageRepositoryType) {
         self.imageRepository = imageRepository
         title = movie.title ?? ""
         year = movie.year ?? ""
-        poster = movie.poster ?? ""
+        if let poster = movie.poster, poster.isValidURL {
+            self.poster = poster
+        } else {
+            poster = nil
+        }
     }
 }
 

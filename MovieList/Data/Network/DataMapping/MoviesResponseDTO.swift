@@ -37,7 +37,7 @@ extension MoviesResponseDTO {
 
 extension MoviesResponseDTO {
     func toDomain() -> MoviesPage {
-        MoviesPage(totalPages: Int(totalResults) ?? 0,
+        MoviesPage(totalResults: Int(totalResults) ?? 0,
                    movies: search.map { $0.toDomain()})
     }
 }

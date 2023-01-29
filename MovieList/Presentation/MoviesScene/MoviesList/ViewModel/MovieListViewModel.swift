@@ -12,6 +12,7 @@ struct MovieListViewModelActions {
 
 protocol MovieListViewModelInput {
     func viewDidLoad()
+    func loadNextPage()
 }
 
 protocol MovieListViewModelOutput {
@@ -22,8 +23,13 @@ protocol MovieListViewModelOutput {
 
 protocol MovieListViewModelType: MovieListViewModelInput, MovieListViewModelOutput {}
 
-
 final class MovieListViewModel {
+    // MARK: Predefined
+    enum Content {
+        static let defaultSearch = "Love"
+        static let defaultYear = 2000
+        static let defaultPage = 1
+    }
     // MARK: Repository
     private let imageRepository: ImageRepositoryType
 
@@ -33,9 +39,11 @@ final class MovieListViewModel {
 
     // MARK: Properties
     private var moviesLoadTask: CancellableType? { willSet { moviesLoadTask?.cancel() } }
+    private var currentSearchYear = Content.defaultYear
+    private var currentSearchTotalResult = 0
     private var currentPage: Int = 1
-    private var totalPages: Int = 1
-    private var hasMorePages: Bool { currentPage < totalPages }
+    private var totalResults: Int = 1
+    private var hasMorePages: Bool { movieList.value.count < totalResults }
     private var nextPage: Int { hasMorePages ? currentPage + 1 : currentPage }
 
     // MARK: Output
@@ -52,22 +60,22 @@ final class MovieListViewModel {
     }
 
     private func handle(error: Error) {
-        self.error.value = error.isInternetConnectionError ?
-            NSLocalizedString("No internet connection", comment: "") :
-            NSLocalizedString("Failed loading movies", comment: "")
+//        self.error.value = error.isInternetConnectionError ?
+//            NSLocalizedString("No internet connection", comment: "") :
+//            NSLocalizedString("Failed loading movies", comment: "")
     }
 
     private func appendPage(_ page: MoviesPage) {
-        totalPages = page.totalPages
+        totalResults = page.totalResults
         currentPage += 1
+        currentSearchTotalResult += page.movies.count
 
         movieList.value.append(contentsOf: page.movies.map{ MovieListCellViewModel.init($0, imageRepository: imageRepository)})
     }
-}
-
-extension MovieListViewModel: MovieListViewModelType {
-    func viewDidLoad() {
-        moviesLoadTask = searchMoviesUseCase.execute(requestValue: .init(search: "Love", year: "2000", page: 1)) { result in
+    
+    private func loadMovies() {
+        let request = SearchMoviesRequestValue(search: Content.defaultSearch, year: currentSearchYear.description, page: currentPage)
+        moviesLoadTask = searchMoviesUseCase.execute(requestValue: request) { result in
             switch result {
             case .success(let page):
                 self.appendPage(page)
@@ -75,5 +83,24 @@ extension MovieListViewModel: MovieListViewModelType {
                 self.handle(error: error)
             }
         }
+    }
+    private func updateCurrentSearchYear() {
+        guard currentSearchTotalResult == totalResults else { return }
+        guard let currentYear = Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year,
+              currentSearchYear < currentYear else { return }
+        currentSearchYear += 1
+        currentSearchTotalResult = 0
+        currentPage = 1
+    }
+}
+
+extension MovieListViewModel: MovieListViewModelType {
+    func loadNextPage() {
+        updateCurrentSearchYear()
+        loadMovies()
+    }
+    
+    func viewDidLoad() {
+        loadMovies()
     }
 }

@@ -12,6 +12,6 @@ struct Movie {
 }
 
 struct MoviesPage {
-    let totalPages: Int
+    let totalResults: Int
     let movies: [Movie]
 }
