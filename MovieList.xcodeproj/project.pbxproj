@@ -65,6 +65,8 @@
 		214F3F09298704C100DF06AE /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F08298704C100DF06AE /* Alertable.swift */; };
 		214F3F0B29870FFA00DF06AE /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */; };
 		214F3F0F298717BB00DF06AE /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */; };
+		214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */; };
+		214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,8 @@
 		214F3F08298704C100DF06AE /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
+		214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurableMock.swift; sourceTree = "<group>"; };
+		214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,6 +460,9 @@
 		214F3ED72986C28B00DF06AE /* MovieListTests */ = {
 			isa = PBXGroup;
 			children = (
+				214F3F12298724B900DF06AE /* Presentation */,
+				214F3F102987249100DF06AE /* Domain */,
+				214F3F13298724E900DF06AE /* Infrastructure */,
 				214F3ED82986C28B00DF06AE /* StringExtensionTests.swift */,
 			);
 			path = MovieListTests;
@@ -535,6 +542,53 @@
 				214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */,
 			);
 			path = UserDefault;
+			sourceTree = "<group>";
+		};
+		214F3F102987249100DF06AE /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				214F3F112987249A00DF06AE /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		214F3F112987249A00DF06AE /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		214F3F12298724B900DF06AE /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		214F3F13298724E900DF06AE /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				214F3F14298724F500DF06AE /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		214F3F14298724F500DF06AE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				214F3F15298724F900DF06AE /* Mocks */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		214F3F15298724F900DF06AE /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */,
+				214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -705,6 +759,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				214F3ED92986C28B00DF06AE /* StringExtensionTests.swift in Sources */,
+				214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */,
+				214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
