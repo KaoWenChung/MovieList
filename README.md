@@ -17,6 +17,7 @@ Modify the method getAPIKey in AppConfigurations.
 - implement sign-up/sign-in features by Firebase services.
 ### API Data Fetching
 - Get movie list by GET API http://www.omdbapi.com/
+  - Pagination
 ### Localized Content
 - Used Extension protocol with enumeration to define and use localized strings.
 ### Test Implementation
