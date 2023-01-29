@@ -69,6 +69,7 @@
 		214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */; };
 		214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */; };
 		214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */; };
+		218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BE9298728F300663333 /* NetworkServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurableMock.swift; sourceTree = "<group>"; };
 		214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerMock.swift; sourceTree = "<group>"; };
 		214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferServiceTests.swift; sourceTree = "<group>"; };
+		218A2BE9298728F300663333 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -591,6 +593,7 @@
 			children = (
 				214F3F15298724F900DF06AE /* Mocks */,
 				214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */,
+				218A2BE9298728F300663333 /* NetworkServiceTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */,
 				214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */,
 				214F3ED92986C28B00DF06AE /* StringExtensionTests.swift in Sources */,
 				214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */,
