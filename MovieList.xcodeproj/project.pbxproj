@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211B2B66298727330055AEA7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 211B2B65298727330055AEA7 /* FirebaseAuth */; };
 		214F3E50298434D000DF06AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E4F298434D000DF06AE /* AppDelegate.swift */; };
 		214F3E59298434D200DF06AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E58298434D200DF06AE /* Assets.xcassets */; };
 		214F3E5C298434D200DF06AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E5A298434D200DF06AE /* LaunchScreen.storyboard */; };
@@ -67,6 +68,7 @@
 		214F3F0F298717BB00DF06AE /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */; };
 		214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */; };
 		214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */; };
+		214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +144,7 @@
 		214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 		214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurableMock.swift; sourceTree = "<group>"; };
 		214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerMock.swift; sourceTree = "<group>"; };
+		214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,18 +160,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211B2B66298727330055AEA7 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		211B2B64298727330055AEA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		214F3E43298434D000DF06AE = {
 			isa = PBXGroup;
 			children = (
 				214F3E4E298434D000DF06AE /* MovieList */,
 				214F3ED72986C28B00DF06AE /* MovieListTests */,
 				214F3E4D298434D000DF06AE /* Products */,
+				211B2B64298727330055AEA7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -460,10 +472,10 @@
 		214F3ED72986C28B00DF06AE /* MovieListTests */ = {
 			isa = PBXGroup;
 			children = (
+				218A2BE82987288600663333 /* Common */,
 				214F3F12298724B900DF06AE /* Presentation */,
 				214F3F102987249100DF06AE /* Domain */,
 				214F3F13298724E900DF06AE /* Infrastructure */,
-				214F3ED82986C28B00DF06AE /* StringExtensionTests.swift */,
 			);
 			path = MovieListTests;
 			sourceTree = "<group>";
@@ -578,6 +590,7 @@
 			isa = PBXGroup;
 			children = (
 				214F3F15298724F900DF06AE /* Mocks */,
+				214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -589,6 +602,14 @@
 				214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		218A2BE82987288600663333 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				214F3ED82986C28B00DF06AE /* StringExtensionTests.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -628,6 +649,9 @@
 				214F3EDB2986C28B00DF06AE /* PBXTargetDependency */,
 			);
 			name = MovieListTests;
+			packageProductDependencies = (
+				211B2B65298727330055AEA7 /* FirebaseAuth */,
+			);
 			productName = MovieListTests;
 			productReference = 214F3ED62986C28B00DF06AE /* MovieListTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -758,6 +782,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */,
 				214F3ED92986C28B00DF06AE /* StringExtensionTests.swift in Sources */,
 				214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */,
 				214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */,
@@ -1044,6 +1069,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		211B2B65298727330055AEA7 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 214F3EDF2986D14B00DF06AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		214F3EE02986D14B00DF06AE /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 214F3EDF2986D14B00DF06AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

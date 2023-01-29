@@ -6,6 +6,7 @@
 //
 
 @testable import MovieList
+import Foundation
 
 struct NetworkSessionManagerMock: NetworkSessionManagerType {
     let response: HTTPURLResponse?
