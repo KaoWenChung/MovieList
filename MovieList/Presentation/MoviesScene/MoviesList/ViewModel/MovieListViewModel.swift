@@ -24,13 +24,16 @@ protocol MovieListViewModelType: MovieListViewModelInput, MovieListViewModelOutp
 
 
 final class MovieListViewModel {
+    // MARK: Repository
+    private let imageRepository: ImageRepositoryType
+
     // MARK: UseCase
     private let searchMoviesUseCase: SearchMoviesUseCaseType
     private let actions: MovieListViewModelActions
 
     // MARK: Properties
     private var moviesLoadTask: CancellableType? { willSet { moviesLoadTask?.cancel() } }
-    private var currentPage: Int = 0
+    private var currentPage: Int = 1
     private var totalPages: Int = 1
     private var hasMorePages: Bool { currentPage < totalPages }
     private var nextPage: Int { hasMorePages ? currentPage + 1 : currentPage }
@@ -40,8 +43,10 @@ final class MovieListViewModel {
     let movieList: Observable<[MovieListCellViewModel]> = Observable([])
     var errorTitle: String = ""
 
-    init(searchMoviesUseCase: SearchMoviesUseCaseType,
+    init(imageRepository: ImageRepositoryType,
+         searchMoviesUseCase: SearchMoviesUseCaseType,
          actions: MovieListViewModelActions) {
+        self.imageRepository = imageRepository
         self.searchMoviesUseCase = searchMoviesUseCase
         self.actions = actions
     }
@@ -53,7 +58,10 @@ final class MovieListViewModel {
     }
 
     private func appendPage(_ page: MoviesPage) {
-        print(page)
+        totalPages = page.totalPages
+        currentPage += 1
+
+        movieList.value.append(contentsOf: page.movies.map{ MovieListCellViewModel.init($0, imageRepository: imageRepository)})
     }
 }
 
@@ -67,12 +75,5 @@ extension MovieListViewModel: MovieListViewModelType {
                 self.handle(error: error)
             }
         }
-    }
-}
-
-struct MovieListCellViewModel {
-    let title: String
-    init(title: String) {
-        self.title = title
     }
 }

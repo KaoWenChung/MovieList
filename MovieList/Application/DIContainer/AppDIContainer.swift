@@ -30,7 +30,8 @@ final class AppDIContainer {
     // MARK: - DIContainers of scenes
     func makeMoviesSceneDIContainer() -> MoviesSceneDIContainer {
         let dependencies = MoviesSceneDIContainer.Dependencies(apiDataTransferService: apiDataTransferService,
-                                                               imageDataTransferService: imageDataTransferService)
+                                                               imageDataTransferService: imageDataTransferService,
+                                                               imageCache: imageCache)
         return MoviesSceneDIContainer(dependencies: dependencies)
     }
 }

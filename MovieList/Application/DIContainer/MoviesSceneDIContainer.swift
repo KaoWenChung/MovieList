@@ -11,6 +11,7 @@ final class MoviesSceneDIContainer {
     struct Dependencies {
         let apiDataTransferService: DataTransferService
         let imageDataTransferService: DataTransferService
+        let imageCache: ImageCacheType
     }
     
     private let dependencies: Dependencies
@@ -30,12 +31,16 @@ final class MoviesSceneDIContainer {
     }
     
     func makeMovieListViewModel(actions: MovieListViewModelActions) -> MovieListViewModelType {
-        return MovieListViewModel(searchMoviesUseCase: makeSearchMoviesUseCase(), actions: actions)
+        return MovieListViewModel(imageRepository: makeLaunchImagesRepository(), searchMoviesUseCase: makeSearchMoviesUseCase(), actions: actions)
     }
 
     // MARK: - Repositories
     func makeMoviesRepository() -> MoviesRepositoryType {
         return MoviesRepository(dataTransferService: dependencies.apiDataTransferService)
+    }
+
+    func makeLaunchImagesRepository() -> ImageRepositoryType {
+        return ImageRepository(dataTransferService: dependencies.imageDataTransferService, imageCache: dependencies.imageCache)
     }
 
     // MARK: - Flow Coordinators

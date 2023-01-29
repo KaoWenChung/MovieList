@@ -23,6 +23,7 @@ final class MovieListViewController: UIViewController {
         super.viewDidLoad()
         bind(to: viewModel)
         viewModel.viewDidLoad()
+        tableView.register(UINib(nibName: MovieListTableViewCell.name, bundle: nil), forCellReuseIdentifier: MovieListTableViewCell.name)
     }
     private func bind(to viewModel: MovieListViewModelType) {
         viewModel.movieList.observe(on: self) { [weak self] _ in self?.updateItems() }
@@ -41,8 +42,8 @@ extension MovieListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = viewModel.movieList.value[indexPath.row].title
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieListTableViewCell.name, for: indexPath) as? MovieListTableViewCell else { return UITableViewCell() }
+        cell.fill(viewModel.movieList.value[indexPath.row])
         return cell
     }
 }
