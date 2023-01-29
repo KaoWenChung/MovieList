@@ -64,6 +64,7 @@
 		214F3F072986FA2600DF06AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 214F3F062986FA2600DF06AE /* GoogleService-Info.plist */; };
 		214F3F09298704C100DF06AE /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F08298704C100DF06AE /* Alertable.swift */; };
 		214F3F0B29870FFA00DF06AE /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */; };
+		214F3F0F298717BB00DF06AE /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		214F3F062986FA2600DF06AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		214F3F08298704C100DF06AE /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 		214F3E6B298438C300DF06AE /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				214F3F0D2987179D00DF06AE /* UserDefault */,
 				214F3F0C2987100B00DF06AE /* Keychain */,
 				214F3EA52985C11200DF06AE /* Cache */,
 				214F3E84298593DB00DF06AE /* Repositories */,
@@ -526,6 +529,14 @@
 			path = Keychain;
 			sourceTree = "<group>";
 		};
+		214F3F0D2987179D00DF06AE /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */,
+			);
+			path = UserDefault;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -639,6 +650,7 @@
 			files = (
 				214F3EAD2985C25400DF06AE /* NetworkServiceType.swift in Sources */,
 				214F3E8129858FAF00DF06AE /* CancellableType.swift in Sources */,
+				214F3F0F298717BB00DF06AE /* UserDefaultHelper.swift in Sources */,
 				214F3F052986F02E00DF06AE /* AccountSceneDIContainer.swift in Sources */,
 				214F3E7D29858E5500DF06AE /* Endpoint.swift in Sources */,
 				214F3EB82985D9EB00DF06AE /* MovieListViewController.swift in Sources */,
@@ -768,7 +780,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -822,7 +834,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
