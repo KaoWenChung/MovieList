@@ -50,7 +50,6 @@ extension LoginViewModel: LoginViewModelType {
             switch result {
             case .success(let value):
                 self.actions?.didLogin()
-                print(value)
             case .failure(let error):
                 self.handle(error: error)
             }

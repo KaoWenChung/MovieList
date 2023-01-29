@@ -33,7 +33,7 @@ class RegisterViewController: UIViewController, Alertable {
 
     private func showError(_ error: String) {
         guard !error.isEmpty else { return }
-        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: "OK")
+        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: CommonString.ok.text)
     }
 
     @IBAction private func didSelectRegisterHandler() {

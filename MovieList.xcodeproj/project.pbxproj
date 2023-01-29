@@ -70,6 +70,9 @@
 		214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */; };
 		214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */; };
 		218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BE9298728F300663333 /* NetworkServiceTests.swift */; };
+		218A2BED29872BDD00663333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 218A2BEC29872BDD00663333 /* Localizable.strings */; };
+		218A2BEF29872BEF00663333 /* LocallizedStringType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BEE29872BEF00663333 /* LocallizedStringType.swift */; };
+		218A2BF129872C0600663333 /* CommonString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BF029872C0600663333 /* CommonString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +150,9 @@
 		214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerMock.swift; sourceTree = "<group>"; };
 		214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferServiceTests.swift; sourceTree = "<group>"; };
 		218A2BE9298728F300663333 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		218A2BEC29872BDD00663333 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		218A2BEE29872BEF00663333 /* LocallizedStringType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocallizedStringType.swift; sourceTree = "<group>"; };
+		218A2BF029872C0600663333 /* CommonString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +281,7 @@
 		214F3E6D298438D300DF06AE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				218A2BEB29872BD300663333 /* Localized */,
 				214F3E8C2985956400DF06AE /* Extension */,
 				214F3ECA2985FC2700DF06AE /* Contents.swift */,
 				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
@@ -615,6 +622,16 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		218A2BEB29872BD300663333 /* Localized */ = {
+			isa = PBXGroup;
+			children = (
+				218A2BEC29872BDD00663333 /* Localizable.strings */,
+				218A2BEE29872BEF00663333 /* LocallizedStringType.swift */,
+				218A2BF029872C0600663333 /* CommonString.swift */,
+			);
+			path = Localized;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -710,6 +727,7 @@
 				214F3EF42986DD2300DF06AE /* RegisterViewController.xib in Resources */,
 				214F3E59298434D200DF06AE /* Assets.xcassets in Resources */,
 				214F3E662984350000DF06AE /* LoginViewController.xib in Resources */,
+				218A2BED29872BDD00663333 /* Localizable.strings in Resources */,
 				214F3EB92985D9EB00DF06AE /* MovieListViewController.xib in Resources */,
 				214F3F072986FA2600DF06AE /* GoogleService-Info.plist in Resources */,
 			);
@@ -752,6 +770,7 @@
 				214F3EFF2986DD9300DF06AE /* RegisterViewModel.swift in Sources */,
 				214F3E722985503100DF06AE /* MoviesResponseDTO.swift in Sources */,
 				214F3EF02986DA4200DF06AE /* FirebaseRegisterRepository.swift in Sources */,
+				218A2BEF29872BEF00663333 /* LocallizedStringType.swift in Sources */,
 				214F3EFD2986DD8500DF06AE /* LoginViewModel.swift in Sources */,
 				214F3F09298704C100DF06AE /* Alertable.swift in Sources */,
 				214F3E7B29858E3F00DF06AE /* NetworkService.swift in Sources */,
@@ -762,6 +781,7 @@
 				214F3E9D2985BAF800DF06AE /* AppDIContainer.swift in Sources */,
 				214F3EC92985FBEE00DF06AE /* UIImageView+.swift in Sources */,
 				214F3F012986DF7B00DF06AE /* LoginRepositoryType.swift in Sources */,
+				218A2BF129872C0600663333 /* CommonString.swift in Sources */,
 				214F3EEE2986DA3600DF06AE /* FirebaseLoginRepository.swift in Sources */,
 				214F3EA92985C21400DF06AE /* ResponseRequestableType.swift in Sources */,
 				214F3E89298593FD00DF06AE /* RepositoryTask.swift in Sources */,

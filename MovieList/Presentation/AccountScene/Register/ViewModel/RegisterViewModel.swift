@@ -44,7 +44,6 @@ extension RegisterViewModel: RegisterViewModelType {
             switch result {
             case .success(let value):
                 self.actions?.didRegister()
-                print(value)
             case .failure(let error):
                 self.handle(error: error)
             }

@@ -26,7 +26,7 @@ protocol MovieListViewModelType: MovieListViewModelInput, MovieListViewModelOutp
 final class MovieListViewModel {
     // MARK: Predefined
     enum Content {
-        static let defaultSearch = "Love"
+        static let defaultSearch = "love"
         static let defaultYear = 2000
         static let defaultTotalResult = 0
         static let defaultPage = 1
@@ -63,9 +63,7 @@ final class MovieListViewModel {
     }
 
     private func handle(error: Error) {
-//        self.error.value = error.isInternetConnectionError ?
-//            NSLocalizedString("No internet connection", comment: "") :
-//            NSLocalizedString("Failed loading movies", comment: "")
+        self.error.value = error.isInternetConnectionError ? ErrorString.noInternet.text : ErrorString.failLoadingMovies.text
     }
 
     private func appendPage(_ page: MoviesPage) {
