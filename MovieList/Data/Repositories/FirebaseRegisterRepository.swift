@@ -7,9 +7,9 @@
 
 import FirebaseAuth
 
-struct RegisterRepository {}
+struct FirebaseRegisterRepository {}
 
-extension RegisterRepository: RegisterRepositoryType {
+extension FirebaseRegisterRepository: RegisterRepositoryType {
     public func register(account: AccountValue, completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().createUser(withEmail: account.email, password: account.password) { (authResult, error) in
             if let user = authResult?.user {

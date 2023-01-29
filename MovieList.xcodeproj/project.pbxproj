@@ -49,17 +49,19 @@
 		214F3ED12986C27000DF06AE /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3ED02986C27000DF06AE /* String+.swift */; };
 		214F3ED92986C28B00DF06AE /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3ED82986C28B00DF06AE /* StringExtensionTests.swift */; };
 		214F3EE12986D14B00DF06AE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 214F3EE02986D14B00DF06AE /* FirebaseAuth */; };
-		214F3EE32986D17E00DF06AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 214F3EE22986D17E00DF06AE /* GoogleService-Info.plist */; };
 		214F3EE82986D69F00DF06AE /* RegisterRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EE72986D69F00DF06AE /* RegisterRepositoryType.swift */; };
 		214F3EEA2986D6C200DF06AE /* RegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EE92986D6C200DF06AE /* RegisterUseCase.swift */; };
 		214F3EEC2986D6D500DF06AE /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EEB2986D6D500DF06AE /* LoginUseCase.swift */; };
-		214F3EEE2986DA3600DF06AE /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EED2986DA3600DF06AE /* LoginRepository.swift */; };
-		214F3EF02986DA4200DF06AE /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EEF2986DA4200DF06AE /* RegisterRepository.swift */; };
+		214F3EEE2986DA3600DF06AE /* FirebaseLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EED2986DA3600DF06AE /* FirebaseLoginRepository.swift */; };
+		214F3EF02986DA4200DF06AE /* FirebaseRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EEF2986DA4200DF06AE /* FirebaseRegisterRepository.swift */; };
 		214F3EF32986DD2300DF06AE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EF12986DD2300DF06AE /* RegisterViewController.swift */; };
 		214F3EF42986DD2300DF06AE /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 214F3EF22986DD2300DF06AE /* RegisterViewController.xib */; };
 		214F3EFD2986DD8500DF06AE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EFC2986DD8500DF06AE /* LoginViewModel.swift */; };
 		214F3EFF2986DD9300DF06AE /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EFE2986DD9300DF06AE /* RegisterViewModel.swift */; };
 		214F3F012986DF7B00DF06AE /* LoginRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F002986DF7B00DF06AE /* LoginRepositoryType.swift */; };
+		214F3F032986E7F200DF06AE /* AccountSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F022986E7F200DF06AE /* AccountSceneFlowCoordinator.swift */; };
+		214F3F052986F02E00DF06AE /* AccountSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F042986F02E00DF06AE /* AccountSceneDIContainer.swift */; };
+		214F3F072986FA2600DF06AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 214F3F062986FA2600DF06AE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,17 +119,19 @@
 		214F3ED02986C27000DF06AE /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		214F3ED62986C28B00DF06AE /* MovieListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		214F3ED82986C28B00DF06AE /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
-		214F3EE22986D17E00DF06AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		214F3EE72986D69F00DF06AE /* RegisterRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepositoryType.swift; sourceTree = "<group>"; };
 		214F3EE92986D6C200DF06AE /* RegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUseCase.swift; sourceTree = "<group>"; };
 		214F3EEB2986D6D500DF06AE /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
-		214F3EED2986DA3600DF06AE /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
-		214F3EEF2986DA4200DF06AE /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
+		214F3EED2986DA3600DF06AE /* FirebaseLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginRepository.swift; sourceTree = "<group>"; };
+		214F3EEF2986DA4200DF06AE /* FirebaseRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRegisterRepository.swift; sourceTree = "<group>"; };
 		214F3EF12986DD2300DF06AE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		214F3EF22986DD2300DF06AE /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		214F3EFC2986DD8500DF06AE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		214F3EFE2986DD9300DF06AE /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		214F3F002986DF7B00DF06AE /* LoginRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryType.swift; sourceTree = "<group>"; };
+		214F3F022986E7F200DF06AE /* AccountSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSceneFlowCoordinator.swift; sourceTree = "<group>"; };
+		214F3F042986F02E00DF06AE /* AccountSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSceneDIContainer.swift; sourceTree = "<group>"; };
+		214F3F062986FA2600DF06AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +200,7 @@
 		214F3E682984387400DF06AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				214F3EE22986D17E00DF06AE /* GoogleService-Info.plist */,
+				214F3F062986FA2600DF06AE /* GoogleService-Info.plist */,
 				214F3E5A298434D200DF06AE /* LaunchScreen.storyboard */,
 				214F3E58298434D200DF06AE /* Assets.xcassets */,
 			);
@@ -316,8 +320,8 @@
 				214F3E86298593ED00DF06AE /* Utils */,
 				214F3E932985B90700DF06AE /* MoviesRepository.swift */,
 				214F3EC62985F85F00DF06AE /* ImageRepository.swift */,
-				214F3EED2986DA3600DF06AE /* LoginRepository.swift */,
-				214F3EEF2986DA4200DF06AE /* RegisterRepository.swift */,
+				214F3EED2986DA3600DF06AE /* FirebaseLoginRepository.swift */,
+				214F3EEF2986DA4200DF06AE /* FirebaseRegisterRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -345,6 +349,7 @@
 			children = (
 				214F3E9C2985BAF800DF06AE /* AppDIContainer.swift */,
 				214F3E9E2985BB0E00DF06AE /* MoviesSceneDIContainer.swift */,
+				214F3F042986F02E00DF06AE /* AccountSceneDIContainer.swift */,
 			);
 			path = DIContainer;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 		214F3EF52986DD4100DF06AE /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				214F3F022986E7F200DF06AE /* AccountSceneFlowCoordinator.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -599,7 +605,7 @@
 				214F3E59298434D200DF06AE /* Assets.xcassets in Resources */,
 				214F3E662984350000DF06AE /* LoginViewController.xib in Resources */,
 				214F3EB92985D9EB00DF06AE /* MovieListViewController.xib in Resources */,
-				214F3EE32986D17E00DF06AE /* GoogleService-Info.plist in Resources */,
+				214F3F072986FA2600DF06AE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +625,7 @@
 			files = (
 				214F3EAD2985C25400DF06AE /* NetworkServiceType.swift in Sources */,
 				214F3E8129858FAF00DF06AE /* CancellableType.swift in Sources */,
+				214F3F052986F02E00DF06AE /* AccountSceneDIContainer.swift in Sources */,
 				214F3E7D29858E5500DF06AE /* Endpoint.swift in Sources */,
 				214F3EB82985D9EB00DF06AE /* MovieListViewController.swift in Sources */,
 				214F3E7629858C2B00DF06AE /* MoviesRequestDTO.swift in Sources */,
@@ -637,7 +644,7 @@
 				214F3EAB2985C23300DF06AE /* DataTransferServiceType.swift in Sources */,
 				214F3EFF2986DD9300DF06AE /* RegisterViewModel.swift in Sources */,
 				214F3E722985503100DF06AE /* MoviesResponseDTO.swift in Sources */,
-				214F3EF02986DA4200DF06AE /* RegisterRepository.swift in Sources */,
+				214F3EF02986DA4200DF06AE /* FirebaseRegisterRepository.swift in Sources */,
 				214F3EFD2986DD8500DF06AE /* LoginViewModel.swift in Sources */,
 				214F3E7B29858E3F00DF06AE /* NetworkService.swift in Sources */,
 				214F3ECB2985FC2700DF06AE /* Contents.swift in Sources */,
@@ -647,12 +654,13 @@
 				214F3E9D2985BAF800DF06AE /* AppDIContainer.swift in Sources */,
 				214F3EC92985FBEE00DF06AE /* UIImageView+.swift in Sources */,
 				214F3F012986DF7B00DF06AE /* LoginRepositoryType.swift in Sources */,
-				214F3EEE2986DA3600DF06AE /* LoginRepository.swift in Sources */,
+				214F3EEE2986DA3600DF06AE /* FirebaseLoginRepository.swift in Sources */,
 				214F3EA92985C21400DF06AE /* ResponseRequestableType.swift in Sources */,
 				214F3E89298593FD00DF06AE /* RepositoryTask.swift in Sources */,
 				214F3EC72985F85F00DF06AE /* ImageRepository.swift in Sources */,
 				214F3E7F29858E6800DF06AE /* NetworkConfig.swift in Sources */,
 				214F3E8329858FBD00DF06AE /* ConnectionErrorType.swift in Sources */,
+				214F3F032986E7F200DF06AE /* AccountSceneFlowCoordinator.swift in Sources */,
 				214F3E962985B96200DF06AE /* MoviesRepositoryType.swift in Sources */,
 				214F3EBE2985DD6F00DF06AE /* Observable.swift in Sources */,
 				214F3EEA2986D6C200DF06AE /* RegisterUseCase.swift in Sources */,

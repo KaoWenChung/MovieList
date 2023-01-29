@@ -34,4 +34,7 @@ final class AppDIContainer {
                                                                imageCache: imageCache)
         return MoviesSceneDIContainer(dependencies: dependencies)
     }
+    func makeAccountSceneDIContainer() -> AccountSceneDIContainer {
+        return AccountSceneDIContainer()
+    }
 }

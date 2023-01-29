@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigationController
         appFlowCoordinator = AppFlowCoordinator(navigationController: navigationController,
                                                 appDIContainer: appDIContainer)
-        appFlowCoordinator?.start()
+        appFlowCoordinator?.startAccountScene()
         window?.makeKeyAndVisible()
         
         FirebaseApp.configure() // ??

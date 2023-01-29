@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>588222479664-h34e9fs39outnvo8nvo2ftebhthd02fk.apps.googleusercontent.com</string>
+	<string>588222479664-5rfjanq96hfo0m05ai5ptlgcsq3co94v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.588222479664-h34e9fs39outnvo8nvo2ftebhthd02fk</string>
+	<string>com.googleusercontent.apps.588222479664-5rfjanq96hfo0m05ai5ptlgcsq3co94v</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDTCkPoeE9sHORRwdUIGmmGxLZ8HvVQlUQ</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.owen.MovieList</string>
+	<string>owenkao.MovieList</string>
 	<key>PROJECT_ID</key>
 	<string>movielist-f9388</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:588222479664:ios:f5d8c3a01b9fa5c52f9cf5</string>
+	<string>1:588222479664:ios:fbac64bf27fa85582f9cf5</string>
 </dict>
 </plist>

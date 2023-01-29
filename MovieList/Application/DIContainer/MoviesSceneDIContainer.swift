@@ -21,7 +21,7 @@ final class MoviesSceneDIContainer {
     }
 
     // MARK: - Use Cases
-    func makeSearchMoviesUseCase() -> SearchMoviesUseCase {
+    func makeSearchMoviesUseCase() -> SearchMoviesUseCaseType {
         return SearchMoviesUseCase(moviesRepository: makeMoviesRepository())
     }
 

@@ -7,12 +7,12 @@
 
 struct LoginViewModelActions {
     let didLogin: () -> Void
-    let didRigster: () -> Void
+    let didRegister: () -> Void
 }
 
 protocol LoginViewModelInput {
     func Login(_ account: AccountValue)
-    func didSelectRigster()
+    func didSelectRegister()
 }
 
 protocol LoginViewModelOutput {
@@ -24,15 +24,15 @@ protocol LoginViewModelType: LoginViewModelInput, LoginViewModelOutput {}
 
 final class LoginViewModel {
     // MARK: UseCase
-    private let LoginUSeCase: LoginRepositoryType
+    private let loginUseCase: LoginUseCaseType
     // MARK: Actions
     private let actions: LoginViewModelActions?
     // MARK: Output
     let error: Observable<String> = Observable("")
     private(set) var errorTitle: String = ""
-    init(LoginUSeCase: LoginRepositoryType,
+    init(loginUseCase: LoginUseCaseType,
          actions: LoginViewModelActions?) {
-        self.LoginUSeCase = LoginUSeCase
+        self.loginUseCase = loginUseCase
         self.actions = actions
     }
     private func handle(error: Error) {
@@ -41,12 +41,12 @@ final class LoginViewModel {
 }
 
 extension LoginViewModel: LoginViewModelType {
-    func didSelectRigster() {
-        actions?.didRigster()
+    func didSelectRegister() {
+        actions?.didRegister()
     }
     
     func Login(_ account: AccountValue) {
-        LoginUSeCase.login(account: account) { result in
+        loginUseCase.execute(requestValue: account) { result in
             switch result {
             case .success(let value):
                 self.actions?.didLogin()

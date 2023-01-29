@@ -16,10 +16,22 @@ final class AppFlowCoordinator {
         self.navigationController = navigationController
         self.appDIContainer = appDIContainer
     }
-
-    func start() {
+    
+    func startAccountScene() {
+        let accountSceneDIContainer = appDIContainer.makeAccountSceneDIContainer()
+        let flow = accountSceneDIContainer.makeAccountFlowCoordinator(navigationController: navigationController)
+        flow.start()
+    }
+    
+    func startMoviesScene() {
         let moviesSceneDIContainer = appDIContainer.makeMoviesSceneDIContainer()
         let flow = moviesSceneDIContainer.makeMoviesSearchFlowCoordinator(navigationController: navigationController)
         flow.start()
+    }
+}
+// MARK: AccountFlowCoordinatorDelegate
+extension AppFlowCoordinator: AccountFlowCoordinatorDelegate {
+    func didLogin() {
+        startMoviesScene()
     }
 }

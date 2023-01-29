@@ -24,6 +24,6 @@ final class LoginViewController: UIViewController {
     }
     @IBAction private func didSelectLoginHandler() {}
     @IBAction private func didSelectSignUpHandler() {
-        viewModel.didSelectRigster()
+        viewModel.didSelectRegister()
     }
 }

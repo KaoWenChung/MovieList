@@ -11,12 +11,12 @@ protocol LoginUseCaseType {
 }
 
 final class LoginUseCase: LoginUseCaseType {
-    private let registerRepository: RegisterRepositoryType
+    private let loginRepository: LoginRepositoryType
 
-    init(registerRepository: RegisterRepositoryType) {
-        self.registerRepository = registerRepository
+    init(loginRepository: LoginRepositoryType) {
+        self.loginRepository = loginRepository
     }
     func execute(requestValue: AccountValue, completion: @escaping (Result<String, Error>) -> Void) {
-        registerRepository.register(account: requestValue, completion: completion)
+        loginRepository.login(account: requestValue, completion: completion)
     }
 }
