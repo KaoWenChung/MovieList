@@ -20,6 +20,7 @@ final class AppFlowCoordinator {
     func startAccountScene() {
         let accountSceneDIContainer = appDIContainer.makeAccountSceneDIContainer()
         let flow = accountSceneDIContainer.makeAccountFlowCoordinator(navigationController: navigationController)
+        flow.delegate = self
         flow.start()
     }
     

@@ -20,10 +20,17 @@ final class LoginViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBAction private func didSelectLoginHandler() {}
+
+    @IBAction private func didSelectLoginHandler() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        let account = AccountValue(email: email, password: password)
+        viewModel.login(account)
+    }
+
     @IBAction private func didSelectSignUpHandler() {
         viewModel.didSelectRegister()
     }

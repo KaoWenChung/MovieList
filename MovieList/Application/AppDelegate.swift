@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appFlowCoordinator?.startAccountScene()
         window?.makeKeyAndVisible()
         
-        FirebaseApp.configure() // ??
+        FirebaseApp.configure()
         return true
     }
 }

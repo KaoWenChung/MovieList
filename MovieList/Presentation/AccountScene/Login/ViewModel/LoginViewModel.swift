@@ -11,7 +11,7 @@ struct LoginViewModelActions {
 }
 
 protocol LoginViewModelInput {
-    func Login(_ account: AccountValue)
+    func login(_ account: AccountValue)
     func didSelectRegister()
 }
 
@@ -45,7 +45,7 @@ extension LoginViewModel: LoginViewModelType {
         actions?.didRegister()
     }
     
-    func Login(_ account: AccountValue) {
+    func login(_ account: AccountValue) {
         loginUseCase.execute(requestValue: account) { result in
             switch result {
             case .success(let value):
