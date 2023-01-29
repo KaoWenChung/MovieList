@@ -28,7 +28,10 @@ final class MovieListViewModel {
     enum Content {
         static let defaultSearch = "Love"
         static let defaultYear = 2000
+        static let defaultTotalResult = 0
         static let defaultPage = 1
+        static let aYear = 1
+        static let aPage = 1
     }
     // MARK: Repository
     private let imageRepository: ImageRepositoryType
@@ -40,16 +43,16 @@ final class MovieListViewModel {
     // MARK: Properties
     private var moviesLoadTask: CancellableType? { willSet { moviesLoadTask?.cancel() } }
     private var currentSearchYear = Content.defaultYear
-    private var currentSearchTotalResult = 0
-    private var currentPage: Int = 1
-    private var totalResults: Int = 1
+    private var currentSearchTotalResult = Content.defaultTotalResult
+    private var currentPage: Int = Content.defaultPage
+    private var totalResults: Int = Content.defaultTotalResult
     private var hasMorePages: Bool { movieList.value.count < totalResults }
-    private var nextPage: Int { hasMorePages ? currentPage + 1 : currentPage }
+    private var nextPage: Int { hasMorePages ? currentPage + Content.aPage : currentPage }
 
     // MARK: Output
     let error: Observable<String> = Observable("")
     let movieList: Observable<[MovieListCellViewModel]> = Observable([])
-    var errorTitle: String = ""
+    private(set) var errorTitle: String = ""
 
     init(imageRepository: ImageRepositoryType,
          searchMoviesUseCase: SearchMoviesUseCaseType,
@@ -67,7 +70,7 @@ final class MovieListViewModel {
 
     private func appendPage(_ page: MoviesPage) {
         totalResults = page.totalResults
-        currentPage += 1
+        currentPage += Content.aPage
         currentSearchTotalResult += page.movies.count
 
         movieList.value.append(contentsOf: page.movies.map{ MovieListCellViewModel.init($0, imageRepository: imageRepository)})
@@ -88,9 +91,9 @@ final class MovieListViewModel {
         guard currentSearchTotalResult == totalResults else { return }
         guard let currentYear = Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year,
               currentSearchYear < currentYear else { return }
-        currentSearchYear += 1
-        currentSearchTotalResult = 0
-        currentPage = 1
+        currentSearchYear += Content.aYear
+        currentSearchTotalResult = Content.defaultTotalResult
+        currentPage = Content.defaultPage
     }
 }
 
