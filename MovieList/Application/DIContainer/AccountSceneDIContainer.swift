@@ -13,13 +13,26 @@ final class AccountSceneDIContainer {
         return LoginUseCase(loginRepository: makeLoginRepository())
     }
 
-    // MARK: - Movies List
+    func makeRegisterUseCase() -> RegisterUseCaseType {
+        return RegisterUseCase(registerRepository: makeRegisterRepository())
+    }
+
+    // MARK: - Login
     func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController {
         LoginViewController(viewModel: makeLoginViewModel(actions: actions))
     }
 
     func makeLoginViewModel(actions: LoginViewModelActions) -> LoginViewModel {
         LoginViewModel(loginUseCase: makeLoginUseCase(), actions: actions)
+    }
+
+    // MARK: Register
+    func makeRegisterViewController(actions: RegisterViewModelActions) -> RegisterViewController {
+        RegisterViewController(viewModel: makeRegisterViewModel(actions: actions))
+    }
+
+    func makeRegisterViewModel(actions: RegisterViewModelActions) -> RegisterViewModel {
+        RegisterViewModel(registerUseCase: makeRegisterUseCase(), actions: actions)
     }
 
     // MARK: - Repositories

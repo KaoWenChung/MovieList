@@ -22,15 +22,15 @@ protocol RegisterViewModelType: RegisterViewModelInput, RegisterViewModelOutput 
 
 final class RegisterViewModel {
     // MARK: UseCase
-    private let registerUSeCase: RegisterRepositoryType
+    private let registerUseCase: RegisterUseCaseType
     // MARK: Actions
     private let actions: RegisterViewModelActions?
     // MARK: Output
     let error: Observable<String> = Observable("")
     private(set) var errorTitle: String = ""
-    init(registerUSeCase: RegisterRepositoryType,
+    init(registerUseCase: RegisterUseCaseType,
          actions: RegisterViewModelActions?) {
-        self.registerUSeCase = registerUSeCase
+        self.registerUseCase = registerUseCase
         self.actions = actions
     }
     private func handle(error: Error) {
@@ -40,7 +40,7 @@ final class RegisterViewModel {
 
 extension RegisterViewModel: RegisterViewModelType {
     func register(_ account: AccountValue) {
-        registerUSeCase.register(account: account) { result in
+        registerUseCase.execute(requestValue: account) { result in
             switch result {
             case .success(let value):
                 self.actions?.didRegister()

@@ -250,8 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				214F3E8C2985956400DF06AE /* Extension */,
-				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
 				214F3ECA2985FC2700DF06AE /* Contents.swift */,
+				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
 				214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */,
 			);
 			path = Common;

@@ -9,6 +9,7 @@ import UIKit
 
 protocol AccountFlowCoordinatorDependencies  {
     func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController
+    func makeRegisterViewController(actions: RegisterViewModelActions) -> RegisterViewController
 }
 
 protocol AccountFlowCoordinatorDelegate: AnyObject {
@@ -33,9 +34,18 @@ final class AccountFlowCoordinator {
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func didLogin() {
+    private func didSelectRegister() {
+        let actions = RegisterViewModelActions(didRegister: didRegister)
+        let vc = dependencies.makeRegisterViewController(actions: actions)
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    private func didLogin() {
         delegate?.didLogin()
     }
 
-    func didSelectRegister() {}
+    private func didRegister() {
+        delegate?.didLogin()
+    }
 }
