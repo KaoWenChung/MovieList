@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MovieListViewController: UIViewController {
+final class MovieListViewController: UIViewController, Alertable {
     @IBOutlet weak private var tableView: UITableView!
     private let viewModel: MovieListViewModelType
     init(viewModel: MovieListViewModelType) {
@@ -27,6 +27,12 @@ final class MovieListViewController: UIViewController {
     }
     private func bind(to viewModel: MovieListViewModelType) {
         viewModel.movieList.observe(on: self) { [weak self] _ in self?.updateItems() }
+        viewModel.error.observe(on: self) {[weak self] in self?.showError($0)}
+    }
+
+    private func showError(_ error: String) {
+        guard !error.isEmpty else { return }
+        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: "OK")
     }
 
     private func updateItems() {

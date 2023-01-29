@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, Alertable {
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
     @IBOutlet weak private var confirmPasswordTextField: UITextField!
@@ -24,8 +24,16 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind(to: viewModel)
+    }
 
-        // Do any additional setup after loading the view.
+    private func bind(to viewModel: RegisterViewModelType) {
+        viewModel.error.observe(on: self) {[weak self] in self?.showError($0)}
+    }
+
+    private func showError(_ error: String) {
+        guard !error.isEmpty else { return }
+        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: "OK")
     }
 
     @IBAction private func didSelectRegisterHandler() {

@@ -62,6 +62,7 @@
 		214F3F032986E7F200DF06AE /* AccountSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F022986E7F200DF06AE /* AccountSceneFlowCoordinator.swift */; };
 		214F3F052986F02E00DF06AE /* AccountSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F042986F02E00DF06AE /* AccountSceneDIContainer.swift */; };
 		214F3F072986FA2600DF06AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 214F3F062986FA2600DF06AE /* GoogleService-Info.plist */; };
+		214F3F09298704C100DF06AE /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F08298704C100DF06AE /* Alertable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		214F3F022986E7F200DF06AE /* AccountSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSceneFlowCoordinator.swift; sourceTree = "<group>"; };
 		214F3F042986F02E00DF06AE /* AccountSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSceneDIContainer.swift; sourceTree = "<group>"; };
 		214F3F062986FA2600DF06AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		214F3F08298704C100DF06AE /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				214F3ECA2985FC2700DF06AE /* Contents.swift */,
 				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
 				214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */,
+				214F3F08298704C100DF06AE /* Alertable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				214F3E722985503100DF06AE /* MoviesResponseDTO.swift in Sources */,
 				214F3EF02986DA4200DF06AE /* FirebaseRegisterRepository.swift in Sources */,
 				214F3EFD2986DD8500DF06AE /* LoginViewModel.swift in Sources */,
+				214F3F09298704C100DF06AE /* Alertable.swift in Sources */,
 				214F3E7B29858E3F00DF06AE /* NetworkService.swift in Sources */,
 				214F3ECB2985FC2700DF06AE /* Contents.swift in Sources */,
 				214F3E922985B83900DF06AE /* Movie.swift in Sources */,
