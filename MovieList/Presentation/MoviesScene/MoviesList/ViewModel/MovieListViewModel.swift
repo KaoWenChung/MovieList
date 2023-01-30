@@ -17,6 +17,7 @@ protocol MovieListViewModelInput {
 
 protocol MovieListViewModelOutput {
     var movieList: Observable<[MovieListCellViewModel]> { get }
+    var status: Observable<LoadingStatus> { get }
     var error: Observable<String> { get }
     var errorTitle: String { get }
 }
@@ -24,10 +25,6 @@ protocol MovieListViewModelOutput {
 protocol MovieListViewModelType: MovieListViewModelInput, MovieListViewModelOutput {}
 
 final class MovieListViewModel {
-    private enum Status {
-        case loading
-        case normal
-    }
     // MARK: Predefined
     enum Content {
         static let defaultSearch = "love"
@@ -52,11 +49,11 @@ final class MovieListViewModel {
     private var totalResults: Int = Content.defaultTotalResult
     private var hasMorePages: Bool { movieList.value.count < totalResults }
     private var nextPage: Int { hasMorePages ? currentPage + Content.aPage : currentPage }
-    private var status: Status = .normal
 
     // MARK: Output
     let error: Observable<String> = Observable("")
     let movieList: Observable<[MovieListCellViewModel]> = Observable([])
+    let status: Observable<LoadingStatus> = Observable(.normal)
     private(set) var errorTitle: String = ""
 
     init(imageRepository: ImageRepositoryType,
@@ -80,8 +77,8 @@ final class MovieListViewModel {
     }
     
     private func loadMovies() {
-        guard status == .normal else { return }
-        status = .loading
+        guard status.value == .normal else { return }
+        status.value = .loading
         let request = SearchMoviesRequestValue(search: Content.defaultSearch, year: currentSearchYear.description, page: currentPage)
         moviesLoadTask = searchMoviesUseCase.execute(requestValue: request) { result in
             switch result {
@@ -90,7 +87,7 @@ final class MovieListViewModel {
             case .failure(let error):
                 self.handle(error: error)
             }
-            self.status = .normal
+            self.status.value = .normal
         }
     }
     private func updateCurrentSearchYear() {

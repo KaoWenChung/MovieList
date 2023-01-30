@@ -69,6 +69,8 @@
 		214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */; };
 		214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */; };
 		214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */; };
+		2153D74E2988872D00485FCA /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D74D2988872D00485FCA /* Spinner.swift */; };
+		2153D7502988886300485FCA /* LoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D74F2988886300485FCA /* LoadingStatus.swift */; };
 		2179192F2988609200D96313 /* BiometricHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179192E2988609100D96313 /* BiometricHelper.swift */; };
 		218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BE9298728F300663333 /* NetworkServiceTests.swift */; };
 		218A2BED29872BDD00663333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 218A2BEC29872BDD00663333 /* Localizable.strings */; };
@@ -150,6 +152,8 @@
 		214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurableMock.swift; sourceTree = "<group>"; };
 		214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerMock.swift; sourceTree = "<group>"; };
 		214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferServiceTests.swift; sourceTree = "<group>"; };
+		2153D74D2988872D00485FCA /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		2153D74F2988886300485FCA /* LoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatus.swift; sourceTree = "<group>"; };
 		2179192E2988609100D96313 /* BiometricHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricHelper.swift; sourceTree = "<group>"; };
 		218A2BE9298728F300663333 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		218A2BEC29872BDD00663333 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 				218A2BEB29872BD300663333 /* Localized */,
 				214F3E8C2985956400DF06AE /* Extension */,
 				214F3ECA2985FC2700DF06AE /* Contents.swift */,
+				2153D74D2988872D00485FCA /* Spinner.swift */,
+				2153D74F2988886300485FCA /* LoadingStatus.swift */,
 				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
 				2179192E2988609100D96313 /* BiometricHelper.swift */,
 				214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */,
@@ -750,6 +756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2153D7502988886300485FCA /* LoadingStatus.swift in Sources */,
 				214F3EAD2985C25400DF06AE /* NetworkServiceType.swift in Sources */,
 				214F3E8129858FAF00DF06AE /* CancellableType.swift in Sources */,
 				214F3F0F298717BB00DF06AE /* UserDefaultsHelper.swift in Sources */,
@@ -761,6 +768,7 @@
 				214F3E652984350000DF06AE /* LoginViewController.swift in Sources */,
 				214F3EC02985F70F00DF06AE /* MovieListCellViewModel.swift in Sources */,
 				214F3E50298434D000DF06AE /* AppDelegate.swift in Sources */,
+				2153D74E2988872D00485FCA /* Spinner.swift in Sources */,
 				214F3E9F2985BB0E00DF06AE /* MoviesSceneDIContainer.swift in Sources */,
 				214F3EB22985CFC100DF06AE /* MoviesSearchFlowCoordinator.swift in Sources */,
 				214F3EEC2986D6D500DF06AE /* LoginUseCase.swift in Sources */,
