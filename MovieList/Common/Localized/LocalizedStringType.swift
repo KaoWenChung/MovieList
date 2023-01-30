@@ -7,9 +7,9 @@
 
 import Foundation
 
-protocol LocallizedStringType {}
+protocol LocalizedStringType {}
 
-extension LocallizedStringType {
+extension LocalizedStringType {
     var prefix: String { return "\(type(of: self))" }
     var text: String { return NSLocalizedString(prefix + "." + String(describing: self), comment: "") }
 }

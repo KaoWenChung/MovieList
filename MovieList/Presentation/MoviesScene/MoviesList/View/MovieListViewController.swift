@@ -8,6 +8,9 @@
 import UIKit
 
 final class MovieListViewController: UIViewController, Alertable {
+    enum MovieListViewString: LocalizedStringType {
+        case title
+    }
     @IBOutlet weak private var tableView: UITableView!
     private let viewModel: MovieListViewModelType
 
@@ -22,6 +25,7 @@ final class MovieListViewController: UIViewController, Alertable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = MovieListViewString.title.text
         bind(to: viewModel)
         viewModel.viewDidLoad()
         tableView.register(UINib(nibName: MovieListTableViewCell.name, bundle: nil), forCellReuseIdentifier: MovieListTableViewCell.name)

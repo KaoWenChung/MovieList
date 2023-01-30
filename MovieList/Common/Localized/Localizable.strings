@@ -11,3 +11,9 @@
 
 "ErrorString.noInternet" = "No internet connection";
 "ErrorString.failLoadingMovies" = "Failed loading movies";
+
+"LoginViewString.title" = "LOGIN";
+
+"RegisterViewString.title" = "REGISTER";
+
+"MovieListViewString.title" = "MOVIE LIST";

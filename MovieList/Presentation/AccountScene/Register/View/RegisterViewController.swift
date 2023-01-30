@@ -8,6 +8,9 @@
 import UIKit
 
 class RegisterViewController: UIViewController, Alertable {
+    enum RegisterViewString: LocalizedStringType {
+        case title
+    }
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
     @IBOutlet weak private var confirmPasswordTextField: UITextField!
@@ -24,6 +27,7 @@ class RegisterViewController: UIViewController, Alertable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = RegisterViewString.title.text
         bind(to: viewModel)
     }
 

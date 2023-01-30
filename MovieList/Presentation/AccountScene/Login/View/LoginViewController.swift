@@ -8,6 +8,9 @@
 import UIKit
 
 final class LoginViewController: UIViewController, Alertable {
+    enum LoginViewString: LocalizedStringType {
+        case title
+    }
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
     private let viewModel: LoginViewModelType
@@ -23,6 +26,7 @@ final class LoginViewController: UIViewController, Alertable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = LoginViewString.title.text
         bind(to: viewModel)
         tryLoginByBiometricAuthentication()
     }
