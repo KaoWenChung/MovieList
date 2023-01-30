@@ -7,19 +7,16 @@
 
 import Foundation
 
-final class UserDefaultHelper {
+final class UserDefaultsHelper {
     private enum Key: String {
         case account = "owenkao.MovieList.account"
-        case isSavedAccount = "owenkao.MovieList.isSavedAccount"
-        case isBiometricAuthenticationOn = "owenkao.MovieList.isBiometricAuthenticationOn"
     }
 
     private init() {}
-    static let shared = UserDefaultHelper()
+    static let shared = UserDefaultsHelper()
     
     func removeUserData() {
         remove(.account)
-        remove(.isSavedAccount)
     }
 
     var account: String? {
@@ -39,16 +36,16 @@ final class UserDefaultHelper {
         }
     }
 
-    private func save(_ aKey: UserDefaultHelper.Key, value aValue: Any) {
+    private func save(_ aKey: UserDefaultsHelper.Key, value aValue: Any) {
         UserDefaults.standard.setValue(aValue, forKey: aKey.rawValue)
         UserDefaults.standard.synchronize()
     }
 
-    private func remove(_ aKey: UserDefaultHelper.Key) {
+    private func remove(_ aKey: UserDefaultsHelper.Key) {
         UserDefaults.standard.removeObject(forKey: aKey.rawValue)
     }
 
-    private func read<T>(_ aKey: UserDefaultHelper.Key) -> T? {
+    private func read<T>(_ aKey: UserDefaultsHelper.Key) -> T? {
         return UserDefaults.standard.object(forKey: aKey.rawValue) as? T
     }
 }

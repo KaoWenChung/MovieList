@@ -65,10 +65,11 @@
 		214F3F072986FA2600DF06AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 214F3F062986FA2600DF06AE /* GoogleService-Info.plist */; };
 		214F3F09298704C100DF06AE /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F08298704C100DF06AE /* Alertable.swift */; };
 		214F3F0B29870FFA00DF06AE /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */; };
-		214F3F0F298717BB00DF06AE /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */; };
+		214F3F0F298717BB00DF06AE /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0E298717BB00DF06AE /* UserDefaultsHelper.swift */; };
 		214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */; };
 		214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */; };
 		214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */; };
+		2179192F2988609200D96313 /* BiometricHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179192E2988609100D96313 /* BiometricHelper.swift */; };
 		218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BE9298728F300663333 /* NetworkServiceTests.swift */; };
 		218A2BED29872BDD00663333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 218A2BEC29872BDD00663333 /* Localizable.strings */; };
 		218A2BEF29872BEF00663333 /* LocallizedStringType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BEE29872BEF00663333 /* LocallizedStringType.swift */; };
@@ -145,10 +146,11 @@
 		214F3F062986FA2600DF06AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		214F3F08298704C100DF06AE /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
-		214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
+		214F3F0E298717BB00DF06AE /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurableMock.swift; sourceTree = "<group>"; };
 		214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerMock.swift; sourceTree = "<group>"; };
 		214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferServiceTests.swift; sourceTree = "<group>"; };
+		2179192E2988609100D96313 /* BiometricHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricHelper.swift; sourceTree = "<group>"; };
 		218A2BE9298728F300663333 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		218A2BEC29872BDD00663333 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		218A2BEE29872BEF00663333 /* LocallizedStringType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocallizedStringType.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				214F3E8C2985956400DF06AE /* Extension */,
 				214F3ECA2985FC2700DF06AE /* Contents.swift */,
 				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
+				2179192E2988609100D96313 /* BiometricHelper.swift */,
 				214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */,
 				214F3F08298704C100DF06AE /* Alertable.swift */,
 			);
@@ -560,7 +563,7 @@
 		214F3F0D2987179D00DF06AE /* UserDefault */ = {
 			isa = PBXGroup;
 			children = (
-				214F3F0E298717BB00DF06AE /* UserDefaultHelper.swift */,
+				214F3F0E298717BB00DF06AE /* UserDefaultsHelper.swift */,
 			);
 			path = UserDefault;
 			sourceTree = "<group>";
@@ -749,7 +752,7 @@
 			files = (
 				214F3EAD2985C25400DF06AE /* NetworkServiceType.swift in Sources */,
 				214F3E8129858FAF00DF06AE /* CancellableType.swift in Sources */,
-				214F3F0F298717BB00DF06AE /* UserDefaultHelper.swift in Sources */,
+				214F3F0F298717BB00DF06AE /* UserDefaultsHelper.swift in Sources */,
 				214F3F052986F02E00DF06AE /* AccountSceneDIContainer.swift in Sources */,
 				214F3E7D29858E5500DF06AE /* Endpoint.swift in Sources */,
 				214F3EB82985D9EB00DF06AE /* MovieListViewController.swift in Sources */,
@@ -793,6 +796,7 @@
 				214F3EBE2985DD6F00DF06AE /* Observable.swift in Sources */,
 				214F3EEA2986D6C200DF06AE /* RegisterUseCase.swift in Sources */,
 				214F3E7929858E1E00DF06AE /* DataTransferService.swift in Sources */,
+				2179192F2988609200D96313 /* BiometricHelper.swift in Sources */,
 				214F3F0B29870FFA00DF06AE /* KeychainHelper.swift in Sources */,
 				214F3EA32985BB2A00DF06AE /* AppConfigurations.swift in Sources */,
 				214F3EC32985F77800DF06AE /* MovieListTableViewCell.swift in Sources */,

@@ -24,6 +24,15 @@ final class LoginViewController: UIViewController, Alertable {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
+        emailTextField.text = UserDefaultsHelper.shared.account
+        BiometricHelper.tryBiometricAuthentication(reason: "Authenticate to login your app", completion: { result in
+            guard result,
+            let email = UserDefaultsHelper.shared.account,
+            let password = KeychainHelper.readPassword(account: email) else { return }
+            
+            let account = AccountValue(email: email, password: password)
+            self.viewModel.login(account)
+        })
     }
 
     private func bind(to viewModel: LoginViewModelType) {
@@ -39,9 +48,8 @@ final class LoginViewController: UIViewController, Alertable {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         let account = AccountValue(email: email, password: password)
         viewModel.login(account)
-        let accessToken = password
-        let data = Data(accessToken.utf8)
-        KeychainHelper.save(data, service: "access-token", account: email)
+        UserDefaultsHelper.shared.account = email
+        KeychainHelper.savePassword(password, account: email)
     }
 
     @IBAction private func didSelectSignUpHandler() {

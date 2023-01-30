@@ -9,13 +9,23 @@ import Foundation
 
 final class KeychainHelper {
     private init() {}
+
+    class func savePassword(_ password: String, account: String) {
+        let passwordData = Data(password.utf8)
+        save(passwordData, account: account)
+    }
+
+    class func readPassword(account: String) -> String? {
+        guard let passwordData = read(account: account) else { return nil }
+        return String(data: passwordData, encoding: .utf8)
+    }
     
-    class func save(_ data: Data, service: String, account: String) {
+    // MARK: Private functions
+    private class func save(_ data: Data, account: String) {
         // Create query
         let query = [
             kSecValueData: data,
             kSecClass: kSecClassGenericPassword,
-            kSecAttrService: service,
             kSecAttrAccount: account,
         ] as CFDictionary
         // Add data in query to keychain
@@ -25,9 +35,8 @@ final class KeychainHelper {
         }
     }
 
-    class func read(service: String, account: String) -> Data? {
+    private class func read(account: String) -> Data? {
         let query = [
-            kSecAttrService: service,
             kSecAttrAccount: account,
             kSecClass: kSecClassGenericPassword,
             kSecReturnData: true
