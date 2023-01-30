@@ -24,10 +24,15 @@ final class LoginViewController: UIViewController, Alertable {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
-        emailTextField.text = UserDefaultsHelper.shared.account
-        BiometricHelper.tryBiometricAuthentication(reason: "Authenticate to login your app", completion: { result in
+        tryLoginByBiometricAuthentication()
+    }
+
+    private func tryLoginByBiometricAuthentication() {
+        guard let email = UserDefaultsHelper.shared.account else { return }
+        emailTextField.text = email
+        let reason = "Authenticate to login your app"
+        BiometricHelper.tryBiometricAuthentication(reason: reason, completion: { result in
             guard result,
-            let email = UserDefaultsHelper.shared.account,
             let password = KeychainHelper.readPassword(account: email) else { return }
             
             let account = AccountValue(email: email, password: password)

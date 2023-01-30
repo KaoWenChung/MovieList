@@ -24,6 +24,10 @@ protocol MovieListViewModelOutput {
 protocol MovieListViewModelType: MovieListViewModelInput, MovieListViewModelOutput {}
 
 final class MovieListViewModel {
+    private enum Status {
+        case loading
+        case normal
+    }
     // MARK: Predefined
     enum Content {
         static let defaultSearch = "love"
@@ -48,6 +52,7 @@ final class MovieListViewModel {
     private var totalResults: Int = Content.defaultTotalResult
     private var hasMorePages: Bool { movieList.value.count < totalResults }
     private var nextPage: Int { hasMorePages ? currentPage + Content.aPage : currentPage }
+    private var status: Status = .normal
 
     // MARK: Output
     let error: Observable<String> = Observable("")
@@ -75,6 +80,8 @@ final class MovieListViewModel {
     }
     
     private func loadMovies() {
+        guard status == .normal else { return }
+        status = .loading
         let request = SearchMoviesRequestValue(search: Content.defaultSearch, year: currentSearchYear.description, page: currentPage)
         moviesLoadTask = searchMoviesUseCase.execute(requestValue: request) { result in
             switch result {
@@ -83,6 +90,7 @@ final class MovieListViewModel {
             case .failure(let error):
                 self.handle(error: error)
             }
+            self.status = .normal
         }
     }
     private func updateCurrentSearchYear() {

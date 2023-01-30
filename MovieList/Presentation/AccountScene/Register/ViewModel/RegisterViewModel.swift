@@ -42,7 +42,7 @@ extension RegisterViewModel: RegisterViewModelType {
     func register(_ account: AccountValue) {
         registerUseCase.execute(requestValue: account) { result in
             switch result {
-            case .success(let value):
+            case .success():
                 self.actions?.didRegister()
             case .failure(let error):
                 self.handle(error: error)

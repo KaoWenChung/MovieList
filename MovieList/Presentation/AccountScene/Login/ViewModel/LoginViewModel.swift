@@ -48,7 +48,7 @@ extension LoginViewModel: LoginViewModelType {
     func login(_ account: AccountValue) {
         loginUseCase.execute(requestValue: account) { result in
             switch result {
-            case .success(let value):
+            case .success():
                 self.actions?.didLogin()
             case .failure(let error):
                 self.handle(error: error)
