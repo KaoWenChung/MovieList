@@ -1,4 +1,4 @@
-# MovieList
+# MovieList (work in progress)
 * User have to sign-up/sign-in an account before using the APP
 
 ## Instruction
@@ -41,4 +41,4 @@ Modify the method getAPIKey in AppConfigurations.
 - Singleton pattern (Spinner)
 
 ## To-Do list of features and time I need:
-- [ ] Adding extra protection with Face Id or Touch Id - 2 hour
+- [ ] Implement Face Id or Touch Id to login - 2 hour
