@@ -34,7 +34,7 @@ final class RegisterViewModel {
         self.actions = actions
     }
     private func handle(error: Error) {
-        
+        self.error.value = error.isInternetConnectionError ? ErrorString.noInternet.text : error.localizedDescription
     }
 }
 
