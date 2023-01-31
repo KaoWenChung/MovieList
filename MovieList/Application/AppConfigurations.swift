@@ -25,7 +25,7 @@ final class AppConfiguration {
     
     private func getAPIKey() -> String {
         #if DEBUG
-        return <#Enter your API key here#> // TODO: ADD API KEY HERE
+        return "{YOUR_API_KEY}" // TODO: ADD API KEY HERE
         #endif
     }
 
