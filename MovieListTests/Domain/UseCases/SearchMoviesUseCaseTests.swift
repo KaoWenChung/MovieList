@@ -50,4 +50,34 @@ final class SearchMoviesUseCaseTests: XCTestCase {
         XCTAssertEqual(repositoryResult?.totalResults, 3)
         XCTAssertEqual(repositoryResult?.movies.first?.title, "title0")
     }
+
+    func testSearchMoviesUseCase_failedFetchingMovies() {
+        // give
+        let expectation = self.expectation(description: "Fetch data failed")
+        expectation.expectedFulfillmentCount = 2
+        let repository = MoviesRepositoryMock(result: .failure(MoviesRepositorySuccessTestError.failedFetching))
+        let sut = SearchMoviesUseCase(moviesRepository: repository)
+        
+        // when
+        let requestValue = SearchMoviesRequestValue(search: "love", year: "2000", page: 1)
+        var useCaseResult: MoviesPage?
+        _ = sut.execute(requestValue: requestValue, completion: { result in
+            do {
+                useCaseResult = try result.get()
+            } catch {
+                expectation.fulfill()
+            }
+        })
+        var repositoryResult: MoviesPage?
+        _ = repository.fetchMoviesList(request: requestValue, completion: { result in
+            do {
+                repositoryResult = try result.get()
+            } catch {
+                expectation.fulfill()
+            }
+        })
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertNil(useCaseResult)
+        XCTAssertNil(repositoryResult)
+    }
 }
