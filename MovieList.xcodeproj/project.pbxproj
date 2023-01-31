@@ -74,6 +74,8 @@
 		2153D7562988954C00485FCA /* Loadingable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7552988954C00485FCA /* Loadingable.swift */; };
 		2153D7582989555100485FCA /* LocalizedStringTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */; };
 		2153D75B2989582500485FCA /* UITableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D75A2989582500485FCA /* UITableViewCellTests.swift */; };
+		2153D75D29895DE800485FCA /* SearchMoviesUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D75C29895DE800485FCA /* SearchMoviesUseCaseTests.swift */; };
+		2153D7602989628100485FCA /* Movie+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D75F2989628100485FCA /* Movie+Stub.swift */; };
 		2179192F2988609200D96313 /* BiometricHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179192E2988609100D96313 /* BiometricHelper.swift */; };
 		218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BE9298728F300663333 /* NetworkServiceTests.swift */; };
 		218A2BED29872BDD00663333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 218A2BEC29872BDD00663333 /* Localizable.strings */; };
@@ -160,6 +162,8 @@
 		2153D7552988954C00485FCA /* Loadingable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadingable.swift; sourceTree = "<group>"; };
 		2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringTypeTests.swift; sourceTree = "<group>"; };
 		2153D75A2989582500485FCA /* UITableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTests.swift; sourceTree = "<group>"; };
+		2153D75C29895DE800485FCA /* SearchMoviesUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesUseCaseTests.swift; sourceTree = "<group>"; };
+		2153D75F2989628100485FCA /* Movie+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+Stub.swift"; sourceTree = "<group>"; };
 		2179192E2988609100D96313 /* BiometricHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricHelper.swift; sourceTree = "<group>"; };
 		218A2BE9298728F300663333 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		218A2BEC29872BDD00663333 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -497,6 +501,7 @@
 		214F3ED72986C28B00DF06AE /* MovieListTests */ = {
 			isa = PBXGroup;
 			children = (
+				2153D75E2989626F00485FCA /* Mocks */,
 				218A2BE82987288600663333 /* Common */,
 				214F3F12298724B900DF06AE /* Presentation */,
 				214F3F102987249100DF06AE /* Domain */,
@@ -592,6 +597,7 @@
 		214F3F112987249A00DF06AE /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				2153D75C29895DE800485FCA /* SearchMoviesUseCaseTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -637,6 +643,14 @@
 				2153D75A2989582500485FCA /* UITableViewCellTests.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		2153D75E2989626F00485FCA /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2153D75F2989628100485FCA /* Movie+Stub.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		218A2BE82987288600663333 /* Common */ = {
@@ -841,6 +855,8 @@
 				2153D7582989555100485FCA /* LocalizedStringTypeTests.swift in Sources */,
 				2153D75B2989582500485FCA /* UITableViewCellTests.swift in Sources */,
 				214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */,
+				2153D75D29895DE800485FCA /* SearchMoviesUseCaseTests.swift in Sources */,
+				2153D7602989628100485FCA /* Movie+Stub.swift in Sources */,
 				214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
