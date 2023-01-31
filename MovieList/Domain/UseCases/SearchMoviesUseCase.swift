@@ -7,7 +7,7 @@
 
 protocol SearchMoviesUseCaseType {
     func execute(requestValue: SearchMoviesRequestValue,
-                 completion: @escaping (Result<MoviesPage, Error>) -> Void) -> CancellableType?
+                 completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType?
 }
 
 struct SearchMoviesUseCase: SearchMoviesUseCaseType {
@@ -18,7 +18,7 @@ struct SearchMoviesUseCase: SearchMoviesUseCaseType {
     }
 
     func execute(requestValue: SearchMoviesRequestValue,
-                 completion: @escaping (Result<MoviesPage, Error>) -> Void) -> CancellableType? {
+                 completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
         return moviesRepository.fetchMoviesList(request: requestValue, completion: completion)
     }
 }

@@ -38,7 +38,7 @@ This app allows users to get all movies released after the year 2000 and contain
 - POP (protocol LocallizedStringType, Alertable, Loadingable)
 - OOP
 - Unit testing
-- Observable
+- Observable (data binding)
 - Image Cache (NSCache)
 - Persistent storage (Keychain, UserDefault)
 - Dependency Injection
@@ -46,4 +46,4 @@ This app allows users to get all movies released after the year 2000 and contain
 
 ## To-Do list of features and time I need:
 - [x] Implement Face Id or Touch Id to log in - 2 hour
-- [ ] Improve unit/ UI testing coverage - 1 hour ~
+- [ ] Improve unit testing coverage - 1 hour ~

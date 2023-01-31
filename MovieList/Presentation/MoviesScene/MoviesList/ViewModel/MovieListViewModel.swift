@@ -50,7 +50,7 @@ final class MovieListViewModel {
     let error: Observable<String> = Observable("")
     let movieList: Observable<[MovieListCellViewModel]> = Observable([])
     let status: Observable<LoadingStatus> = Observable(.normal)
-    private(set) var errorTitle: String = ""
+    private(set) var errorTitle: String = CommonString.error.text
 
     init(imageRepository: ImageRepositoryType,
          searchMoviesUseCase: SearchMoviesUseCaseType) {
@@ -62,7 +62,7 @@ final class MovieListViewModel {
         self.error.value = error.isInternetConnectionError ? ErrorString.noInternet.text : ErrorString.failLoadingMovies.text
     }
 
-    private func appendPage(_ page: MoviesPage) {
+    private func appendPage(_ page: MovieList) {
         totalResults = page.totalResults
         currentPage += Content.aPage
         currentSearchTotalResult += page.movies.count

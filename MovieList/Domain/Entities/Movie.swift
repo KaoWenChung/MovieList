@@ -11,7 +11,7 @@ struct Movie {
     let poster: String?
 }
 
-struct MoviesPage {
+struct MovieList {
     let totalResults: Int
     let movies: [Movie]
 }

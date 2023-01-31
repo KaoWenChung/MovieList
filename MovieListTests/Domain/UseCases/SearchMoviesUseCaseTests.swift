@@ -15,11 +15,11 @@ final class SearchMoviesUseCaseTests: XCTestCase {
     }
     
     struct MoviesRepositoryMock: MoviesRepositoryType {
-        let result: Result<MoviesPage, Error>
-        init(result: Result<MoviesPage, Error>) {
+        let result: Result<MovieList, Error>
+        init(result: Result<MovieList, Error>) {
             self.result = result
         }
-        func fetchMoviesList(request: SearchMoviesRequestValue, completion: @escaping (Result<MoviesPage, Error>) -> Void) -> CancellableType? {
+        func fetchMoviesList(request: SearchMoviesRequestValue, completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
             completion(result)
             return nil
         }
@@ -28,17 +28,17 @@ final class SearchMoviesUseCaseTests: XCTestCase {
         // give
         let expectation = self.expectation(description: "Fetch data successfully")
         expectation.expectedFulfillmentCount = 2
-        let repository = MoviesRepositoryMock(result: .success(MoviesPage(totalResults: 3, movies: movies)))
+        let repository = MoviesRepositoryMock(result: .success(MovieList(totalResults: 3, movies: movies)))
         let sut = SearchMoviesUseCase(moviesRepository: repository)
         
         // when
         let requestValue = SearchMoviesRequestValue(search: "love", year: "2000", page: 1)
-        var useCaseResult: MoviesPage?
+        var useCaseResult: MovieList?
         _ = sut.execute(requestValue: requestValue, completion: { result in
             useCaseResult = try? result.get()
             expectation.fulfill()
         })
-        var repositoryResult: MoviesPage?
+        var repositoryResult: MovieList?
         _ = repository.fetchMoviesList(request: requestValue, completion: { result in
             repositoryResult = try? result.get()
             expectation.fulfill()
@@ -60,7 +60,7 @@ final class SearchMoviesUseCaseTests: XCTestCase {
         
         // when
         let requestValue = SearchMoviesRequestValue(search: "love", year: "2000", page: 1)
-        var useCaseResult: MoviesPage?
+        var useCaseResult: MovieList?
         _ = sut.execute(requestValue: requestValue, completion: { result in
             do {
                 useCaseResult = try result.get()
@@ -68,7 +68,7 @@ final class SearchMoviesUseCaseTests: XCTestCase {
                 expectation.fulfill()
             }
         })
-        var repositoryResult: MoviesPage?
+        var repositoryResult: MovieList?
         _ = repository.fetchMoviesList(request: requestValue, completion: { result in
             do {
                 repositoryResult = try result.get()

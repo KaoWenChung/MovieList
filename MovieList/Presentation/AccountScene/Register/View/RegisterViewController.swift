@@ -13,7 +13,6 @@ final class RegisterViewController: UIViewController, Alertable {
     }
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
-    @IBOutlet weak private var confirmPasswordTextField: UITextField!
     private let viewModel: RegisterViewModelType
 
     init(viewModel: RegisterViewModelType) {
