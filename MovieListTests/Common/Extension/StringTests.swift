@@ -1,5 +1,5 @@
 //
-//  StringExtensionTests.swift
+//  StringTests.swift
 //  MovieListTests
 //
 //  Created by wyn on 2023/1/29.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import MovieList
 
-final class StringExtensionTests: XCTestCase {
+final class StringTests: XCTestCase {
 
     func testIsValidURL_validURL_true() {
         let sut = "https://mock.com"

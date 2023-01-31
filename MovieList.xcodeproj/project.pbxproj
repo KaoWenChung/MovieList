@@ -48,7 +48,7 @@
 		214F3ECB2985FC2700DF06AE /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3ECA2985FC2700DF06AE /* Contents.swift */; };
 		214F3ECD2985FE2900DF06AE /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3ECC2985FE2900DF06AE /* UITableViewCell+.swift */; };
 		214F3ED12986C27000DF06AE /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3ED02986C27000DF06AE /* String+.swift */; };
-		214F3ED92986C28B00DF06AE /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3ED82986C28B00DF06AE /* StringExtensionTests.swift */; };
+		214F3ED92986C28B00DF06AE /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3ED82986C28B00DF06AE /* StringTests.swift */; };
 		214F3EE12986D14B00DF06AE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 214F3EE02986D14B00DF06AE /* FirebaseAuth */; };
 		214F3EE82986D69F00DF06AE /* RegisterRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EE72986D69F00DF06AE /* RegisterRepositoryType.swift */; };
 		214F3EEA2986D6C200DF06AE /* RegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EE92986D6C200DF06AE /* RegisterUseCase.swift */; };
@@ -73,6 +73,7 @@
 		2153D7502988886300485FCA /* LoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D74F2988886300485FCA /* LoadingStatus.swift */; };
 		2153D7562988954C00485FCA /* Loadingable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7552988954C00485FCA /* Loadingable.swift */; };
 		2153D7582989555100485FCA /* LocalizedStringTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */; };
+		2153D75B2989582500485FCA /* UITableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D75A2989582500485FCA /* UITableViewCellTests.swift */; };
 		2179192F2988609200D96313 /* BiometricHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179192E2988609100D96313 /* BiometricHelper.swift */; };
 		218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BE9298728F300663333 /* NetworkServiceTests.swift */; };
 		218A2BED29872BDD00663333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 218A2BEC29872BDD00663333 /* Localizable.strings */; };
@@ -134,7 +135,7 @@
 		214F3ECC2985FE2900DF06AE /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
 		214F3ED02986C27000DF06AE /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		214F3ED62986C28B00DF06AE /* MovieListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		214F3ED82986C28B00DF06AE /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
+		214F3ED82986C28B00DF06AE /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		214F3EE72986D69F00DF06AE /* RegisterRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepositoryType.swift; sourceTree = "<group>"; };
 		214F3EE92986D6C200DF06AE /* RegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUseCase.swift; sourceTree = "<group>"; };
 		214F3EEB2986D6D500DF06AE /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 		2153D74F2988886300485FCA /* LoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatus.swift; sourceTree = "<group>"; };
 		2153D7552988954C00485FCA /* Loadingable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadingable.swift; sourceTree = "<group>"; };
 		2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringTypeTests.swift; sourceTree = "<group>"; };
+		2153D75A2989582500485FCA /* UITableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTests.swift; sourceTree = "<group>"; };
 		2179192E2988609100D96313 /* BiometricHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricHelper.swift; sourceTree = "<group>"; };
 		218A2BE9298728F300663333 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		218A2BEC29872BDD00663333 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -628,10 +630,19 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		2153D7592989581400485FCA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				214F3ED82986C28B00DF06AE /* StringTests.swift */,
+				2153D75A2989582500485FCA /* UITableViewCellTests.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		218A2BE82987288600663333 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				214F3ED82986C28B00DF06AE /* StringExtensionTests.swift */,
+				2153D7592989581400485FCA /* Extension */,
 				2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */,
 			);
 			path = Common;
@@ -826,8 +837,9 @@
 			files = (
 				218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */,
 				214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */,
-				214F3ED92986C28B00DF06AE /* StringExtensionTests.swift in Sources */,
+				214F3ED92986C28B00DF06AE /* StringTests.swift in Sources */,
 				2153D7582989555100485FCA /* LocalizedStringTypeTests.swift in Sources */,
+				2153D75B2989582500485FCA /* UITableViewCellTests.swift in Sources */,
 				214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */,
 				214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */,
 			);
