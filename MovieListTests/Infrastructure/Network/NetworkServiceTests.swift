@@ -8,7 +8,7 @@
 import XCTest
 @testable import MovieList
 
-class NetworkServiceTests: XCTestCase {
+final class NetworkServiceTests: XCTestCase {
     private struct EndpointMock: RequestableType {
         var path: String
         var isFullPath: Bool = false

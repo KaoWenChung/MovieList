@@ -30,7 +30,7 @@ public final class DataTransferService {
 
 extension DataTransferService: DataTransferServiceType {
     public func request<T: Decodable, E: ResponseRequestableType>(with endpoint: E,
-                                                              completion: @escaping CompletionHandler<T>) -> NetworkCancellableType? where E.Response == T {
+                                                                  completion: @escaping CompletionHandler<T>) -> NetworkCancellableType? where E.Response == T {
 
         return self.networkService.request(endpoint: endpoint) { result in
             switch result {

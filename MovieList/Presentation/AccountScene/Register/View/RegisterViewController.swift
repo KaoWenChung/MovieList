@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, Alertable {
+final class RegisterViewController: UIViewController, Alertable {
     enum RegisterViewString: LocalizedStringType {
         case title
     }

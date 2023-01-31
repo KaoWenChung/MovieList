@@ -12,7 +12,7 @@ private struct MockModel: Decodable {
     let name: String
 }
 
-class DataTransferServiceTests: XCTestCase {
+final class DataTransferServiceTests: XCTestCase {
     
     private enum DataTransferErrorMock: Error {
         case someError

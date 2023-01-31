@@ -12,7 +12,7 @@ public protocol DataTransferServiceType {
     
     @discardableResult
     func request<T: Decodable, E: ResponseRequestableType>(with endpoint: E,
-                                                       completion: @escaping CompletionHandler<T>) -> NetworkCancellableType? where E.Response == T
+                                                           completion: @escaping CompletionHandler<T>) -> NetworkCancellableType? where E.Response == T
 }
 
 public protocol DataTransferErrorResolverType {

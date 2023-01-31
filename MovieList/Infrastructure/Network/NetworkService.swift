@@ -124,7 +124,6 @@ public final class DefaultNetworkErrorLogger: NetworkErrorLoggerType {
 }
 
 // MARK: - NetworkError extension
-
 extension NetworkError {
     public var isNotFoundError: Bool { return hasStatusCode(404) }
     
