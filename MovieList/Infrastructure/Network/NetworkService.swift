@@ -23,7 +23,6 @@ extension URLSessionTask: NetworkCancellableType { }
 
 // MARK: - Implementation
 public struct NetworkService {
-    
     private let config: NetworkConfigurableType
     private let sessionManager: NetworkSessionManagerType
     private let logger: NetworkErrorLoggerType
@@ -37,9 +36,7 @@ public struct NetworkService {
     }
     
     private func request(request: URLRequest, completion: @escaping CompletionHandler) -> NetworkCancellableType {
-        
         let sessionDataTask = sessionManager.request(request) { data, response, requestError in
-            
             if let requestError = requestError {
                 var error: NetworkError
                 if let response = response as? HTTPURLResponse {
@@ -72,7 +69,6 @@ public struct NetworkService {
 }
 
 extension NetworkService: NetworkServiceType {
-    
     public func request(endpoint: RequestableType, completion: @escaping CompletionHandler) -> NetworkCancellableType? {
         do {
             let urlRequest = try endpoint.urlRequest(with: config)
@@ -88,7 +84,6 @@ extension NetworkService: NetworkServiceType {
 // Note: If authorization is needed NetworkSessionManager can be implemented by using,
 // for example, Alamofire SessionManager with its RequestAdapter and RequestRetrier.
 // And it can be incjected into NetworkService instead of default one.
-
 public class NetworkSessionManager: NetworkSessionManagerType {
     public init() {}
     public func request(_ request: URLRequest,

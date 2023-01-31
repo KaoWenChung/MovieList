@@ -38,9 +38,7 @@ public extension Alertable where Self: UIViewController {
 }
 
 public class AlertAction {
-
     enum Style: Int {
-
         case `default`
         case cancel
         case destructive
@@ -55,11 +53,9 @@ public class AlertAction {
                 return .destructive
             }
         }
-
     }
 
     public enum Button {
-
         case `default`(_ title: String)
         case destructive(_ title: String)
 
@@ -93,15 +89,13 @@ public class AlertAction {
 }
 
 extension UIAlertAction {
-
     convenience init(index: Int,
                      title: String?,
                      style: AlertAction.Style,
                      handler: ((AlertAction) -> Void)?) {
-        self.init(title: title, style: style.describe) { (aAlertAction: UIAlertAction) in
+        self.init(title: title, style: style.describe) { _ in
             let alertAction = AlertAction(index: index, title: title ?? "", style: style)
             handler?(alertAction)
         }
     }
-
 }

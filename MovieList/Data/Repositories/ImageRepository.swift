@@ -24,11 +24,16 @@ struct ImageRepository {
 
 extension ImageRepository: ImageRepositoryType {
     func fetchImage(with imagePath: String, completion: @escaping (UIImage?) -> Void) -> CancellableType? {
+        if let image = imageCache[imagePath] {
+            completion(image)
+            return nil
+        }
         let endpoint = APIEndpoints.getImage(path: imagePath)
         let task = RepositoryTask()
         task.networkTask = dataTransferService.request(with: endpoint) { (result: Result<Data, DataTransferError>) in
             if case .success(let data) = result,
                let imageResult = UIImage(data: data) {
+                self.imageCache.insertImage(imageResult, for: imagePath)
                 completion(imageResult)
             } else {
                 completion(nil)

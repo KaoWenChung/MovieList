@@ -45,19 +45,6 @@ extension DataTransferService: DataTransferServiceType {
         }
     }
 
-    public func request<E>(with endpoint: E, completion: @escaping CompletionHandler<Void>) -> NetworkCancellableType? where E : ResponseRequestableType, E.Response == Void {
-        return self.networkService.request(endpoint: endpoint) { result in
-            switch result {
-            case .success:
-                completion(.success(()))
-            case .failure(let error):
-                self.errorLogger.log(error: error)
-                let error = self.resolve(networkError: error)
-                completion(.failure(error))
-            }
-        }
-    }
-
     // MARK: - Private
     private func decode<T: Decodable>(data: Data?, decoder: ResponseDecoderType) -> Result<T, DataTransferError> {
         do {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MovieListViewController: UIViewController, Alertable {
+final class MovieListViewController: UIViewController, Alertable, Loadingable {
     enum MovieListViewString: LocalizedStringType {
         case title
     }
@@ -42,12 +42,10 @@ final class MovieListViewController: UIViewController, Alertable {
     }
 
     private func showSpinner(_ status: LoadingStatus) {
-        DispatchQueue.main.async {
-            if status == .loading {
-                Spinner.shared.showOn(self.view)
-            } else {
-                Spinner.shared.hide()
-            }
+        if status == .loading {
+            showSpinner()
+        } else {
+            hideSpinner()
         }
     }
 

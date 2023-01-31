@@ -24,30 +24,24 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="13C-Gk-8NZ">
                     <rect key="frame" x="75" y="253.66666666666663" width="240" height="337"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Movie List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cf-VI-3uV">
-                            <rect key="frame" x="34.333333333333329" y="0.0" width="171.66666666666669" height="20.333333333333332"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to MovieList" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cf-VI-3uV">
+                            <rect key="frame" x="36.333333333333329" y="0.0" width="167.33333333333337" height="20.333333333333332"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eie-uU-iej">
                             <rect key="frame" x="0.0" y="65.333333333333343" width="240" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="240" id="AAV-XA-de0"/>
-                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r2X-Mw-mdQ">
                             <rect key="frame" x="0.0" y="144.33333333333334" width="240" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="240" id="jfE-6W-pBX"/>
-                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1M-Dk-HJi">
-                            <rect key="frame" x="85" y="223.33333333333334" width="70" height="34.333333333333343"/>
+                            <rect key="frame" x="0.0" y="223.33333333333334" width="240" height="34.333333333333343"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Log in"/>
                             <connections>
@@ -55,7 +49,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsc-3g-BUK">
-                            <rect key="frame" x="79.333333333333343" y="302.66666666666674" width="81.666666666666657" height="34.333333333333314"/>
+                            <rect key="frame" x="0.0" y="302.66666666666674" width="240" height="34.333333333333314"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Sign up"/>
                             <connections>
@@ -63,12 +57,21 @@
                             </connections>
                         </button>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="jsc-3g-BUK" firstAttribute="width" secondItem="13C-Gk-8NZ" secondAttribute="width" id="NHh-KZ-Apj"/>
+                        <constraint firstAttribute="width" priority="999" constant="240" id="NsQ-Rj-UMt"/>
+                        <constraint firstItem="K1M-Dk-HJi" firstAttribute="width" secondItem="13C-Gk-8NZ" secondAttribute="width" id="lzX-7D-QhP"/>
+                        <constraint firstItem="Eie-uU-iej" firstAttribute="width" secondItem="13C-Gk-8NZ" secondAttribute="width" id="mof-Of-3OH"/>
+                        <constraint firstItem="r2X-Mw-mdQ" firstAttribute="width" secondItem="13C-Gk-8NZ" secondAttribute="width" id="piW-Wt-0fg"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="13C-Gk-8NZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Pcc-V2-3Fs"/>
                 <constraint firstItem="13C-Gk-8NZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aIu-iP-NA4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="13C-Gk-8NZ" secondAttribute="trailing" id="apS-6N-EGf"/>
                 <constraint firstItem="13C-Gk-8NZ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="s3E-q2-tJz"/>
             </constraints>
             <point key="canvasLocation" x="103" y="21"/>

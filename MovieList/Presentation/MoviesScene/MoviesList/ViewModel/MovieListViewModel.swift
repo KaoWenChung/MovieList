@@ -7,9 +7,6 @@
 
 import Foundation
 
-struct MovieListViewModelActions {
-}
-
 protocol MovieListViewModelInput {
     func viewDidLoad()
     func loadNextPage()
@@ -25,7 +22,7 @@ protocol MovieListViewModelOutput {
 protocol MovieListViewModelType: MovieListViewModelInput, MovieListViewModelOutput {}
 
 final class MovieListViewModel {
-    // MARK: Predefined
+    // MARK: Predefined value
     enum Content {
         static let defaultSearch = "love"
         static let defaultYear = 2000
@@ -39,7 +36,6 @@ final class MovieListViewModel {
 
     // MARK: UseCase
     private let searchMoviesUseCase: SearchMoviesUseCaseType
-    private let actions: MovieListViewModelActions
 
     // MARK: Properties
     private var moviesLoadTask: CancellableType? { willSet { moviesLoadTask?.cancel() } }
@@ -57,11 +53,9 @@ final class MovieListViewModel {
     private(set) var errorTitle: String = ""
 
     init(imageRepository: ImageRepositoryType,
-         searchMoviesUseCase: SearchMoviesUseCaseType,
-         actions: MovieListViewModelActions) {
+         searchMoviesUseCase: SearchMoviesUseCaseType) {
         self.imageRepository = imageRepository
         self.searchMoviesUseCase = searchMoviesUseCase
-        self.actions = actions
     }
 
     private func handle(error: Error) {

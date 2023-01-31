@@ -71,6 +71,7 @@
 		214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */; };
 		2153D74E2988872D00485FCA /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D74D2988872D00485FCA /* Spinner.swift */; };
 		2153D7502988886300485FCA /* LoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D74F2988886300485FCA /* LoadingStatus.swift */; };
+		2153D7562988954C00485FCA /* Loadingable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7552988954C00485FCA /* Loadingable.swift */; };
 		2179192F2988609200D96313 /* BiometricHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179192E2988609100D96313 /* BiometricHelper.swift */; };
 		218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BE9298728F300663333 /* NetworkServiceTests.swift */; };
 		218A2BED29872BDD00663333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 218A2BEC29872BDD00663333 /* Localizable.strings */; };
@@ -154,6 +155,7 @@
 		214F3F1A2987258900DF06AE /* DataTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferServiceTests.swift; sourceTree = "<group>"; };
 		2153D74D2988872D00485FCA /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		2153D74F2988886300485FCA /* LoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatus.swift; sourceTree = "<group>"; };
+		2153D7552988954C00485FCA /* Loadingable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadingable.swift; sourceTree = "<group>"; };
 		2179192E2988609100D96313 /* BiometricHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricHelper.swift; sourceTree = "<group>"; };
 		218A2BE9298728F300663333 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		218A2BEC29872BDD00663333 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				2153D74F2988886300485FCA /* LoadingStatus.swift */,
 				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
 				2179192E2988609100D96313 /* BiometricHelper.swift */,
+				2153D7552988954C00485FCA /* Loadingable.swift */,
 				214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */,
 				214F3F08298704C100DF06AE /* Alertable.swift */,
 			);
@@ -794,6 +797,7 @@
 				214F3F012986DF7B00DF06AE /* LoginRepositoryType.swift in Sources */,
 				218A2BF129872C0600663333 /* CommonString.swift in Sources */,
 				214F3EEE2986DA3600DF06AE /* FirebaseLoginRepository.swift in Sources */,
+				2153D7562988954C00485FCA /* Loadingable.swift in Sources */,
 				214F3EA92985C21400DF06AE /* ResponseRequestableType.swift in Sources */,
 				214F3E89298593FD00DF06AE /* RepositoryTask.swift in Sources */,
 				214F3EC72985F85F00DF06AE /* ImageRepository.swift in Sources */,

@@ -22,25 +22,25 @@ final class MoviesSceneDIContainer {
 
     // MARK: - Use Cases
     func makeSearchMoviesUseCase() -> SearchMoviesUseCaseType {
-        return SearchMoviesUseCase(moviesRepository: makeMoviesRepository())
+        SearchMoviesUseCase(moviesRepository: makeMoviesRepository())
     }
 
-    // MARK: - Movies List
-    func makeMovieListViewController(actions: MovieListViewModelActions) -> MovieListViewController {
-        return MovieListViewController(viewModel: makeMovieListViewModel(actions: actions))
+    // MARK: - Movie List
+    func makeMovieListViewController() -> MovieListViewController {
+        MovieListViewController(viewModel: makeMovieListViewModel())
     }
     
-    func makeMovieListViewModel(actions: MovieListViewModelActions) -> MovieListViewModelType {
-        return MovieListViewModel(imageRepository: makeLaunchImagesRepository(), searchMoviesUseCase: makeSearchMoviesUseCase(), actions: actions)
+    func makeMovieListViewModel() -> MovieListViewModelType {
+        MovieListViewModel(imageRepository: makeLaunchImagesRepository(), searchMoviesUseCase: makeSearchMoviesUseCase())
     }
 
     // MARK: - Repositories
     func makeMoviesRepository() -> MoviesRepositoryType {
-        return MoviesRepository(dataTransferService: dependencies.apiDataTransferService)
+        MoviesRepository(dataTransferService: dependencies.apiDataTransferService)
     }
 
     func makeLaunchImagesRepository() -> ImageRepositoryType {
-        return ImageRepository(dataTransferService: dependencies.imageDataTransferService, imageCache: dependencies.imageCache)
+        ImageRepository(dataTransferService: dependencies.imageDataTransferService, imageCache: dependencies.imageCache)
     }
 
     // MARK: - Flow Coordinators

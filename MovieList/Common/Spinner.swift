@@ -6,7 +6,7 @@
 //
 
 import UIKit
-// Used Singleton to implement a Loading view
+
 final class Spinner {
     static let shared = Spinner()
     private init() {}

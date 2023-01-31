@@ -13,6 +13,7 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak private var yearLabel: UILabel!
     
     private var imageLoadTask: CancellableType?
+
     override func prepareForReuse() {
         super.prepareForReuse()
         imageLoadTask?.cancel()

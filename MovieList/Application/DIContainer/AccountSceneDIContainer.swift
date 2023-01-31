@@ -10,11 +10,11 @@ import UIKit
 final class AccountSceneDIContainer {
     // MARK: - Use Cases
     func makeLoginUseCase() -> LoginUseCaseType {
-        return LoginUseCase(loginRepository: makeLoginRepository())
+        LoginUseCase(loginRepository: makeLoginRepository())
     }
 
     func makeRegisterUseCase() -> RegisterUseCaseType {
-        return RegisterUseCase(registerRepository: makeRegisterRepository())
+        RegisterUseCase(registerRepository: makeRegisterRepository())
     }
 
     // MARK: - Login
@@ -37,11 +37,11 @@ final class AccountSceneDIContainer {
 
     // MARK: - Repositories
     func makeLoginRepository() -> LoginRepositoryType {
-        return FirebaseLoginRepository()
+        FirebaseLoginRepository()
     }
 
     func makeRegisterRepository() -> RegisterRepositoryType {
-        return FirebaseRegisterRepository()
+        FirebaseRegisterRepository()
     }
     // MARK: - Flow Coordinators
     func makeAccountFlowCoordinator(navigationController: UINavigationController) -> AccountFlowCoordinator {

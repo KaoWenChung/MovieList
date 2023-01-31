@@ -32,7 +32,7 @@ class RegisterViewController: UIViewController, Alertable {
     }
 
     private func bind(to viewModel: RegisterViewModelType) {
-        viewModel.error.observe(on: self) {[weak self] in self?.showError($0)}
+        viewModel.error.observe(on: self) {[weak self] in self?.showError($0) }
     }
 
     private func showError(_ error: String) {
