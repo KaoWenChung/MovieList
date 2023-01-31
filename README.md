@@ -1,5 +1,6 @@
-# MovieList (work in progress)
-* User have to sign-up/sign-in an account before using the APP
+# MovieList
+This app allows users to get all movies released after the year 2000 and contain 'love' in their titles.
+* Users have to sign-up/ sign-in an account before using the APP
 
 ## Instruction
 You need to sign up [OMDb API](http://www.omdbapi.com/apikey.aspx) in order to get API Key.<br/>
@@ -12,33 +13,40 @@ Modify the method getAPIKey in AppConfigurations.
 ### UI Implementation
 - LoginView
 - RegisterView
-- MovieListView: Present the movies list and ordered by their release year from lowest to highest.
+- MovieListView: Present the movies list and order by their release year from lowest to highest.
 ### Sign-up/ Sign-in
-- implement sign-up/sign-in features by Firebase services.
-### API Data Fetching
+- implement sign-up/ sign-in features by Firebase services.
+### Login by biometric authentication (Face ID or fingerprint)
+- Automatically login app if the user has login before
+### Show movies information
 - Get movie list by GET API http://www.omdbapi.com/
-  - Pagination
+  - Implement paginating requests in API. Users will be able to see the movies ordered by their release year from lowest to highest on the same page as they scroll it.
 ### Localized Content
 - Used Extension protocol with enumeration to define and use localized strings.
-### Test Implementation
-- Unit testing
+### Testing
+- Unit test
   - Implement dependency injection and mock dependencies to improve the testability of code.
 ### Image Cache
 - Implement image cache by NSCache
+### Persistent storage
+- Save the user's password by Keychain
+- Save the user's account (email) by UserDefault
 
-### Technologies:
+## Technologies:
 - Swift
 - MVVM + Coordinator
-- Interface builder(.xib)
 - Clean Architecture
-- POP (protocol LocallizedStringType)
-- Firebase (sign-up/sign-in)
+- REST API
+- Interface Builder(.xib)
+- POP (protocol LocallizedStringType, Alertable, Loadingable)
 - OOP
 - Unit testing
 - Observable
 - Image Cache (NSCache)
+- Persistent storage (Keychain, UserDefault)
 - Dependency Injection
-- Singleton pattern (Spinner)
+- Singleton pattern (Spinner, UserDefault)
 
 ## To-Do list of features and time I need:
-- [ ] Implement Face Id or Touch Id to login - 2 hour
+- [x] Implement Face Id or Touch Id to log in - 2 hour
+- [ ] Improve unit/ UI testing coverage - 1 hour ~

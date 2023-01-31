@@ -296,8 +296,8 @@
 				2153D74F2988886300485FCA /* LoadingStatus.swift */,
 				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
 				2179192E2988609100D96313 /* BiometricHelper.swift */,
-				2153D7552988954C00485FCA /* Loadingable.swift */,
 				214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */,
+				2153D7552988954C00485FCA /* Loadingable.swift */,
 				214F3F08298704C100DF06AE /* Alertable.swift */,
 			);
 			path = Common;
