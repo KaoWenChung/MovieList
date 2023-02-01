@@ -10,6 +10,14 @@ import UIKit
 public protocol Loadingable {}
 
 public extension Loadingable where Self: UIViewController {
+    func toggleSpinner(_ status: LoadingStatus) {
+        if status == .loading {
+            showSpinner()
+        } else {
+            hideSpinner()
+        }
+    }
+
     func showSpinner() {
         DispatchQueue.main.async {
             Spinner.shared.showOn(self.view)

@@ -5,7 +5,7 @@
 //  Created by wyn on 2023/1/30.
 //
 
-enum LoadingStatus {
+public enum LoadingStatus {
     case loading
     case normal
 }

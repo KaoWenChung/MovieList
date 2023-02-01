@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginViewController: UIViewController, Alertable {
+final class LoginViewController: UIViewController, Alertable, Loadingable {
     enum LoginViewString: LocalizedStringType {
         case title
     }
@@ -37,7 +37,8 @@ final class LoginViewController: UIViewController, Alertable {
     }
 
     private func bind(to viewModel: LoginViewModelType) {
-        viewModel.error.observe(on: self) {[weak self] in self?.showError($0)}
+        viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
+        viewModel.status.observe(on: self) { [weak self] in self?.toggleSpinner($0) }
     }
 
     private func showError(_ error: String) {

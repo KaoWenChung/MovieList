@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RegisterViewController: UIViewController, Alertable {
+final class RegisterViewController: UIViewController, Alertable, Loadingable {
     enum RegisterViewString: LocalizedStringType {
         case title
     }
@@ -32,6 +32,7 @@ final class RegisterViewController: UIViewController, Alertable {
 
     private func bind(to viewModel: RegisterViewModelType) {
         viewModel.error.observe(on: self) {[weak self] in self?.showError($0) }
+        viewModel.status.observe(on: self) { [weak self] in self?.toggleSpinner($0) }
     }
 
     private func showError(_ error: String) {

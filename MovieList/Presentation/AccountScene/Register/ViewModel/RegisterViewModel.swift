@@ -15,6 +15,7 @@ protocol RegisterViewModelInput {
 
 protocol RegisterViewModelOutput {
     var error: Observable<String> { get }
+    var status: Observable<LoadingStatus> { get }
     var errorTitle: String { get }
 }
 
@@ -27,6 +28,7 @@ final class RegisterViewModel {
     private let actions: RegisterViewModelActions?
     // MARK: Output
     let error: Observable<String> = Observable("")
+    let status: Observable<LoadingStatus> = Observable(.normal)
     private(set) var errorTitle: String = ""
     init(registerUseCase: RegisterUseCaseType,
          actions: RegisterViewModelActions?) {
@@ -37,6 +39,7 @@ final class RegisterViewModel {
         self.error.value = error.isInternetConnectionError ? ErrorString.noInternet.text : error.localizedDescription
     }
     private func register(_ account: AccountValue) {
+        status.value = .loading
         registerUseCase.execute(requestValue: account) { result in
             switch result {
             case .success():
@@ -44,6 +47,7 @@ final class RegisterViewModel {
             case .failure(let error):
                 self.handle(error: error)
             }
+            self.status.value = .normal
         }
     }
 }

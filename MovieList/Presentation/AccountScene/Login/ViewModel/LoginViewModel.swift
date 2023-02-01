@@ -18,6 +18,7 @@ protocol LoginViewModelInput {
 
 protocol LoginViewModelOutput {
     var error: Observable<String> { get }
+    var status: Observable<LoadingStatus> { get }
     var errorTitle: String { get }
     var savedAccount: String? { get }
 }
@@ -31,6 +32,7 @@ final class LoginViewModel {
     private let actions: LoginViewModelActions?
     // MARK: Output
     let error: Observable<String> = Observable("")
+    let status: Observable<LoadingStatus> = Observable(.normal)
     private(set) var savedAccount: String? = UserDefaultsHelper.shared.account
     private(set) var errorTitle: String = ""
     init(loginUseCase: LoginUseCaseType,
@@ -42,6 +44,7 @@ final class LoginViewModel {
         self.error.value = error.isInternetConnectionError ? ErrorString.noInternet.text : error.localizedDescription
     }
     private func login(_ account: AccountValue) {
+        status.value = .loading
         loginUseCase.execute(requestValue: account) { result in
             switch result {
             case .success():
@@ -49,6 +52,7 @@ final class LoginViewModel {
             case .failure(let error):
                 self.handle(error: error)
             }
+            self.status.value = .normal
         }
     }
 }

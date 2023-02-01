@@ -35,7 +35,7 @@ final class MovieListViewController: UIViewController, Alertable, Loadingable {
     private func bind(to viewModel: MovieListViewModelType) {
         viewModel.movieList.observe(on: self) { [weak self] _ in self?.updateItems() }
         viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
-        viewModel.status.observe(on: self) { [weak self] in self?.showSpinner($0) }
+        viewModel.status.observe(on: self) { [weak self] in self?.toggleSpinner($0) }
     }
 
     private func initNavigationItem() {
@@ -50,14 +50,6 @@ final class MovieListViewController: UIViewController, Alertable, Loadingable {
     private func showError(_ error: String) {
         guard !error.isEmpty else { return }
         showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: CommonString.ok.text)
-    }
-
-    private func showSpinner(_ status: LoadingStatus) {
-        if status == .loading {
-            showSpinner()
-        } else {
-            hideSpinner()
-        }
     }
 
     private func updateItems() {
