@@ -32,16 +32,8 @@ final class LoginViewController: UIViewController, Alertable {
     }
 
     private func tryLoginByBiometricAuthentication() {
-        guard let email = UserDefaultsHelper.shared.account else { return }
-        emailTextField.text = email
-        let reason = "Authenticate to login your app"
-        BiometricHelper.tryBiometricAuthentication(reason: reason, completion: { result in
-            guard result,
-            let password = KeychainHelper.readPassword(account: email) else { return }
-            
-            let account = AccountValue(email: email, password: password)
-            self.viewModel.login(account)
-        })
+        emailTextField.text = viewModel.savedAccount
+        viewModel.tryLoginByBiometricAuthentication()
     }
 
     private func bind(to viewModel: LoginViewModelType) {
@@ -56,9 +48,8 @@ final class LoginViewController: UIViewController, Alertable {
     @IBAction private func didSelectLoginHandler() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         let account = AccountValue(email: email, password: password)
-        viewModel.login(account)
-        UserDefaultsHelper.shared.account = email
-        KeychainHelper.savePassword(password, account: email)
+        viewModel.didSelectLogin(account)
+        
     }
 
     @IBAction private func didSelectSignUpHandler() {
