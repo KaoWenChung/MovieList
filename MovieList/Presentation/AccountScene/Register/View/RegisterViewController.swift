@@ -43,6 +43,6 @@ final class RegisterViewController: UIViewController, Alertable {
         guard let email = emailTextField.text,
               let password = passwordTextField.text else { return }
         let account = AccountValue(email: email, password: password)
-        viewModel.register(account)
+        viewModel.didSelectRegister(account)
     }
 }

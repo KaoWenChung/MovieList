@@ -10,7 +10,7 @@ struct RegisterViewModelActions {
 }
 
 protocol RegisterViewModelInput {
-    func register(_ account: AccountValue)
+    func didSelectRegister(_ account: AccountValue)
 }
 
 protocol RegisterViewModelOutput {
@@ -36,10 +36,7 @@ final class RegisterViewModel {
     private func handle(error: Error) {
         self.error.value = error.isInternetConnectionError ? ErrorString.noInternet.text : error.localizedDescription
     }
-}
-
-extension RegisterViewModel: RegisterViewModelType {
-    func register(_ account: AccountValue) {
+    private func register(_ account: AccountValue) {
         registerUseCase.execute(requestValue: account) { result in
             switch result {
             case .success():
@@ -48,5 +45,13 @@ extension RegisterViewModel: RegisterViewModelType {
                 self.handle(error: error)
             }
         }
+    }
+}
+
+extension RegisterViewModel: RegisterViewModelType {
+    func didSelectRegister(_ account: AccountValue) {
+        UserDefaultsHelper.shared.account = account.email
+        KeychainHelper.savePassword(account.password, account: account.email)
+        register(account)
     }
 }
