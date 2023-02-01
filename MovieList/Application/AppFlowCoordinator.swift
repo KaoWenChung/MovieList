@@ -29,6 +29,7 @@ final class AppFlowCoordinator {
         let moviesSceneDIContainer = appDIContainer.makeMoviesSceneDIContainer()
         let flow = moviesSceneDIContainer.makeMoviesSearchFlowCoordinator(navigationController: navigationController)
 
+        flow.delegate = self
         flow.start()
     }
 }
@@ -36,5 +37,12 @@ final class AppFlowCoordinator {
 extension AppFlowCoordinator: AccountFlowCoordinatorDelegate {
     func didLogin() {
         startMoviesScene()
+    }
+}
+
+// MARK: MoviesSearchFlowCoordinatorDelegate
+extension AppFlowCoordinator: MoviesSearchFlowCoordinatorDelegate {
+    func didLogout() {
+        startAccountScene()
     }
 }

@@ -12,20 +12,31 @@ final class KeychainHelper {
 
     class func savePassword(_ password: String, account: String) {
         let passwordData = Data(password.utf8)
-        save(passwordData, account: account)
+        save(passwordData, service: "owenkao.MovieList", account: account)
     }
 
     class func readPassword(account: String) -> String? {
-        guard let passwordData = read(account: account) else { return nil }
+        guard let passwordData = read(service: "owenkao.MovieList", account: account) else { return nil }
         return String(data: passwordData, encoding: .utf8)
+    }
+
+    class func removePassword(account: String) {
+        let query = [
+          kSecClass: kSecClassInternetPassword,
+          kSecAttrService: "movielist.com",
+          kSecAttrAccount: account
+        ] as CFDictionary
+
+        SecItemDelete(query)
     }
     
     // MARK: Private functions
-    private class func save(_ data: Data, account: String) {
+    private class func save(_ data: Data, service: String, account: String) {
         // Create query
         let query = [
             kSecValueData: data,
             kSecClass: kSecClassGenericPassword,
+            kSecAttrService: service,
             kSecAttrAccount: account,
         ] as CFDictionary
         // Add data in query to keychain
@@ -35,10 +46,11 @@ final class KeychainHelper {
         }
     }
 
-    private class func read(account: String) -> Data? {
+    private class func read(service: String, account: String) -> Data? {
         let query = [
             kSecAttrAccount: account,
             kSecClass: kSecClassGenericPassword,
+            kSecAttrService: service,
             kSecReturnData: true
         ] as CFDictionary
         

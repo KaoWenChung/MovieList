@@ -31,7 +31,7 @@ final class AccountFlowCoordinator {
         let actions = LoginViewModelActions(didLogin: didLogin, didRegister: didSelectRegister)
         let vc = dependencies.makeLoginViewController(actions: actions)
 
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.setViewControllers([vc], animated: true)
     }
 
     private func didSelectRegister() {

@@ -26,12 +26,12 @@ final class MoviesSceneDIContainer {
     }
 
     // MARK: - Movie List
-    func makeMovieListViewController() -> MovieListViewController {
-        MovieListViewController(viewModel: makeMovieListViewModel())
+    func makeMovieListViewController(actions: MovieListViewModelActions) -> MovieListViewController {
+        MovieListViewController(viewModel: makeMovieListViewModel(actions: actions))
     }
     
-    func makeMovieListViewModel() -> MovieListViewModelType {
-        MovieListViewModel(imageRepository: makeLaunchImagesRepository(), searchMoviesUseCase: makeSearchMoviesUseCase())
+    func makeMovieListViewModel(actions: MovieListViewModelActions) -> MovieListViewModelType {
+        MovieListViewModel(imageRepository: makeLaunchImagesRepository(), searchMoviesUseCase: makeSearchMoviesUseCase(), actions: actions)
     }
 
     // MARK: - Repositories

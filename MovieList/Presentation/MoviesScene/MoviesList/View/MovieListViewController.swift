@@ -29,11 +29,22 @@ final class MovieListViewController: UIViewController, Alertable, Loadingable {
         bind(to: viewModel)
         viewModel.viewDidLoad()
         tableView.register(UINib(nibName: MovieListTableViewCell.name, bundle: nil), forCellReuseIdentifier: MovieListTableViewCell.name)
+        initNavigationItem()
     }
+
     private func bind(to viewModel: MovieListViewModelType) {
         viewModel.movieList.observe(on: self) { [weak self] _ in self?.updateItems() }
         viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
         viewModel.status.observe(on: self) { [weak self] in self?.showSpinner($0) }
+    }
+
+    private func initNavigationItem() {
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        navigationItem.rightBarButtonItem = logoutButton
+    }
+
+    @objc private func logout() {
+        viewModel.didSelectLogout()
     }
 
     private func showError(_ error: String) {

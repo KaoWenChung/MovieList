@@ -7,9 +7,14 @@
 
 import Foundation
 
+struct MovieListViewModelActions {
+    let didLogout: () -> Void
+}
+
 protocol MovieListViewModelInput {
     func viewDidLoad()
     func loadNextPage()
+    func didSelectLogout()
 }
 
 protocol MovieListViewModelOutput {
@@ -37,6 +42,9 @@ final class MovieListViewModel {
     // MARK: UseCase
     private let searchMoviesUseCase: SearchMoviesUseCaseType
 
+    // MARK: Actions
+    private let actions: MovieListViewModelActions?
+
     // MARK: Properties
     private var moviesLoadTask: CancellableType? { willSet { moviesLoadTask?.cancel() } }
     private var currentSearchYear = Content.defaultYear
@@ -53,9 +61,11 @@ final class MovieListViewModel {
     private(set) var errorTitle: String = CommonString.error.text
 
     init(imageRepository: ImageRepositoryType,
-         searchMoviesUseCase: SearchMoviesUseCaseType) {
+         searchMoviesUseCase: SearchMoviesUseCaseType,
+         actions: MovieListViewModelActions) {
         self.imageRepository = imageRepository
         self.searchMoviesUseCase = searchMoviesUseCase
+        self.actions = actions
     }
 
     private func handle(error: Error) {
@@ -95,6 +105,14 @@ final class MovieListViewModel {
 }
 
 extension MovieListViewModel: MovieListViewModelType {
+    func didSelectLogout() {
+        if let account = UserDefaultsHelper.shared.account {
+            KeychainHelper.removePassword(account: account)
+            UserDefaultsHelper.shared.removeUserData()
+        }
+        actions?.didLogout()
+    }
+    
     func loadNextPage() {
         updateCurrentSearchYear()
         loadMovies()
