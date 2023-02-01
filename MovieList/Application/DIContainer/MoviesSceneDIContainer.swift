@@ -23,8 +23,8 @@ final class MoviesSceneDIContainer {
     }
 
     // MARK: - Use Cases
-    func makeSearchMoviesUseCase() -> SearchMoviesUseCaseType {
-        SearchMoviesUseCase(moviesRepository: makeMoviesRepository())
+    func makeFetchMoviesUseCase() -> FetchMoviesUseCaseType {
+        FetchMoviesUseCase(moviesRepository: makeMoviesRepository())
     }
 
     func makeLogoutUseCaseType() -> LogoutUseCaseType {
@@ -38,7 +38,7 @@ final class MoviesSceneDIContainer {
     
     func makeMovieListViewModel(actions: MovieListViewModelActions) -> MovieListViewModelType {
         MovieListViewModel(imageRepository: makeLaunchImagesRepository(),
-                           searchMoviesUseCase: makeSearchMoviesUseCase(),
+                           fetchMoviesUseCase: makeFetchMoviesUseCase(),
                            actions: actions,
                            logoutUseCase: makeLogoutUseCaseType())
     }

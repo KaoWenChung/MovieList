@@ -15,7 +15,7 @@ struct MoviesRepository {
 }
 
 extension MoviesRepository: MoviesRepositoryType {
-    public func fetchMoviesList(request: SearchMoviesRequestValue,
+    public func fetchMoviesList(request: FetchMoviesRequestValue,
                                 completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
         let task = RepositoryTask()
         let requestDTO = MoviesRequestDTO(requestValue: request)

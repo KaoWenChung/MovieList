@@ -10,14 +10,16 @@ import XCTest
 
 final class MovieListViewModelTests: XCTestCase {
     let movies = [Movie.stub(title:"title0"), Movie.stub(title: "title1"), Movie.stub(title: "title2")]
+
     enum MovieListViewModelTestError: Error {
         case failedFetching
     }
-    class SearchMoviesUseCaseMock: SearchMoviesUseCaseType {
+
+    class FetchMoviesUseCaseMock: FetchMoviesUseCaseType {
         var expectation: XCTestExpectation?
         var error: Error?
         var movieList = MovieList(totalResults: 0, movies: [])
-        func execute(requestValue: SearchMoviesRequestValue, completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
+        func execute(requestValue: FetchMoviesRequestValue, completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
             if let error = error {
                 completion(.failure(error))
             } else {
@@ -27,13 +29,18 @@ final class MovieListViewModelTests: XCTestCase {
             return nil
         }
     }
+
+    class LogoutUseCaseMock: LogoutUseCaseType {
+        func execute() {}
+    }
     
     func test_searchMoviesUseCaseFetchDataSuccessfully_viewModelContains3Movies() {
         // given
-        let searchMoviesUseCaseMock = SearchMoviesUseCaseMock()
-        searchMoviesUseCaseMock.expectation = self.expectation(description: "contains 3 movie's value")
-        searchMoviesUseCaseMock.movieList = MovieList(totalResults: 0, movies: movies)
-        let viewModel = MovieListViewModel(imageRepository: ImageRepositoryMock(), searchMoviesUseCase: searchMoviesUseCaseMock)
+        let fetchMoviesUseCaseMock = FetchMoviesUseCaseMock()
+        fetchMoviesUseCaseMock.expectation = self.expectation(description: "contains 3 movie's value")
+        fetchMoviesUseCaseMock.movieList = MovieList(totalResults: 0, movies: movies)
+        let didLogoutMock = {}
+        let viewModel = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
         // when
         viewModel.viewDidLoad()
         
@@ -44,10 +51,11 @@ final class MovieListViewModelTests: XCTestCase {
 
     func test_searchMoviesUseCaseFetchDataFailed_viewModelContainsFailedLoadingMoviesError() {
         // given
-        let searchMoviesUseCaseMock = SearchMoviesUseCaseMock()
-        searchMoviesUseCaseMock.expectation = self.expectation(description: "contains failed error")
-        searchMoviesUseCaseMock.error = MovieListViewModelTestError.failedFetching
-        let viewModel = MovieListViewModel(imageRepository: ImageRepositoryMock(), searchMoviesUseCase: searchMoviesUseCaseMock)
+        let fetchMoviesUseCaseMock = FetchMoviesUseCaseMock()
+        fetchMoviesUseCaseMock.expectation = self.expectation(description: "contains failed error")
+        fetchMoviesUseCaseMock.error = MovieListViewModelTestError.failedFetching
+        let didLogoutMock = {}
+        let viewModel = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
         // when
         viewModel.viewDidLoad()
         

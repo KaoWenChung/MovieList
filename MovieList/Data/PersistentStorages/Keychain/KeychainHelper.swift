@@ -13,27 +13,7 @@ protocol KeychainHelperType {
     func removePassword(account: String)
 }
 
-final class KeychainHelper: KeychainHelperType {
-    func savePassword(_ password: String, account: String) {
-        let passwordData = Data(password.utf8)
-        save(passwordData, service: "owenkao.MovieList", account: account)
-    }
-
-    func readPassword(account: String) -> String? {
-        guard let passwordData = read(service: "owenkao.MovieList", account: account) else { return nil }
-        return String(data: passwordData, encoding: .utf8)
-    }
-
-    func removePassword(account: String) {
-        let query = [
-          kSecClass: kSecClassInternetPassword,
-          kSecAttrService: "movielist.com",
-          kSecAttrAccount: account
-        ] as CFDictionary
-
-        SecItemDelete(query)
-    }
-    
+final class KeychainHelper {
     // MARK: Private functions
     private func save(_ data: Data, service: String, account: String) {
         // Create query
@@ -62,5 +42,27 @@ final class KeychainHelper: KeychainHelperType {
         SecItemCopyMatching(query, &result)
         
         return (result as? Data)
+    }
+}
+
+extension KeychainHelper: KeychainHelperType {
+    func savePassword(_ password: String, account: String) {
+        let passwordData = Data(password.utf8)
+        save(passwordData, service: "owenkao.MovieList", account: account)
+    }
+
+    func readPassword(account: String) -> String? {
+        guard let passwordData = read(service: "owenkao.MovieList", account: account) else { return nil }
+        return String(data: passwordData, encoding: .utf8)
+    }
+
+    func removePassword(account: String) {
+        let query = [
+          kSecClass: kSecClassInternetPassword,
+          kSecAttrService: "movielist.com",
+          kSecAttrAccount: account
+        ] as CFDictionary
+
+        SecItemDelete(query)
     }
 }

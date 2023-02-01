@@ -19,7 +19,7 @@ final class SearchMoviesUseCaseTests: XCTestCase {
         init(result: Result<MovieList, Error>) {
             self.result = result
         }
-        func fetchMoviesList(request: SearchMoviesRequestValue, completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
+        func fetchMoviesList(request: FetchMoviesRequestValue, completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
             completion(result)
             return nil
         }
@@ -29,10 +29,10 @@ final class SearchMoviesUseCaseTests: XCTestCase {
         let expectation = self.expectation(description: "Fetch data successfully")
         expectation.expectedFulfillmentCount = 2
         let repository = MoviesRepositoryMock(result: .success(MovieList(totalResults: 3, movies: movies)))
-        let sut = SearchMoviesUseCase(moviesRepository: repository)
+        let sut = FetchMoviesUseCase(moviesRepository: repository)
         
         // when
-        let requestValue = SearchMoviesRequestValue(search: "love", year: "2000", page: 1)
+        let requestValue = FetchMoviesRequestValue(search: "love", year: "2000", page: 1)
         var useCaseResult: MovieList?
         _ = sut.execute(requestValue: requestValue, completion: { result in
             useCaseResult = try? result.get()
@@ -56,10 +56,10 @@ final class SearchMoviesUseCaseTests: XCTestCase {
         let expectation = self.expectation(description: "Fetch data failed")
         expectation.expectedFulfillmentCount = 2
         let repository = MoviesRepositoryMock(result: .failure(MoviesRepositorySuccessTestError.failedFetching))
-        let sut = SearchMoviesUseCase(moviesRepository: repository)
+        let sut = FetchMoviesUseCase(moviesRepository: repository)
         
         // when
-        let requestValue = SearchMoviesRequestValue(search: "love", year: "2000", page: 1)
+        let requestValue = FetchMoviesRequestValue(search: "love", year: "2000", page: 1)
         var useCaseResult: MovieList?
         _ = sut.execute(requestValue: requestValue, completion: { result in
             do {

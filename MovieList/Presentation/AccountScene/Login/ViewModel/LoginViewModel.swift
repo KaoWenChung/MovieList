@@ -33,16 +33,20 @@ final class LoginViewModel {
     // MARK: Output
     let error: Observable<String> = Observable("")
     let status: Observable<LoadingStatus> = Observable(.normal)
+
     private(set) var savedAccount: String? = nil
     private(set) var errorTitle: String = ""
+
     init(loginUseCase: LoginUseCaseType,
          actions: LoginViewModelActions?) {
         self.loginUseCase = loginUseCase
         self.actions = actions
     }
+
     private func handle(error: Error) {
         self.error.value = error.isInternetConnectionError ? ErrorString.noInternet.text : error.localizedDescription
     }
+
     private func login(_ account: AccountValue) {
         status.value = .loading
         loginUseCase.login(requestValue: account) { result in
@@ -55,6 +59,7 @@ final class LoginViewModel {
             self.status.value = .normal
         }
     }
+
     private func loginByBiometricAuthentication() {
         guard savedAccount != nil else { return }
         loginUseCase.loginByBiometricAuthentication() { result in

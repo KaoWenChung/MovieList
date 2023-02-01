@@ -40,7 +40,7 @@ final class MovieListViewModel {
     private let imageRepository: ImageRepositoryType
 
     // MARK: UseCase
-    private let searchMoviesUseCase: SearchMoviesUseCaseType
+    private let fetchMoviesUseCase: FetchMoviesUseCaseType
     private let logoutUseCase: LogoutUseCaseType
 
     // MARK: Actions
@@ -62,11 +62,11 @@ final class MovieListViewModel {
     private(set) var errorTitle: String = CommonString.error.text
 
     init(imageRepository: ImageRepositoryType,
-         searchMoviesUseCase: SearchMoviesUseCaseType,
+         fetchMoviesUseCase: FetchMoviesUseCaseType,
          actions: MovieListViewModelActions,
          logoutUseCase: LogoutUseCaseType) {
         self.imageRepository = imageRepository
-        self.searchMoviesUseCase = searchMoviesUseCase
+        self.fetchMoviesUseCase = fetchMoviesUseCase
         self.actions = actions
         self.logoutUseCase = logoutUseCase
     }
@@ -86,8 +86,8 @@ final class MovieListViewModel {
     private func loadMovies() {
         guard status.value == .normal else { return }
         status.value = .loading
-        let request = SearchMoviesRequestValue(search: Content.defaultSearch, year: currentSearchYear.description, page: currentPage)
-        moviesLoadTask = searchMoviesUseCase.execute(requestValue: request) { result in
+        let request = FetchMoviesRequestValue(search: Content.defaultSearch, year: currentSearchYear.description, page: currentPage)
+        moviesLoadTask = fetchMoviesUseCase.execute(requestValue: request) { result in
             switch result {
             case .success(let page):
                 self.appendPage(page)

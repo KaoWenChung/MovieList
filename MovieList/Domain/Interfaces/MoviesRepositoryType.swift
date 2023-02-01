@@ -7,7 +7,7 @@
 
 protocol MoviesRepositoryType {
     @discardableResult
-    func fetchMoviesList(request: SearchMoviesRequestValue,
+    func fetchMoviesList(request: FetchMoviesRequestValue,
                          completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType?
 }
 

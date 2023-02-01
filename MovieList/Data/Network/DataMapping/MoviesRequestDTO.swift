@@ -14,7 +14,7 @@ struct MoviesRequestDTO: Encodable {
         case year = "y"
         case page
     }
-    init(requestValue: SearchMoviesRequestValue) {
+    init(requestValue: FetchMoviesRequestValue) {
         search = requestValue.search
         year = requestValue.year
         page = requestValue.page

@@ -13,21 +13,9 @@ protocol UserDefaultsHelperType {
     func removeUserData()
 }
 
-final class UserDefaultsHelper: UserDefaultsHelperType {
+final class UserDefaultsHelper {
     private enum Key: String {
         case account = "owenkao.MovieList.account"
-    }
-    
-    func removeUserData() {
-        remove(.account)
-    }
-
-    func saveAccount(_ newValue: String) {
-        save(.account, value: newValue)
-    }
-
-    func readAccount() -> String? {
-        read(.account)
     }
 
     private func save(_ aKey: UserDefaultsHelper.Key, value aValue: Any) {
@@ -44,3 +32,16 @@ final class UserDefaultsHelper: UserDefaultsHelperType {
     }
 }
 
+extension UserDefaultsHelper: UserDefaultsHelperType {
+    func removeUserData() {
+        remove(.account)
+    }
+
+    func saveAccount(_ newValue: String) {
+        save(.account, value: newValue)
+    }
+
+    func readAccount() -> String? {
+        read(.account)
+    }
+}
