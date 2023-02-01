@@ -41,6 +41,7 @@ final class MovieListViewModel {
 
     // MARK: UseCase
     private let searchMoviesUseCase: SearchMoviesUseCaseType
+    private let logoutUseCase: LogoutUseCaseType
 
     // MARK: Actions
     private let actions: MovieListViewModelActions?
@@ -62,10 +63,12 @@ final class MovieListViewModel {
 
     init(imageRepository: ImageRepositoryType,
          searchMoviesUseCase: SearchMoviesUseCaseType,
-         actions: MovieListViewModelActions) {
+         actions: MovieListViewModelActions,
+         logoutUseCase: LogoutUseCaseType) {
         self.imageRepository = imageRepository
         self.searchMoviesUseCase = searchMoviesUseCase
         self.actions = actions
+        self.logoutUseCase = logoutUseCase
     }
 
     private func handle(error: Error) {
@@ -106,10 +109,7 @@ final class MovieListViewModel {
 
 extension MovieListViewModel: MovieListViewModelType {
     func didSelectLogout() {
-        if let account = UserDefaultsHelper.shared.account {
-            KeychainHelper.removePassword(account: account)
-            UserDefaultsHelper.shared.removeUserData()
-        }
+        logoutUseCase.execute()
         actions?.didLogout()
     }
     

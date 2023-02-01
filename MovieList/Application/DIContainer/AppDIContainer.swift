@@ -27,14 +27,24 @@ final class AppDIContainer {
     // MARK: - Cache
     let imageCache = ImageCache()
 
+    // MARK: - Keychain
+    let keychain = KeychainHelper()
+
+    // MARK: - UserDefaults
+    let userdefault = UserDefaultsHelper()
+
     // MARK: - DIContainers of scenes
     func makeMoviesSceneDIContainer() -> MoviesSceneDIContainer {
         let dependencies = MoviesSceneDIContainer.Dependencies(apiDataTransferService: apiDataTransferService,
                                                                imageDataTransferService: imageDataTransferService,
+                                                               userdefault: userdefault,
+                                                               keychain: keychain,
                                                                imageCache: imageCache)
         return MoviesSceneDIContainer(dependencies: dependencies)
     }
     func makeAccountSceneDIContainer() -> AccountSceneDIContainer {
-        return AccountSceneDIContainer()
+        let dependencies = AccountSceneDIContainer.Dependencies(userdefault: userdefault,
+                                                                keychain: keychain)
+        return AccountSceneDIContainer(dependencies: dependencies)
     }
 }

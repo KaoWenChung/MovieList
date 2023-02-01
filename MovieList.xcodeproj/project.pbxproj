@@ -53,8 +53,8 @@
 		214F3EE82986D69F00DF06AE /* RegisterRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EE72986D69F00DF06AE /* RegisterRepositoryType.swift */; };
 		214F3EEA2986D6C200DF06AE /* RegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EE92986D6C200DF06AE /* RegisterUseCase.swift */; };
 		214F3EEC2986D6D500DF06AE /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EEB2986D6D500DF06AE /* LoginUseCase.swift */; };
-		214F3EEE2986DA3600DF06AE /* FirebaseLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EED2986DA3600DF06AE /* FirebaseLoginRepository.swift */; };
-		214F3EF02986DA4200DF06AE /* FirebaseRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EEF2986DA4200DF06AE /* FirebaseRegisterRepository.swift */; };
+		214F3EEE2986DA3600DF06AE /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EED2986DA3600DF06AE /* LoginRepository.swift */; };
+		214F3EF02986DA4200DF06AE /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EEF2986DA4200DF06AE /* RegisterRepository.swift */; };
 		214F3EF32986DD2300DF06AE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EF12986DD2300DF06AE /* RegisterViewController.swift */; };
 		214F3EF42986DD2300DF06AE /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 214F3EF22986DD2300DF06AE /* RegisterViewController.xib */; };
 		214F3EFD2986DD8500DF06AE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3EFC2986DD8500DF06AE /* LoginViewModel.swift */; };
@@ -78,11 +78,14 @@
 		2153D7602989628100485FCA /* Movie+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D75F2989628100485FCA /* Movie+Stub.swift */; };
 		2153D7632989727C00485FCA /* MovieListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7622989727C00485FCA /* MovieListViewModelTests.swift */; };
 		2153D7652989A18600485FCA /* ImageRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7642989A18600485FCA /* ImageRepositoryMock.swift */; };
-		2179192F2988609200D96313 /* BiometricHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179192E2988609100D96313 /* BiometricHelper.swift */; };
+		2179192F2988609200D96313 /* BiometricRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179192E2988609100D96313 /* BiometricRepository.swift */; };
 		218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BE9298728F300663333 /* NetworkServiceTests.swift */; };
 		218A2BED29872BDD00663333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 218A2BEC29872BDD00663333 /* Localizable.strings */; };
 		218A2BEF29872BEF00663333 /* LocalizedStringType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BEE29872BEF00663333 /* LocalizedStringType.swift */; };
 		218A2BF129872C0600663333 /* CommonString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BF029872C0600663333 /* CommonString.swift */; };
+		21DC85AB298AB1320051CFD2 /* LogoutUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC85AA298AB1320051CFD2 /* LogoutUseCase.swift */; };
+		21DC85AD298AB1960051CFD2 /* LogoutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC85AC298AB1960051CFD2 /* LogoutRepository.swift */; };
+		21DC85AF298AB1D30051CFD2 /* LogoutRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC85AE298AB1D30051CFD2 /* LogoutRepositoryType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,8 +153,8 @@
 		214F3EE72986D69F00DF06AE /* RegisterRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepositoryType.swift; sourceTree = "<group>"; };
 		214F3EE92986D6C200DF06AE /* RegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUseCase.swift; sourceTree = "<group>"; };
 		214F3EEB2986D6D500DF06AE /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
-		214F3EED2986DA3600DF06AE /* FirebaseLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginRepository.swift; sourceTree = "<group>"; };
-		214F3EEF2986DA4200DF06AE /* FirebaseRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRegisterRepository.swift; sourceTree = "<group>"; };
+		214F3EED2986DA3600DF06AE /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		214F3EEF2986DA4200DF06AE /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		214F3EF12986DD2300DF06AE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		214F3EF22986DD2300DF06AE /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		214F3EFC2986DD8500DF06AE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -176,11 +179,14 @@
 		2153D7622989727C00485FCA /* MovieListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModelTests.swift; sourceTree = "<group>"; };
 		2153D7642989A18600485FCA /* ImageRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepositoryMock.swift; sourceTree = "<group>"; };
 		2153D76A2989A24A00485FCA /* MovieListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2179192E2988609100D96313 /* BiometricHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricHelper.swift; sourceTree = "<group>"; };
+		2179192E2988609100D96313 /* BiometricRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricRepository.swift; sourceTree = "<group>"; };
 		218A2BE9298728F300663333 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		218A2BEC29872BDD00663333 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		218A2BEE29872BEF00663333 /* LocalizedStringType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringType.swift; sourceTree = "<group>"; };
 		218A2BF029872C0600663333 /* CommonString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonString.swift; sourceTree = "<group>"; };
+		21DC85AA298AB1320051CFD2 /* LogoutUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCase.swift; sourceTree = "<group>"; };
+		21DC85AC298AB1960051CFD2 /* LogoutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRepository.swift; sourceTree = "<group>"; };
+		21DC85AE298AB1D30051CFD2 /* LogoutRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRepositoryType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,7 +329,6 @@
 				2153D74D2988872D00485FCA /* Spinner.swift */,
 				2153D74F2988886300485FCA /* LoadingStatus.swift */,
 				214F3E8029858FAF00DF06AE /* CancellableType.swift */,
-				2179192E2988609100D96313 /* BiometricHelper.swift */,
 				214F3E8229858FBD00DF06AE /* ConnectionErrorType.swift */,
 				2153D7552988954C00485FCA /* Loadingable.swift */,
 				214F3F08298704C100DF06AE /* Alertable.swift */,
@@ -345,6 +350,7 @@
 				214F3E972985B9EA00DF06AE /* SearchMoviesUseCase.swift */,
 				214F3EE92986D6C200DF06AE /* RegisterUseCase.swift */,
 				214F3EEB2986D6D500DF06AE /* LoginUseCase.swift */,
+				21DC85AA298AB1320051CFD2 /* LogoutUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				214F3E952985B96200DF06AE /* MoviesRepositoryType.swift */,
 				214F3EE72986D69F00DF06AE /* RegisterRepositoryType.swift */,
 				214F3F002986DF7B00DF06AE /* LoginRepositoryType.swift */,
+				21DC85AE298AB1D30051CFD2 /* LogoutRepositoryType.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -394,8 +401,10 @@
 				214F3E86298593ED00DF06AE /* Utils */,
 				214F3E932985B90700DF06AE /* MoviesRepository.swift */,
 				214F3EC62985F85F00DF06AE /* ImageRepository.swift */,
-				214F3EED2986DA3600DF06AE /* FirebaseLoginRepository.swift */,
-				214F3EEF2986DA4200DF06AE /* FirebaseRegisterRepository.swift */,
+				214F3EED2986DA3600DF06AE /* LoginRepository.swift */,
+				21DC85AC298AB1960051CFD2 /* LogoutRepository.swift */,
+				214F3EEF2986DA4200DF06AE /* RegisterRepository.swift */,
+				2179192E2988609100D96313 /* BiometricRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -871,7 +880,7 @@
 				214F3EAB2985C23300DF06AE /* DataTransferServiceType.swift in Sources */,
 				214F3EFF2986DD9300DF06AE /* RegisterViewModel.swift in Sources */,
 				214F3E722985503100DF06AE /* MoviesResponseDTO.swift in Sources */,
-				214F3EF02986DA4200DF06AE /* FirebaseRegisterRepository.swift in Sources */,
+				214F3EF02986DA4200DF06AE /* RegisterRepository.swift in Sources */,
 				218A2BEF29872BEF00663333 /* LocalizedStringType.swift in Sources */,
 				214F3EFD2986DD8500DF06AE /* LoginViewModel.swift in Sources */,
 				214F3F09298704C100DF06AE /* Alertable.swift in Sources */,
@@ -884,7 +893,7 @@
 				214F3EC92985FBEE00DF06AE /* UIImageView+.swift in Sources */,
 				214F3F012986DF7B00DF06AE /* LoginRepositoryType.swift in Sources */,
 				218A2BF129872C0600663333 /* CommonString.swift in Sources */,
-				214F3EEE2986DA3600DF06AE /* FirebaseLoginRepository.swift in Sources */,
+				214F3EEE2986DA3600DF06AE /* LoginRepository.swift in Sources */,
 				2153D7562988954C00485FCA /* Loadingable.swift in Sources */,
 				214F3EA92985C21400DF06AE /* ResponseRequestableType.swift in Sources */,
 				214F3E89298593FD00DF06AE /* RepositoryTask.swift in Sources */,
@@ -896,12 +905,15 @@
 				214F3EBE2985DD6F00DF06AE /* Observable.swift in Sources */,
 				214F3EEA2986D6C200DF06AE /* RegisterUseCase.swift in Sources */,
 				214F3E7929858E1E00DF06AE /* DataTransferService.swift in Sources */,
-				2179192F2988609200D96313 /* BiometricHelper.swift in Sources */,
+				21DC85AB298AB1320051CFD2 /* LogoutUseCase.swift in Sources */,
+				2179192F2988609200D96313 /* BiometricRepository.swift in Sources */,
 				214F3F0B29870FFA00DF06AE /* KeychainHelper.swift in Sources */,
 				214F3EA32985BB2A00DF06AE /* AppConfigurations.swift in Sources */,
+				21DC85AD298AB1960051CFD2 /* LogoutRepository.swift in Sources */,
 				214F3EC32985F77800DF06AE /* MovieListTableViewCell.swift in Sources */,
 				214F3EA12985BB1800DF06AE /* AppFlowCoordinator.swift in Sources */,
 				214F3ECD2985FE2900DF06AE /* UITableViewCell+.swift in Sources */,
+				21DC85AF298AB1D30051CFD2 /* LogoutRepositoryType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

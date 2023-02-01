@@ -8,9 +8,20 @@
 import UIKit
 
 final class AccountSceneDIContainer {
+    struct Dependencies {
+        let userdefault: UserDefaultsHelperType
+        let keychain: KeychainHelperType
+    }
+    
+    private let dependencies: Dependencies
+    
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+    }
+
     // MARK: - Use Cases
     func makeLoginUseCase() -> LoginUseCaseType {
-        LoginUseCase(loginRepository: makeLoginRepository())
+        LoginUseCase(biometricRepository: makeBiometricRepository(), loginRepository: makeLoginRepository())
     }
 
     func makeRegisterUseCase() -> RegisterUseCaseType {
@@ -37,11 +48,15 @@ final class AccountSceneDIContainer {
 
     // MARK: - Repositories
     func makeLoginRepository() -> LoginRepositoryType {
-        FirebaseLoginRepository()
+        LoginRepository(userdefault: dependencies.userdefault, keychain: dependencies.keychain)
     }
 
     func makeRegisterRepository() -> RegisterRepositoryType {
-        FirebaseRegisterRepository()
+        RegisterRepository(userdefault: dependencies.userdefault, keychain: dependencies.keychain)
+    }
+
+    func makeBiometricRepository() -> BiometricRepositoryType {
+        BiometricRepository(userdefault: dependencies.userdefault, keychain: dependencies.keychain)
     }
     // MARK: - Flow Coordinators
     func makeAccountFlowCoordinator(navigationController: UINavigationController) -> AccountFlowCoordinator {

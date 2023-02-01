@@ -7,14 +7,25 @@
 
 import FirebaseAuth
 
-struct FirebaseRegisterRepository {}
+struct RegisterRepository {
+    let userdefault: UserDefaultsHelperType
+    let keychain: KeychainHelperType
+    
+    init(userdefault: UserDefaultsHelperType,
+         keychain: KeychainHelperType) {
+        self.userdefault = userdefault
+        self.keychain = keychain
+    }
+}
 
-extension FirebaseRegisterRepository: RegisterRepositoryType {
+extension RegisterRepository: RegisterRepositoryType {
     public func register(account: AccountValue, completion: @escaping (Result<Void, Error>) -> Void) {
         Auth.auth().createUser(withEmail: account.email, password: account.password) { (authResult, error) in
             if let error = error {
                 completion(.failure(error))
             } else {
+                userdefault.saveAccount(account.email)
+                keychain.savePassword(account.password, account: account.email)
                 completion(.success(()))
             }
         }

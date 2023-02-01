@@ -28,12 +28,8 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
         super.viewDidLoad()
         title = LoginViewString.title.text
         bind(to: viewModel)
-        tryLoginByBiometricAuthentication()
-    }
-
-    private func tryLoginByBiometricAuthentication() {
+        viewModel.viewDidLoad()
         emailTextField.text = viewModel.savedAccount
-        viewModel.tryLoginByBiometricAuthentication()
     }
 
     private func bind(to viewModel: LoginViewModelType) {

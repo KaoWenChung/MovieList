@@ -7,20 +7,24 @@
 
 import Foundation
 
-final class KeychainHelper {
-    private init() {}
+protocol KeychainHelperType {
+    func savePassword(_ password: String, account: String)
+    func readPassword(account: String) -> String?
+    func removePassword(account: String)
+}
 
-    class func savePassword(_ password: String, account: String) {
+final class KeychainHelper: KeychainHelperType {
+    func savePassword(_ password: String, account: String) {
         let passwordData = Data(password.utf8)
         save(passwordData, service: "owenkao.MovieList", account: account)
     }
 
-    class func readPassword(account: String) -> String? {
+    func readPassword(account: String) -> String? {
         guard let passwordData = read(service: "owenkao.MovieList", account: account) else { return nil }
         return String(data: passwordData, encoding: .utf8)
     }
 
-    class func removePassword(account: String) {
+    func removePassword(account: String) {
         let query = [
           kSecClass: kSecClassInternetPassword,
           kSecAttrService: "movielist.com",
@@ -31,7 +35,7 @@ final class KeychainHelper {
     }
     
     // MARK: Private functions
-    private class func save(_ data: Data, service: String, account: String) {
+    private func save(_ data: Data, service: String, account: String) {
         // Create query
         let query = [
             kSecValueData: data,
@@ -46,7 +50,7 @@ final class KeychainHelper {
         }
     }
 
-    private class func read(service: String, account: String) -> Data? {
+    private func read(service: String, account: String) -> Data? {
         let query = [
             kSecAttrAccount: account,
             kSecClass: kSecClassGenericPassword,

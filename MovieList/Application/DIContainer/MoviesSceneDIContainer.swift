@@ -11,6 +11,8 @@ final class MoviesSceneDIContainer {
     struct Dependencies {
         let apiDataTransferService: DataTransferService
         let imageDataTransferService: DataTransferService
+        let userdefault: UserDefaultsHelperType
+        let keychain: KeychainHelperType
         let imageCache: ImageCacheType
     }
     
@@ -25,13 +27,20 @@ final class MoviesSceneDIContainer {
         SearchMoviesUseCase(moviesRepository: makeMoviesRepository())
     }
 
+    func makeLogoutUseCaseType() -> LogoutUseCaseType {
+        return LogoutUseCase(logoutRepository: makeLogoutRepository())
+    }
+
     // MARK: - Movie List
     func makeMovieListViewController(actions: MovieListViewModelActions) -> MovieListViewController {
         MovieListViewController(viewModel: makeMovieListViewModel(actions: actions))
     }
     
     func makeMovieListViewModel(actions: MovieListViewModelActions) -> MovieListViewModelType {
-        MovieListViewModel(imageRepository: makeLaunchImagesRepository(), searchMoviesUseCase: makeSearchMoviesUseCase(), actions: actions)
+        MovieListViewModel(imageRepository: makeLaunchImagesRepository(),
+                           searchMoviesUseCase: makeSearchMoviesUseCase(),
+                           actions: actions,
+                           logoutUseCase: makeLogoutUseCaseType())
     }
 
     // MARK: - Repositories
@@ -41,6 +50,10 @@ final class MoviesSceneDIContainer {
 
     func makeLaunchImagesRepository() -> ImageRepositoryType {
         ImageRepository(dataTransferService: dependencies.imageDataTransferService, imageCache: dependencies.imageCache)
+    }
+
+    func makeLogoutRepository() -> LogoutRepositoryType {
+        LogoutRepository(userdefault: dependencies.userdefault, keychain: dependencies.keychain)
     }
 
     // MARK: - Flow Coordinators

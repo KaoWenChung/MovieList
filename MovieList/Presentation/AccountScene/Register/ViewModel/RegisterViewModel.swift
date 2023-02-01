@@ -54,8 +54,6 @@ final class RegisterViewModel {
 
 extension RegisterViewModel: RegisterViewModelType {
     func didSelectRegister(_ account: AccountValue) {
-        UserDefaultsHelper.shared.account = account.email
-        KeychainHelper.savePassword(account.password, account: account.email)
         register(account)
     }
 }

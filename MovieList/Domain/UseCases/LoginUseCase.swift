@@ -6,17 +6,38 @@
 //
 
 protocol LoginUseCaseType {
-    func execute(requestValue: AccountValue,
+    func fetchSavedEmail() -> String?
+    func login(requestValue: AccountValue,
                  completion: @escaping (Result<Void, Error>) -> Void)
+    func loginByBiometricAuthentication(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
-final class LoginUseCase: LoginUseCaseType {
+struct LoginUseCase: LoginUseCaseType {
+    private let biometricRepository: BiometricRepositoryType
     private let loginRepository: LoginRepositoryType
 
-    init(loginRepository: LoginRepositoryType) {
+    init(biometricRepository: BiometricRepositoryType,
+         loginRepository: LoginRepositoryType) {
+        self.biometricRepository = biometricRepository
         self.loginRepository = loginRepository
     }
-    func execute(requestValue: AccountValue, completion: @escaping (Result<Void, Error>) -> Void) {
+
+    func login(requestValue: AccountValue, completion: @escaping (Result<Void, Error>) -> Void) {
         loginRepository.login(account: requestValue, completion: completion)
+    }
+
+    func loginByBiometricAuthentication(completion: @escaping (Result<Void, Error>) -> Void) {
+        biometricRepository.fetchAccount() { result in
+            switch result {
+            case .success(let account):
+                self.loginRepository.login(account: account, completion: completion)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func fetchSavedEmail() -> String? {
+        biometricRepository.fetchSavedEmail()
     }
 }

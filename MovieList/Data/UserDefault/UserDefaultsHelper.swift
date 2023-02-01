@@ -7,33 +7,27 @@
 
 import Foundation
 
-final class UserDefaultsHelper {
+protocol UserDefaultsHelperType {
+    func saveAccount(_ newValue: String)
+    func readAccount() -> String?
+    func removeUserData()
+}
+
+final class UserDefaultsHelper: UserDefaultsHelperType {
     private enum Key: String {
         case account = "owenkao.MovieList.account"
     }
-
-    private init() {}
-    static let shared = UserDefaultsHelper()
     
     func removeUserData() {
         remove(.account)
     }
 
-    var account: String? {
-        set {
-            if let account = newValue {
-                save(.account, value: account)
-            } else {
-                remove(.account)
-            }
-        }
-        get {
-            if let account: String = read(.account) {
-                return account
-            } else {
-                return nil
-            }
-        }
+    func saveAccount(_ newValue: String) {
+        save(.account, value: newValue)
+    }
+
+    func readAccount() -> String? {
+        read(.account)
     }
 
     private func save(_ aKey: UserDefaultsHelper.Key, value aValue: Any) {

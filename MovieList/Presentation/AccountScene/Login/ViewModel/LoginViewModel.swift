@@ -11,9 +11,9 @@ struct LoginViewModelActions {
 }
 
 protocol LoginViewModelInput {
+    func viewDidLoad()
     func didSelectLogin(_ account: AccountValue)
     func didSelectRegister()
-    func tryLoginByBiometricAuthentication()
 }
 
 protocol LoginViewModelOutput {
@@ -33,7 +33,7 @@ final class LoginViewModel {
     // MARK: Output
     let error: Observable<String> = Observable("")
     let status: Observable<LoadingStatus> = Observable(.normal)
-    private(set) var savedAccount: String? = UserDefaultsHelper.shared.account
+    private(set) var savedAccount: String? = nil
     private(set) var errorTitle: String = ""
     init(loginUseCase: LoginUseCaseType,
          actions: LoginViewModelActions?) {
@@ -45,7 +45,7 @@ final class LoginViewModel {
     }
     private func login(_ account: AccountValue) {
         status.value = .loading
-        loginUseCase.execute(requestValue: account) { result in
+        loginUseCase.login(requestValue: account) { result in
             switch result {
             case .success():
                 self.actions?.didLogin()
@@ -55,19 +55,23 @@ final class LoginViewModel {
             self.status.value = .normal
         }
     }
+    private func loginByBiometricAuthentication() {
+        guard savedAccount != nil else { return }
+        loginUseCase.loginByBiometricAuthentication() { result in
+            switch result {
+            case .success():
+                self.actions?.didLogin()
+            case .failure(let error):
+                self.handle(error: error)
+            }
+        }
+    }
 }
 
 extension LoginViewModel: LoginViewModelType {
-    func tryLoginByBiometricAuthentication() {
-        let reason = "Authenticate to login your app"
-        guard let savedAccount else { return }
-        BiometricHelper.tryBiometricAuthentication(reason: reason, completion: { result in
-            guard result,
-            let password = KeychainHelper.readPassword(account: savedAccount) else { return }
-            
-            let account = AccountValue(email: savedAccount, password: password)
-            self.login(account)
-        })
+    func viewDidLoad() {
+        savedAccount = loginUseCase.fetchSavedEmail()
+        loginByBiometricAuthentication()
     }
     
     func didSelectRegister() {
@@ -75,8 +79,6 @@ extension LoginViewModel: LoginViewModelType {
     }
     
     func didSelectLogin(_ account: AccountValue) {
-        UserDefaultsHelper.shared.account = account.email
-        KeychainHelper.savePassword(account.password, account: account.email)
         login(account)
     }
 }
