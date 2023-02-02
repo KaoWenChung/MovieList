@@ -34,19 +34,19 @@ final class MovieListViewModelTests: XCTestCase {
         func execute() {}
     }
     
-    func test_searchMoviesUseCaseFetchDataSuccessfully_viewModelContains3Movies() {
+    func test_fetchMoviesUseCaseFetchDataSuccessfully_viewModelContains3Movies() {
         // given
         let fetchMoviesUseCaseMock = FetchMoviesUseCaseMock()
         fetchMoviesUseCaseMock.expectation = self.expectation(description: "contains 3 movie's value")
         fetchMoviesUseCaseMock.movieList = MovieList(totalResults: 0, movies: movies)
         let didLogoutMock = {}
-        let viewModel = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
+        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
         // when
-        viewModel.viewDidLoad()
+        sut.viewDidLoad()
         
         // then
         waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertEqual(viewModel.movieList.value.count, 3)
+        XCTAssertEqual(sut.movieList.value.count, 3)
     }
 
     func test_searchMoviesUseCaseFetchDataFailed_viewModelContainsFailedLoadingMoviesError() {
@@ -55,12 +55,12 @@ final class MovieListViewModelTests: XCTestCase {
         fetchMoviesUseCaseMock.expectation = self.expectation(description: "contains failed error")
         fetchMoviesUseCaseMock.error = MovieListViewModelTestError.failedFetching
         let didLogoutMock = {}
-        let viewModel = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
+        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
         // when
-        viewModel.viewDidLoad()
+        sut.viewDidLoad()
         
         // then
         waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertEqual(viewModel.error.value, "Failed loading movies")
+        XCTAssertEqual(sut.error.value, "Failed loading movies")
     }
 }
