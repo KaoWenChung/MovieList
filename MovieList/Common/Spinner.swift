@@ -28,5 +28,6 @@ final class Spinner {
     func hide() {
         spinner?.stopAnimating()
         spinner?.removeFromSuperview()
+        spinner = nil
     }
 }
