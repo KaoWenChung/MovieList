@@ -28,7 +28,7 @@ final class UserDefaultsHelper {
     }
 
     private func read<T>(_ aKey: UserDefaultsHelper.Key) -> T? {
-        return UserDefaults.standard.object(forKey: aKey.rawValue) as? T
+        UserDefaults.standard.object(forKey: aKey.rawValue) as? T
     }
 }
 

@@ -28,7 +28,7 @@ final class MoviesSceneDIContainer {
     }
 
     func makeLogoutUseCase() -> LogoutUseCaseType {
-        return LogoutUseCase(logoutRepository: makeLogoutRepository())
+        LogoutUseCase(logoutRepository: makeLogoutRepository())
     }
 
     // MARK: - Movie List

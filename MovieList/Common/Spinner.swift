@@ -15,14 +15,15 @@ final class Spinner {
 
     func showOn(_ view: UIView) {
         hide()
-        spinner = UIActivityIndicatorView()
-        spinner!.hidesWhenStopped = true
-        view.addSubview(spinner!)
+        let spinner = UIActivityIndicatorView()
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
 
-        spinner!.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([ spinner!.centerYAnchor.constraint(equalTo: view.centerYAnchor), spinner!.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([ spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor), spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
         
-        spinner!.startAnimating()
+        spinner.startAnimating()
+        self.spinner = spinner
     }
 
     func hide() {

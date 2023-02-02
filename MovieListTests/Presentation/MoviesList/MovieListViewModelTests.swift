@@ -31,7 +31,32 @@ final class MovieListViewModelTests: XCTestCase {
     }
 
     class LogoutUseCaseMock: LogoutUseCaseType {
-        func execute() {}
+        var expectation: XCTestExpectation?
+        var isLogout: Bool = false
+
+        func execute() {
+            isLogout.toggle()
+            expectation?.fulfill()
+        }
+    }
+
+    func test_executeLogoutUseCase_logoutSuccessfullyAndSwitchToLoginView() {
+        // given
+        let fetchMoviesUseCaseMock = FetchMoviesUseCaseMock()
+        var didSwitchToLoginView: Bool = false
+        let didLogoutMock = {
+            didSwitchToLoginView.toggle()
+        }
+        let logoutUseCaseMockMock = LogoutUseCaseMock()
+        logoutUseCaseMockMock.expectation = expectation(description: "logout successfully")
+        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: logoutUseCaseMockMock)
+        // when
+        sut.didSelectLogout()
+        
+        // then
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertEqual(logoutUseCaseMockMock.isLogout, true)
+        XCTAssertEqual(didSwitchToLoginView, true)
     }
     
     func test_fetchMoviesUseCaseFetchDataSuccessfully_viewModelContains3Movies() {

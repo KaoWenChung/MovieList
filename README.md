@@ -33,15 +33,16 @@ This app allows users to get all movies released after the year 2000 and contain
 - Swift
 - MVVM + Coordinator
 - Clean Architecture
-- REST API
+- Paginating requests
+- Image download asynchronously
 - Interface Builder(.xib)
-- POP (protocol LocallizedStringType, Alertable, Loadingable)
+- POP (LocallizedStringType, Alertable, Loadingable)
 - OOP
 - Unit testing
 - Observable (data binding)
 - Image Cache (NSCache)
 - Persistent storage (Keychain, UserDefault)
-- Dependency Injection
+- Dependency Injection (DIContainer)
 - Singleton pattern (Spinner)
 
 ## To-Do list of features and time I need:
