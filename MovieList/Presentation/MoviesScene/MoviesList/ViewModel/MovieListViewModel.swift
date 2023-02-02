@@ -97,6 +97,7 @@ final class MovieListViewModel {
             self.status.value = .normal
         }
     }
+
     private func updateCurrentSearchYear() {
         guard currentSearchTotalResult == totalResults else { return }
         guard let currentYear = Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year,

@@ -27,7 +27,7 @@ final class MoviesSceneDIContainer {
         FetchMoviesUseCase(moviesRepository: makeMoviesRepository())
     }
 
-    func makeLogoutUseCaseType() -> LogoutUseCaseType {
+    func makeLogoutUseCase() -> LogoutUseCaseType {
         return LogoutUseCase(logoutRepository: makeLogoutRepository())
     }
 
@@ -37,10 +37,10 @@ final class MoviesSceneDIContainer {
     }
     
     func makeMovieListViewModel(actions: MovieListViewModelActions) -> MovieListViewModelType {
-        MovieListViewModel(imageRepository: makeLaunchImagesRepository(),
+        MovieListViewModel(imageRepository: makeImagesRepository(),
                            fetchMoviesUseCase: makeFetchMoviesUseCase(),
                            actions: actions,
-                           logoutUseCase: makeLogoutUseCaseType())
+                           logoutUseCase: makeLogoutUseCase())
     }
 
     // MARK: - Repositories
@@ -48,7 +48,7 @@ final class MoviesSceneDIContainer {
         MoviesRepository(dataTransferService: dependencies.apiDataTransferService)
     }
 
-    func makeLaunchImagesRepository() -> ImageRepositoryType {
+    func makeImagesRepository() -> ImageRepositoryType {
         ImageRepository(dataTransferService: dependencies.imageDataTransferService, imageCache: dependencies.imageCache)
     }
 
