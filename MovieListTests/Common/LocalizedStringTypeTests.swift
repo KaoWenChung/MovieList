@@ -13,11 +13,15 @@ final class LocalizedStringTypeTests: XCTestCase {
         case contentA
         case contentB
     }
-    func testLocallizedString_defineKey_PrefixAndText() {
+
+    func testLocallizedString_MockStringCase_prefix() {
         let prefixA = MockString.contentA.prefix
         let prefixB = MockString.contentB.prefix
         XCTAssertEqual(prefixA, "MockString")
         XCTAssertEqual(prefixB, "MockString")
+    }
+
+    func testLocallizedString_MockStringCase_text() {
         let textA = MockString.contentA.text
         let textB = MockString.contentB.text
         XCTAssertEqual(textA, "MockString.contentA")
