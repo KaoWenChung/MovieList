@@ -20,15 +20,30 @@ final class UIImageViewTests: XCTestCase {
     }
 
     func testUIImageViewTests_downloadImageSuccessfully_getImage() {
-        let imagesRepository = ImageRepositoryMock()
-        imagesRepository.expectation = self.expectation(description: "Image with download")
+        let imageRepository = ImageRepositoryMock()
+        imageRepository.expectation = self.expectation(description: "Image with download")
         let expectedImage = UIImage(named: "test")
-        imagesRepository.image = expectedImage
+        imageRepository.image = expectedImage
 
         let sut = UIImageView()
-        _ = sut.downloaded(imageLoader: imagesRepository, from: "url") {
+        _ = sut.downloaded(imageLoader: imageRepository, from: "url") {
             DispatchQueue.main.async {
                 XCTAssertEqual(sut.image, expectedImage)
+            }
+        }
+        // then
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
+    func testUIImageViewTests_downloadImageFailure_getPlaceholderImage() {
+        let imageRepository = ImageRepositoryMock()
+        imageRepository.expectation = self.expectation(description: "Should run error and present placeholer image")
+
+        let sut = UIImageView()
+        
+        _ = sut.downloaded(imageLoader: imageRepository, from: "url", placeholderImage: "noImage") {
+            DispatchQueue.main.async {
+                XCTAssertEqual(sut.image, UIImage(named: "noImage"))
             }
         }
         // then
