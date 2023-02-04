@@ -12,7 +12,8 @@ extension UIImageView {
     func downloaded(imageLoader: ImageRepositoryType,
                     from url: String?,
                     placeholderImage: String = ImageContents.defaultNoImage,
-                    contentMode mode: ContentMode = .scaleAspectFit) -> CancellableType? {
+                    contentMode mode: ContentMode = .scaleAspectFit,
+                    completion: (() -> Void)? = nil) -> CancellableType? {
         contentMode = mode
         image = UIImage(named: placeholderImage)
         guard let url, !url.isEmpty else { return nil }
@@ -20,6 +21,7 @@ extension UIImageView {
             guard let image else { return }
             DispatchQueue.main.async {
                 self.image = image
+                completion?()
             }
         })
     }

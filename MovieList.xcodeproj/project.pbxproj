@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		211B2B66298727330055AEA7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 211B2B65298727330055AEA7 /* FirebaseAuth */; };
+		21412FD2298F01420076EF11 /* UIImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21412FD1298F01420076EF11 /* UIImageViewTests.swift */; };
 		214F3E50298434D000DF06AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E4F298434D000DF06AE /* AppDelegate.swift */; };
 		214F3E59298434D200DF06AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E58298434D200DF06AE /* Assets.xcassets */; };
 		214F3E5C298434D200DF06AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E5A298434D200DF06AE /* LaunchScreen.storyboard */; };
@@ -99,6 +100,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21412FD1298F01420076EF11 /* UIImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewTests.swift; sourceTree = "<group>"; };
 		214F3E4C298434D000DF06AE /* MovieList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		214F3E4F298434D000DF06AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		214F3E58298434D200DF06AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 			children = (
 				2153D7592989581400485FCA /* Extension */,
 				2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */,
+				21412FD1298F01420076EF11 /* UIImageViewTests.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -883,6 +886,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21412FD2298F01420076EF11 /* UIImageViewTests.swift in Sources */,
 				218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */,
 				214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */,
 				214F3ED92986C28B00DF06AE /* StringTests.swift in Sources */,
