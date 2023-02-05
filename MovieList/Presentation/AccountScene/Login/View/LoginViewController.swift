@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 final class LoginViewController: UIViewController, Alertable, Loadingable {
     enum LoginViewString: LocalizedStringType {
@@ -13,8 +14,11 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
     }
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
+    @IBOutlet weak private var saveMyEmailButton: UIButton!
+    @IBOutlet weak private var loginByBiometricsButton: UIButton!
+    
     private let viewModel: LoginViewModelType
-
+    
     init(viewModel: LoginViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -23,7 +27,7 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = LoginViewString.title.text
@@ -31,6 +35,7 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
         viewModel.viewDidLoad()
         emailTextField.text = viewModel.savedAccount
     }
+    // TODO: saveMyEmailButton, loginByBiometricsButton logic
 
     private func bind(to viewModel: LoginViewModelType) {
         viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
