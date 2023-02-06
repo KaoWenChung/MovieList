@@ -44,6 +44,7 @@ This app allows users to get all movies released after the year 2000 and contain
 - Persistent storage (Keychain, UserDefault)
 - Dependency Injection (DIContainer)
 - Singleton pattern (Spinner)
+- Access Controls
 
 ## To-Do list of features and time I need:
 - [x] Implement Face Id or Touch Id to log in - 2 hour
