@@ -49,6 +49,9 @@
                                 <color key="titleColor" systemColor="labelColor"/>
                             </state>
                             <state key="selected" image="circle.fill" catalog="system"/>
+                            <connections>
+                                <action selector="didSelectSaveMyEmail" destination="-1" eventType="touchUpInside" id="UUa-nl-hzG"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfu-iK-0cF">
                             <rect key="frame" x="0.0" y="232.99999999999997" width="230.66666666666666" height="30.000000000000028"/>
@@ -63,6 +66,9 @@
                                 <color key="titleColor" systemColor="labelColor"/>
                             </state>
                             <state key="selected" image="circle.fill" catalog="system"/>
+                            <connections>
+                                <action selector="didSelectLoginByBio" destination="-1" eventType="touchUpInside" id="J47-ry-6az"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1M-Dk-HJi">
                             <rect key="frame" x="0.0" y="308" width="240" height="34.333333333333314"/>

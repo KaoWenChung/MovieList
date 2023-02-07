@@ -10,6 +10,7 @@ import UIKit
 final class MovieListViewController: UIViewController, Alertable, Loadingable {
     enum MovieListViewString: LocalizedStringType {
         case title
+        case logout
     }
     @IBOutlet weak private var tableView: UITableView!
     private let viewModel: MovieListViewModelType
@@ -39,7 +40,7 @@ final class MovieListViewController: UIViewController, Alertable, Loadingable {
     }
 
     private func initNavigationItem() {
-        let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        let logoutButton = UIBarButtonItem(title: MovieListViewString.logout.text, style: .plain, target: self, action: #selector(logout))
         navigationItem.rightBarButtonItem = logoutButton
     }
 

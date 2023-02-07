@@ -9,9 +9,11 @@ import LocalAuthentication
 
 protocol BioRepositoryType {
     func fetchSavedEmail() -> String?
+    func fetchAccount(completion: @escaping (Result<AccountValue, Error>) -> Void)
     func isBioAuthOn() -> Bool
     func toggleBioAuth(_ isOn: Bool)
-    func fetchAccount(completion: @escaping (Result<AccountValue, Error>) -> Void)
+    func isSaveEmail() -> Bool
+    func toggleSaveEmail(_ isOn: Bool)
 }
 
 struct BioRepository {
@@ -26,6 +28,14 @@ struct BioRepository {
 }
 
 extension BioRepository: BioRepositoryType {
+    func isSaveEmail() -> Bool {
+        userdefault.readSaveEmail() ?? false
+    }
+
+    func toggleSaveEmail(_ isOn: Bool) {
+        userdefault.toggleSaveEmail(isOn)
+    }
+
     func isBioAuthOn() -> Bool {
         userdefault.readBioAuth() ?? false
     }

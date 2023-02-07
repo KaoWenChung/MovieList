@@ -24,6 +24,7 @@ protocol LoginViewModelOutput {
     var errorTitle: String { get }
     var savedAccount: String? { get }
     var isBioLogin: Bool { get }
+    var isSaveEmail: Bool { get }
 }
 
 protocol LoginViewModelType: LoginViewModelInput, LoginViewModelOutput {}
@@ -36,8 +37,9 @@ final class LoginViewModel {
     // MARK: Output
     let error: Observable<String> = Observable("")
     let status: Observable<LoadingStatus> = Observable(.normal)
-    var isBioLogin: Bool = false
 
+    private(set) var isBioLogin: Bool = false
+    private(set) var isSaveEmail: Bool = false
     private(set) var savedAccount: String? = nil
     private(set) var errorTitle: String = ""
 
@@ -80,6 +82,7 @@ final class LoginViewModel {
 extension LoginViewModel: LoginViewModelType {
     func viewDidLoad() {
         isBioLogin = loginUseCase.isBioAuthOn()
+        isSaveEmail = loginUseCase.isSaveEmailOn()
         savedAccount = loginUseCase.fetchSavedEmail()
         loginByBioAuth()
     }
@@ -93,7 +96,7 @@ extension LoginViewModel: LoginViewModelType {
     }
 
     func setSavedEamil(_ isOn: Bool) {
-        
+        loginUseCase.toggleSaveEmail(isOn)
     }
     
     func setLoginByBio(_ isOn: Bool) {

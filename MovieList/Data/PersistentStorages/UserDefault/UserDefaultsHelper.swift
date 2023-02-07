@@ -12,6 +12,8 @@ protocol BioRepoUserDefaultsType {
     func readBioAuth() -> Bool?
     func saveAccount(_ newValue: String)
     func readAccount() -> String?
+    func toggleSaveEmail(_ isOn: Bool)
+    func readSaveEmail() -> Bool?
     func removeUserData()
 }
 
@@ -19,6 +21,7 @@ final class UserDefaultsHelper {
     private enum Key: String {
         case account = "owenkao.MovieList.account"
         case bioAuth = "owenkao.MovieList.bioAuth"
+        case saveEmail = "owenkao.MovieList.saveEmail"
     }
 
     private func save(_ aKey: UserDefaultsHelper.Key, value aValue: Any) {
@@ -55,5 +58,13 @@ extension UserDefaultsHelper: BioRepoUserDefaultsType {
 
     func readBioAuth() -> Bool? {
         read(.bioAuth)
+    }
+
+    func toggleSaveEmail(_ isOn: Bool) {
+        save(.saveEmail, value: isOn)
+    }
+
+    func readSaveEmail() -> Bool? {
+        read(.saveEmail)
     }
 }

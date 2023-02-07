@@ -32,9 +32,14 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
         title = LoginViewString.title.text
         bind(to: viewModel)
         viewModel.viewDidLoad()
+        initConfigButtons()
         emailTextField.text = viewModel.savedAccount
     }
-    // TODO: saveMyEmailButton, loginByBiometricsButton logic
+
+    private func initConfigButtons() {
+        saveMyEmailButton.isSelected = viewModel.isSaveEmail
+        loginByBioButton.isSelected = viewModel.isBioLogin
+    }
 
     private func bind(to viewModel: LoginViewModelType) {
         viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
@@ -44,6 +49,16 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
     private func showError(_ error: String) {
         guard !error.isEmpty else { return }
         showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: CommonString.ok.text)
+    }
+
+    @IBAction private func didSelectSaveMyEmail() {
+        saveMyEmailButton.isSelected.toggle()
+        viewModel.setSavedEamil(saveMyEmailButton.isSelected)
+    }
+    
+    @IBAction func didSelectLoginByBio() {
+        loginByBioButton.isSelected.toggle()
+        viewModel.setLoginByBio(loginByBioButton.isSelected)
     }
 
     @IBAction private func didSelectLoginHandler() {
