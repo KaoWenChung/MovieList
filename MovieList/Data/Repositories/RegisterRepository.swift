@@ -8,10 +8,10 @@
 import FirebaseAuth
 
 struct RegisterRepository {
-    let userdefault: UserDefaultsHelperType
+    let userdefault: BioRepoUserDefaultsType
     let keychain: KeychainHelperType
     
-    init(userdefault: UserDefaultsHelperType,
+    init(userdefault: BioRepoUserDefaultsType,
          keychain: KeychainHelperType) {
         self.userdefault = userdefault
         self.keychain = keychain

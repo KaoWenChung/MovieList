@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol UserDefaultsHelperType {
+protocol BioRepoUserDefaultsType {
+    func toggleBioAuth(_ isOn: Bool)
+    func readBioAuth() -> Bool?
     func saveAccount(_ newValue: String)
     func readAccount() -> String?
     func removeUserData()
@@ -16,6 +18,7 @@ protocol UserDefaultsHelperType {
 final class UserDefaultsHelper {
     private enum Key: String {
         case account = "owenkao.MovieList.account"
+        case bioAuth = "owenkao.MovieList.bioAuth"
     }
 
     private func save(_ aKey: UserDefaultsHelper.Key, value aValue: Any) {
@@ -32,9 +35,10 @@ final class UserDefaultsHelper {
     }
 }
 
-extension UserDefaultsHelper: UserDefaultsHelperType {
+extension UserDefaultsHelper: BioRepoUserDefaultsType {
     func removeUserData() {
         remove(.account)
+        remove(.bioAuth)
     }
 
     func saveAccount(_ newValue: String) {
@@ -43,5 +47,13 @@ extension UserDefaultsHelper: UserDefaultsHelperType {
 
     func readAccount() -> String? {
         read(.account)
+    }
+
+    func toggleBioAuth(_ isOn: Bool) {
+        save(.bioAuth, value: isOn)
+    }
+
+    func readBioAuth() -> Bool? {
+        read(.bioAuth)
     }
 }

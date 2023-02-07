@@ -9,7 +9,7 @@ import UIKit
 
 final class AccountSceneDIContainer {
     struct Dependencies {
-        let userdefault: UserDefaultsHelperType
+        let userdefault: BioRepoUserDefaultsType
         let keychain: KeychainHelperType
     }
     
@@ -21,7 +21,7 @@ final class AccountSceneDIContainer {
 
     // MARK: - Use Cases
     func makeLoginUseCase() -> LoginUseCaseType {
-        LoginUseCase(biometricRepository: makeBiometricRepository(), loginRepository: makeLoginRepository())
+        LoginUseCase(bioRepository: makeBioRepository(), loginRepository: makeLoginRepository())
     }
 
     func makeRegisterUseCase() -> RegisterUseCaseType {
@@ -55,8 +55,8 @@ final class AccountSceneDIContainer {
         RegisterRepository(userdefault: dependencies.userdefault, keychain: dependencies.keychain)
     }
 
-    func makeBiometricRepository() -> BiometricRepositoryType {
-        BiometricRepository(userdefault: dependencies.userdefault, keychain: dependencies.keychain)
+    func makeBioRepository() -> BioRepositoryType {
+        BioRepository(userdefault: dependencies.userdefault, keychain: dependencies.keychain)
     }
     // MARK: - Flow Coordinators
     func makeAccountFlowCoordinator(navigationController: UINavigationController) -> AccountFlowCoordinator {

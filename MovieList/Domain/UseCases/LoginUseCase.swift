@@ -9,16 +9,18 @@ protocol LoginUseCaseType {
     func fetchSavedEmail() -> String?
     func login(requestValue: AccountValue,
                  completion: @escaping (Result<Void, Error>) -> Void)
-    func loginByBiometricAuthentication(completion: @escaping (Result<Void, Error>) -> Void)
+    func loginByBioAuth(completion: @escaping (Result<Void, Error>) -> Void)
+    func isBioAuthOn() -> Bool
+    func toggleBioAuth(_ isOn: Bool)
 }
 
 struct LoginUseCase: LoginUseCaseType {
-    private let biometricRepository: BiometricRepositoryType
+    private let bioRepository: BioRepositoryType
     private let loginRepository: LoginRepositoryType
 
-    init(biometricRepository: BiometricRepositoryType,
+    init(bioRepository: BioRepositoryType,
          loginRepository: LoginRepositoryType) {
-        self.biometricRepository = biometricRepository
+        self.bioRepository = bioRepository
         self.loginRepository = loginRepository
     }
 
@@ -26,8 +28,8 @@ struct LoginUseCase: LoginUseCaseType {
         loginRepository.login(account: requestValue, completion: completion)
     }
 
-    func loginByBiometricAuthentication(completion: @escaping (Result<Void, Error>) -> Void) {
-        biometricRepository.fetchAccount() { result in
+    func loginByBioAuth(completion: @escaping (Result<Void, Error>) -> Void) {
+        bioRepository.fetchAccount() { result in
             switch result {
             case .success(let account):
                 self.loginRepository.login(account: account, completion: completion)
@@ -38,6 +40,14 @@ struct LoginUseCase: LoginUseCaseType {
     }
 
     func fetchSavedEmail() -> String? {
-        biometricRepository.fetchSavedEmail()
+        bioRepository.fetchSavedEmail()
+    }
+
+    func isBioAuthOn() -> Bool {
+        bioRepository.isBioAuthOn()
+    }
+
+    func toggleBioAuth(_ isOn: Bool) {
+        bioRepository.toggleBioAuth(isOn)
     }
 }

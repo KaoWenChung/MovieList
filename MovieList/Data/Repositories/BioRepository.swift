@@ -7,23 +7,33 @@
 
 import LocalAuthentication
 
-protocol BiometricRepositoryType {
+protocol BioRepositoryType {
     func fetchSavedEmail() -> String?
+    func isBioAuthOn() -> Bool
+    func toggleBioAuth(_ isOn: Bool)
     func fetchAccount(completion: @escaping (Result<AccountValue, Error>) -> Void)
 }
 
-struct BiometricRepository {
-    let userdefault: UserDefaultsHelperType
+struct BioRepository {
+    let userdefault: BioRepoUserDefaultsType
     let keychain: KeychainHelperType
     
-    init(userdefault: UserDefaultsHelperType,
+    init(userdefault: BioRepoUserDefaultsType,
          keychain: KeychainHelperType) {
         self.userdefault = userdefault
         self.keychain = keychain
     }
 }
 
-extension BiometricRepository: BiometricRepositoryType {
+extension BioRepository: BioRepositoryType {
+    func isBioAuthOn() -> Bool {
+        userdefault.readBioAuth() ?? false
+    }
+
+    func toggleBioAuth(_ isOn: Bool) {
+        userdefault.toggleBioAuth(isOn)
+    }
+    
     func fetchSavedEmail() -> String? {
         userdefault.readAccount()
     }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import LocalAuthentication
 
 final class LoginViewController: UIViewController, Alertable, Loadingable {
     enum LoginViewString: LocalizedStringType {
@@ -15,7 +14,7 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
     @IBOutlet weak private var saveMyEmailButton: UIButton!
-    @IBOutlet weak private var loginByBiometricsButton: UIButton!
+    @IBOutlet weak private var loginByBioButton: UIButton!
     
     private let viewModel: LoginViewModelType
     

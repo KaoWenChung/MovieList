@@ -11,7 +11,7 @@ final class MoviesSceneDIContainer {
     struct Dependencies {
         let apiDataTransferService: DataTransferService
         let imageDataTransferService: DataTransferService
-        let userdefault: UserDefaultsHelperType
+        let userdefault: BioRepoUserDefaultsType
         let keychain: KeychainHelperType
         let imageCache: ImageCacheType
     }
