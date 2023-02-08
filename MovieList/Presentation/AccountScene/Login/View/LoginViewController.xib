@@ -43,6 +43,7 @@
                                 <constraint firstAttribute="height" constant="30" id="F7v-Xh-Jmj"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="tintColor" systemColor="labelColor"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Save my email" image="circle" catalog="system">
@@ -60,6 +61,7 @@
                                 <constraint firstAttribute="height" constant="30" id="m7K-er-edh"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="tintColor" systemColor="labelColor"/>
                             <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Login by FaceID/ Fingerprint" image="circle" catalog="system">

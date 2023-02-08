@@ -55,7 +55,8 @@ final class LoginViewModel {
 
     private func login(_ account: AccountValue) {
         status.value = .loading
-        loginUseCase.login(requestValue: account) { result in
+        let loginValue = LoginValue(isEmailSaved: isSaveEmail, isBioAuthOn: isBioLogin, account: account)
+        loginUseCase.login(value: loginValue) { result in
             switch result {
             case .success():
                 self.actions?.didLogin()
@@ -83,7 +84,9 @@ extension LoginViewModel: LoginViewModelType {
     func viewDidLoad() {
         isBioLogin = loginUseCase.isBioAuthOn()
         isSaveEmail = loginUseCase.isSaveEmailOn()
-        savedAccount = loginUseCase.fetchSavedEmail()
+        if isSaveEmail {
+            savedAccount = loginUseCase.fetchSavedEmail()
+        }
         loginByBioAuth()
     }
     

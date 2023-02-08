@@ -19,15 +19,26 @@ struct LoginRepository {
 }
 
 extension LoginRepository: LoginRepositoryType {
-    public func login(account: AccountValue, completion: @escaping (Result<Void, Error>) -> Void) {
+    public func login(value: LoginValue, completion: @escaping (Result<Void, Error>) -> Void) {
+        let account = value.account
         Auth.auth().signIn(withEmail: account.email, password: account.password) { (result, error) in
             if let error = error {
                 completion(.failure(error))
             } else {
-                userdefault.saveAccount(account.email)
-                keychain.savePassword(account.password, account: account.email)
+                if value.isEmailSaved || value.isBioAuthOn {
+                    userdefault.saveAccount(account.email)
+                }
+                if value.isBioAuthOn {
+                    keychain.savePassword(account.password, account: account.email)
+                }
                 completion(.success(()))
             }
         }
     }
+}
+
+struct LoginValue {
+    let isEmailSaved: Bool
+    let isBioAuthOn: Bool
+    let account: AccountValue
 }
