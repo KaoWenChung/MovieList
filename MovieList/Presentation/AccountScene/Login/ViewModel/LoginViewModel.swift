@@ -14,7 +14,7 @@ protocol LoginViewModelInput {
     func viewDidLoad()
     func didSelectLogin(_ account: AccountValue)
     func didSelectRegister()
-    func setSavedEamil(_ isOn: Bool)
+    func setSaveEamil(_ isOn: Bool)
     func setLoginByBio(_ isOn: Bool)
 }
 
@@ -68,7 +68,7 @@ final class LoginViewModel {
     }
 
     private func loginByBioAuth() {
-        guard isBioLogin, savedAccount != nil else { return }
+        guard isBioLogin else { return }
         loginUseCase.loginByBioAuth() { result in
             switch result {
             case .success():
@@ -98,11 +98,13 @@ extension LoginViewModel: LoginViewModelType {
         login(account)
     }
 
-    func setSavedEamil(_ isOn: Bool) {
+    func setSaveEamil(_ isOn: Bool) {
+        isSaveEmail = isOn
         loginUseCase.toggleSaveEmail(isOn)
     }
     
     func setLoginByBio(_ isOn: Bool) {
+        isBioLogin = isOn
         loginUseCase.toggleBioAuth(isOn)
     }
 }

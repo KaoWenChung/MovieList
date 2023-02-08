@@ -18,7 +18,7 @@ struct LogoutRepository {
 
 extension LogoutRepository: LogoutRepositoryType {
     public func logout() {
-        if let account = userdefault.readAccount() {
+        if let account = userdefault.readEmail() {
             keychain.removePassword(account: account)
             userdefault.removeUserData()
         }

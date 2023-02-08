@@ -24,7 +24,7 @@ extension RegisterRepository: RegisterRepositoryType {
             if let error = error {
                 completion(.failure(error))
             } else {
-                userdefault.saveAccount(account.email)
+                userdefault.saveEmail(account.email)
                 keychain.savePassword(account.password, account: account.email)
                 completion(.success(()))
             }

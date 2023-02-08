@@ -53,7 +53,7 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
 
     @IBAction private func didSelectSaveMyEmail() {
         saveMyEmailButton.isSelected.toggle()
-        viewModel.setSavedEamil(saveMyEmailButton.isSelected)
+        viewModel.setSaveEamil(saveMyEmailButton.isSelected)
     }
     
     @IBAction func didSelectLoginByBio() {

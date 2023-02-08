@@ -31,11 +31,10 @@ struct LoginUseCase: LoginUseCaseType {
     }
 
     func loginByBioAuth(completion: @escaping (Result<Void, Error>) -> Void) {
-        
         bioRepository.fetchAccount() { result in
             switch result {
             case .success(let account):
-                let loginValue = LoginValue(isEmailSaved: true, isBioAuthOn: true, account: account)
+                let loginValue = LoginValue(isEmailSaved: nil, isBioAuthOn: nil, account: account)
                 self.loginRepository.login(value: loginValue, completion: completion)
             case .failure(let error):
                 completion(.failure(error))

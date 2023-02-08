@@ -10,8 +10,8 @@ import Foundation
 protocol BioRepoUserDefaultsType {
     func toggleBioAuth(_ isOn: Bool)
     func readBioAuth() -> Bool?
-    func saveAccount(_ newValue: String)
-    func readAccount() -> String?
+    func saveEmail(_ newValue: String)
+    func readEmail() -> String?
     func toggleSaveEmail(_ isOn: Bool)
     func readSaveEmail() -> Bool?
     func removeUserData()
@@ -19,7 +19,7 @@ protocol BioRepoUserDefaultsType {
 
 final class UserDefaultsHelper {
     private enum Key: String {
-        case account = "owenkao.MovieList.account"
+        case email = "owenkao.MovieList.email"
         case bioAuth = "owenkao.MovieList.bioAuth"
         case saveEmail = "owenkao.MovieList.saveEmail"
     }
@@ -40,16 +40,17 @@ final class UserDefaultsHelper {
 
 extension UserDefaultsHelper: BioRepoUserDefaultsType {
     func removeUserData() {
-        remove(.account)
+        remove(.email)
+        remove(.saveEmail)
         remove(.bioAuth)
     }
 
-    func saveAccount(_ newValue: String) {
-        save(.account, value: newValue)
+    func saveEmail(_ newValue: String) {
+        save(.email, value: newValue)
     }
 
-    func readAccount() -> String? {
-        read(.account)
+    func readEmail() -> String? {
+        read(.email)
     }
 
     func toggleBioAuth(_ isOn: Bool) {

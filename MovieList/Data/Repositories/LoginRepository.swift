@@ -25,10 +25,10 @@ extension LoginRepository: LoginRepositoryType {
             if let error = error {
                 completion(.failure(error))
             } else {
-                if value.isEmailSaved || value.isBioAuthOn {
-                    userdefault.saveAccount(account.email)
+                if value.isEmailSaved == true || value.isBioAuthOn == true {
+                    userdefault.saveEmail(account.email)
                 }
-                if value.isBioAuthOn {
+                if value.isBioAuthOn == true {
                     keychain.savePassword(account.password, account: account.email)
                 }
                 completion(.success(()))
@@ -38,7 +38,7 @@ extension LoginRepository: LoginRepositoryType {
 }
 
 struct LoginValue {
-    let isEmailSaved: Bool
-    let isBioAuthOn: Bool
+    let isEmailSaved: Bool?
+    let isBioAuthOn: Bool?
     let account: AccountValue
 }

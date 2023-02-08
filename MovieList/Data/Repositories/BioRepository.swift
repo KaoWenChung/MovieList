@@ -45,7 +45,7 @@ extension BioRepository: BioRepositoryType {
     }
     
     func fetchSavedEmail() -> String? {
-        userdefault.readAccount()
+        userdefault.readEmail()
     }
 
     func fetchAccount(completion: @escaping (Result<AccountValue, Error>) -> Void) {
@@ -58,12 +58,11 @@ extension BioRepository: BioRepositoryType {
           context.evaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             localizedReason: reason) { authenticated, error in
-                if authenticated {
-                    guard let email = userdefault.readAccount(),
-                          let password = keychain.readPassword(account: email) else { return }
-                    let account = AccountValue(email: email, password: password)
-                    completion(.success(account))
-                }
+                guard authenticated,
+                      let email = userdefault.readEmail(),
+                      let password = keychain.readPassword(account: email) else { return }
+                let account = AccountValue(email: email, password: password)
+                completion(.success(account))
             }
             if let error {
                 completion(.failure(error))
