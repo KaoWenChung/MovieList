@@ -26,6 +26,7 @@ This app allows users to get all movies released after the year 2000 and contain
 ### Image Cache
 - Implemented image cache by NSCache
 ### Persistent storage
+- Save/ read the status of whether it is allows to save email/ login by biometric authentication. 
 - Save/ read the user's password by Keychain
 - Save/ read the user's account (email) by UserDefault
 
