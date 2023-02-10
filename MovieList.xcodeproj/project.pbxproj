@@ -87,6 +87,10 @@
 		21DC85AB298AB1320051CFD2 /* LogoutUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC85AA298AB1320051CFD2 /* LogoutUseCase.swift */; };
 		21DC85AD298AB1960051CFD2 /* LogoutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC85AC298AB1960051CFD2 /* LogoutRepository.swift */; };
 		21DC85AF298AB1D30051CFD2 /* LogoutRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC85AE298AB1D30051CFD2 /* LogoutRepositoryType.swift */; };
+		21EA2751299673E0002F083B /* XCTestCase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA2750299673E0002F083B /* XCTestCase+.swift */; };
+		21EA275329967411002F083B /* MovieListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA275229967411002F083B /* MovieListViewControllerTests.swift */; };
+		21EA275529967494002F083B /* FetchMoviesUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA275429967494002F083B /* FetchMoviesUseCaseMock.swift */; };
+		21EA2757299674C8002F083B /* LogoutUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +185,10 @@
 		21DC85AA298AB1320051CFD2 /* LogoutUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCase.swift; sourceTree = "<group>"; };
 		21DC85AC298AB1960051CFD2 /* LogoutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRepository.swift; sourceTree = "<group>"; };
 		21DC85AE298AB1D30051CFD2 /* LogoutRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRepositoryType.swift; sourceTree = "<group>"; };
+		21EA2750299673E0002F083B /* XCTestCase+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+.swift"; sourceTree = "<group>"; };
+		21EA275229967411002F083B /* MovieListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerTests.swift; sourceTree = "<group>"; };
+		21EA275429967494002F083B /* FetchMoviesUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMoviesUseCaseMock.swift; sourceTree = "<group>"; };
+		21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCaseMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -665,6 +673,8 @@
 			children = (
 				2153D75F2989628100485FCA /* Movie+Stub.swift */,
 				2153D7642989A18600485FCA /* ImageRepositoryMock.swift */,
+				21EA275429967494002F083B /* FetchMoviesUseCaseMock.swift */,
+				21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -673,6 +683,7 @@
 			isa = PBXGroup;
 			children = (
 				2153D7622989727C00485FCA /* MovieListViewModelTests.swift */,
+				21EA275229967411002F083B /* MovieListViewControllerTests.swift */,
 			);
 			path = MoviesList;
 			sourceTree = "<group>";
@@ -680,6 +691,7 @@
 		218A2BE82987288600663333 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				21EA2750299673E0002F083B /* XCTestCase+.swift */,
 				2153D7592989581400485FCA /* Extension */,
 				2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */,
 				21412FD1298F01420076EF11 /* UIImageViewTests.swift */,
@@ -894,10 +906,14 @@
 				2153D7582989555100485FCA /* LocalizedStringTypeTests.swift in Sources */,
 				2153D75B2989582500485FCA /* UITableViewCellTests.swift in Sources */,
 				214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */,
+				21EA275529967494002F083B /* FetchMoviesUseCaseMock.swift in Sources */,
 				2153D75D29895DE800485FCA /* SearchMoviesUseCaseTests.swift in Sources */,
 				2153D7602989628100485FCA /* Movie+Stub.swift in Sources */,
+				21EA2751299673E0002F083B /* XCTestCase+.swift in Sources */,
+				21EA275329967411002F083B /* MovieListViewControllerTests.swift in Sources */,
 				214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */,
 				2153D7652989A18600485FCA /* ImageRepositoryMock.swift in Sources */,
+				21EA2757299674C8002F083B /* LogoutUseCaseMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

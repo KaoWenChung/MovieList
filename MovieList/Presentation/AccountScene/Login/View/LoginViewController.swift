@@ -65,7 +65,6 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         let account = AccountValue(email: email, password: password)
         viewModel.didSelectLogin(account)
-        
     }
 
     @IBAction private func didSelectSignUpHandler() {

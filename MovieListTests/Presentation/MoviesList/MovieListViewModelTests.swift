@@ -15,31 +15,6 @@ final class MovieListViewModelTests: XCTestCase {
         case failedFetching
     }
 
-    class FetchMoviesUseCaseMock: FetchMoviesUseCaseType {
-        var expectation: XCTestExpectation?
-        var error: Error?
-        var movieList = MovieList(totalResults: 0, movies: [])
-        func execute(requestValue: FetchMoviesRequestValue, completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(movieList))
-            }
-            expectation?.fulfill()
-            return nil
-        }
-    }
-
-    class LogoutUseCaseMock: LogoutUseCaseType {
-        var expectation: XCTestExpectation?
-        var isLogout: Bool = false
-
-        func execute() {
-            isLogout.toggle()
-            expectation?.fulfill()
-        }
-    }
-
     func test_executeLogoutUseCase_logoutSuccessfullyAndSwitchToLoginView() {
         // given
         let fetchMoviesUseCaseMock = FetchMoviesUseCaseMock()

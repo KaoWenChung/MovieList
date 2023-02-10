@@ -18,13 +18,13 @@ public extension Loadingable where Self: UIViewController {
         }
     }
 
-    func showSpinner() {
+    private func showSpinner() {
         DispatchQueue.main.async {
             Spinner.shared.showOn(self.view)
         }
     }
 
-    func hideSpinner() {
+    private func hideSpinner() {
         DispatchQueue.main.async {
             Spinner.shared.hide()
         }

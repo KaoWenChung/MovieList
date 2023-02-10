@@ -77,9 +77,9 @@ public class AlertAction {
         }
     }
 
-    var index: Int = Int()
-    var title: String = String()
-    var style: Style = .default
+    let index: Int
+    let title: String
+    let style: Style
     init(index: Int, title: String, style: Style) {
         self.index = index
         self.title = title
