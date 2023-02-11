@@ -91,6 +91,7 @@
 		21EA275329967411002F083B /* MovieListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA275229967411002F083B /* MovieListViewControllerTests.swift */; };
 		21EA275529967494002F083B /* FetchMoviesUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA275429967494002F083B /* FetchMoviesUseCaseMock.swift */; };
 		21EA2757299674C8002F083B /* LogoutUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */; };
+		21EA275A299859BE002F083B /* LoginStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA2759299859BE002F083B /* LoginStorageType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +190,7 @@
 		21EA275229967411002F083B /* MovieListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerTests.swift; sourceTree = "<group>"; };
 		21EA275429967494002F083B /* FetchMoviesUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMoviesUseCaseMock.swift; sourceTree = "<group>"; };
 		21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCaseMock.swift; sourceTree = "<group>"; };
+		21EA2759299859BE002F083B /* LoginStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorageType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -600,12 +602,12 @@
 			path = Keychain;
 			sourceTree = "<group>";
 		};
-		214F3F0D2987179D00DF06AE /* UserDefault */ = {
+		214F3F0D2987179D00DF06AE /* UserDefaultsStorages */ = {
 			isa = PBXGroup;
 			children = (
 				214F3F0E298717BB00DF06AE /* UserDefaultsHelper.swift */,
 			);
-			path = UserDefault;
+			path = UserDefaultsStorages;
 			sourceTree = "<group>";
 		};
 		214F3F102987249100DF06AE /* Domain */ = {
@@ -712,10 +714,19 @@
 		21DC85B0298B09F70051CFD2 /* PersistentStorages */ = {
 			isa = PBXGroup;
 			children = (
-				214F3F0D2987179D00DF06AE /* UserDefault */,
-				214F3F0C2987100B00DF06AE /* Keychain */,
+				21EA275829985702002F083B /* LoginStorage */,
 			);
 			path = PersistentStorages;
+			sourceTree = "<group>";
+		};
+		21EA275829985702002F083B /* LoginStorage */ = {
+			isa = PBXGroup;
+			children = (
+				21EA2759299859BE002F083B /* LoginStorageType.swift */,
+				214F3F0D2987179D00DF06AE /* UserDefaultsStorages */,
+				214F3F0C2987100B00DF06AE /* Keychain */,
+			);
+			path = LoginStorage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -872,6 +883,7 @@
 				218A2BF129872C0600663333 /* CommonString.swift in Sources */,
 				214F3EEE2986DA3600DF06AE /* LoginRepository.swift in Sources */,
 				2153D7562988954C00485FCA /* Loadingable.swift in Sources */,
+				21EA275A299859BE002F083B /* LoginStorageType.swift in Sources */,
 				214F3EA92985C21400DF06AE /* ResponseRequestableType.swift in Sources */,
 				214F3E89298593FD00DF06AE /* RepositoryTask.swift in Sources */,
 				214F3EC72985F85F00DF06AE /* ImageRepository.swift in Sources */,

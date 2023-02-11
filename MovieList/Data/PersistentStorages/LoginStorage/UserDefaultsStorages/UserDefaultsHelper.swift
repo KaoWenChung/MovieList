@@ -7,16 +7,6 @@
 
 import Foundation
 
-protocol BioRepoUserDefaultsType {
-    func toggleBioAuth(_ isOn: Bool)
-    func readBioAuth() -> Bool?
-    func saveEmail(_ newValue: String)
-    func readEmail() -> String?
-    func toggleSaveEmail(_ isOn: Bool)
-    func readSaveEmail() -> Bool?
-    func removeUserData()
-}
-
 final class UserDefaultsHelper {
     private enum Key: String {
         case email = "owenkao.MovieList.email"
@@ -38,7 +28,7 @@ final class UserDefaultsHelper {
     }
 }
 
-extension UserDefaultsHelper: BioRepoUserDefaultsType {
+extension UserDefaultsHelper: LoginStorageType {
     func removeUserData() {
         remove(.email)
         remove(.saveEmail)

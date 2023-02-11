@@ -6,10 +6,10 @@
 //
 
 struct LogoutRepository {
-    let userdefault: BioRepoUserDefaultsType
+    let userdefault: LoginStorageType
     let keychain: PasswordKeychainType
     
-    init(userdefault: BioRepoUserDefaultsType,
+    init(userdefault: LoginStorageType,
          keychain: PasswordKeychainType) {
         self.userdefault = userdefault
         self.keychain = keychain
