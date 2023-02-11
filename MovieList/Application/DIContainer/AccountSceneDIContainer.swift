@@ -10,7 +10,7 @@ import UIKit
 final class AccountSceneDIContainer {
     struct Dependencies {
         let userdefault: BioRepoUserDefaultsType
-        let keychain: KeychainHelperType
+        let keychain: PasswordKeychainType
     }
     
     private let dependencies: Dependencies

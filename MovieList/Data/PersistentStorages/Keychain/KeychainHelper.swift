@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol KeychainHelperType {
+protocol PasswordKeychainType {
     func savePassword(_ password: String, account: String)
     func readPassword(account: String) -> String?
     func removePassword(account: String)
@@ -45,7 +45,7 @@ final class KeychainHelper {
     }
 }
 
-extension KeychainHelper: KeychainHelperType {
+extension KeychainHelper: PasswordKeychainType {
     func savePassword(_ password: String, account: String) {
         let passwordData = Data(password.utf8)
         save(passwordData, service: "owenkao.MovieList", account: account)

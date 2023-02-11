@@ -12,7 +12,7 @@ final class MoviesSceneDIContainer {
         let apiDataTransferService: DataTransferService
         let imageDataTransferService: DataTransferService
         let userdefault: BioRepoUserDefaultsType
-        let keychain: KeychainHelperType
+        let keychain: PasswordKeychainType
         let imageCache: ImageCacheType
     }
     
