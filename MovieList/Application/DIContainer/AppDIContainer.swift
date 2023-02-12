@@ -31,7 +31,7 @@ final class AppDIContainer {
     let keychain = KeychainHelper()
 
     // MARK: - UserDefaults
-    let userdefault = UserDefaultsHelper()
+    let userdefault = LoginUserDefaultStorage()
 
     // MARK: - DIContainers of scenes
     func makeMoviesSceneDIContainer() -> MoviesSceneDIContainer {

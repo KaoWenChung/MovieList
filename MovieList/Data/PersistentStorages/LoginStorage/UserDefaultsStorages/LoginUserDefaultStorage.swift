@@ -7,28 +7,28 @@
 
 import Foundation
 
-final class UserDefaultsHelper {
+final class LoginUserDefaultStorage {
     private enum Key: String {
         case email = "owenkao.MovieList.email"
         case bioAuth = "owenkao.MovieList.bioAuth"
         case saveEmail = "owenkao.MovieList.saveEmail"
     }
 
-    private func save(_ aKey: UserDefaultsHelper.Key, value aValue: Any) {
+    private func save(_ aKey: LoginUserDefaultStorage.Key, value aValue: Any) {
         UserDefaults.standard.setValue(aValue, forKey: aKey.rawValue)
         UserDefaults.standard.synchronize()
     }
 
-    private func remove(_ aKey: UserDefaultsHelper.Key) {
+    private func remove(_ aKey: LoginUserDefaultStorage.Key) {
         UserDefaults.standard.removeObject(forKey: aKey.rawValue)
     }
 
-    private func read<T>(_ aKey: UserDefaultsHelper.Key) -> T? {
+    private func read<T>(_ aKey: LoginUserDefaultStorage.Key) -> T? {
         UserDefaults.standard.object(forKey: aKey.rawValue) as? T
     }
 }
 
-extension UserDefaultsHelper: LoginStorageType {
+extension LoginUserDefaultStorage: LoginStorageType {
     func removeUserData() {
         remove(.email)
         remove(.saveEmail)
