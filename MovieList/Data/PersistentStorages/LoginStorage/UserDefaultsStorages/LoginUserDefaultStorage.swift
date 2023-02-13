@@ -8,6 +8,12 @@
 import Foundation
 
 final class LoginUserDefaultStorage {
+    private let userDefault: UserDefaults
+    
+    init(userDefault: UserDefaults = UserDefaults.standard) {
+        self.userDefault = userDefault
+    }
+
     private enum Key: String {
         case email = "owenkao.MovieList.email"
         case bioAuth = "owenkao.MovieList.bioAuth"
@@ -15,16 +21,16 @@ final class LoginUserDefaultStorage {
     }
 
     private func save(_ aKey: LoginUserDefaultStorage.Key, value aValue: Any) {
-        UserDefaults.standard.setValue(aValue, forKey: aKey.rawValue)
-        UserDefaults.standard.synchronize()
+        userDefault.setValue(aValue, forKey: aKey.rawValue)
+        userDefault.synchronize()
     }
 
     private func remove(_ aKey: LoginUserDefaultStorage.Key) {
-        UserDefaults.standard.removeObject(forKey: aKey.rawValue)
+        userDefault.removeObject(forKey: aKey.rawValue)
     }
 
     private func read<T>(_ aKey: LoginUserDefaultStorage.Key) -> T? {
-        UserDefaults.standard.object(forKey: aKey.rawValue) as? T
+        userDefault.object(forKey: aKey.rawValue) as? T
     }
 }
 

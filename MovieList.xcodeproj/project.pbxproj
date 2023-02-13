@@ -594,12 +594,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		214F3F0C2987100B00DF06AE /* Keychain */ = {
+		214F3F0C2987100B00DF06AE /* KeychainStorages */ = {
 			isa = PBXGroup;
 			children = (
 				214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */,
 			);
-			path = Keychain;
+			path = KeychainStorages;
 			sourceTree = "<group>";
 		};
 		214F3F0D2987179D00DF06AE /* UserDefaultsStorages */ = {
@@ -724,7 +724,7 @@
 			children = (
 				21EA2759299859BE002F083B /* LoginStorageType.swift */,
 				214F3F0D2987179D00DF06AE /* UserDefaultsStorages */,
-				214F3F0C2987100B00DF06AE /* Keychain */,
+				214F3F0C2987100B00DF06AE /* KeychainStorages */,
 			);
 			path = LoginStorage;
 			sourceTree = "<group>";
