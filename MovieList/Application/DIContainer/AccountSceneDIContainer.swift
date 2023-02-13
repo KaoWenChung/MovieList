@@ -9,8 +9,8 @@ import UIKit
 
 final class AccountSceneDIContainer {
     struct Dependencies {
-        let userdefault: LoginStorageType
-        let keychain: PasswordKeychainType
+        let userdefault: LoginUserDefaultStorageType
+        let keychain: LoginKeychainStorageType
     }
     
     private let dependencies: Dependencies

@@ -34,7 +34,7 @@ final class LoginUserDefaultStorage {
     }
 }
 
-extension LoginUserDefaultStorage: LoginStorageType {
+extension LoginUserDefaultStorage: LoginUserDefaultStorageType {
     func removeUserData() {
         remove(.email)
         remove(.saveEmail)

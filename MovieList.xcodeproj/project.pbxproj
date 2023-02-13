@@ -65,7 +65,7 @@
 		214F3F052986F02E00DF06AE /* AccountSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F042986F02E00DF06AE /* AccountSceneDIContainer.swift */; };
 		214F3F072986FA2600DF06AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 214F3F062986FA2600DF06AE /* GoogleService-Info.plist */; };
 		214F3F09298704C100DF06AE /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F08298704C100DF06AE /* Alertable.swift */; };
-		214F3F0B29870FFA00DF06AE /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */; };
+		214F3F0B29870FFA00DF06AE /* LoginKeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0A29870FFA00DF06AE /* LoginKeychainStorage.swift */; };
 		214F3F0F298717BB00DF06AE /* LoginUserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F0E298717BB00DF06AE /* LoginUserDefaultStorage.swift */; };
 		214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */; };
 		214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */; };
@@ -164,7 +164,7 @@
 		214F3F042986F02E00DF06AE /* AccountSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSceneDIContainer.swift; sourceTree = "<group>"; };
 		214F3F062986FA2600DF06AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		214F3F08298704C100DF06AE /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
-		214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		214F3F0A29870FFA00DF06AE /* LoginKeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginKeychainStorage.swift; sourceTree = "<group>"; };
 		214F3F0E298717BB00DF06AE /* LoginUserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserDefaultStorage.swift; sourceTree = "<group>"; };
 		214F3F162987250A00DF06AE /* NetworkConfigurableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurableMock.swift; sourceTree = "<group>"; };
 		214F3F182987253200DF06AE /* NetworkSessionManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManagerMock.swift; sourceTree = "<group>"; };
@@ -594,20 +594,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		214F3F0C2987100B00DF06AE /* KeychainStorages */ = {
+		214F3F0C2987100B00DF06AE /* KeychainStorage */ = {
 			isa = PBXGroup;
 			children = (
-				214F3F0A29870FFA00DF06AE /* KeychainHelper.swift */,
+				214F3F0A29870FFA00DF06AE /* LoginKeychainStorage.swift */,
 			);
-			path = KeychainStorages;
+			path = KeychainStorage;
 			sourceTree = "<group>";
 		};
-		214F3F0D2987179D00DF06AE /* UserDefaultsStorages */ = {
+		214F3F0D2987179D00DF06AE /* UserDefaultStorage */ = {
 			isa = PBXGroup;
 			children = (
 				214F3F0E298717BB00DF06AE /* LoginUserDefaultStorage.swift */,
 			);
-			path = UserDefaultsStorages;
+			path = UserDefaultStorage;
 			sourceTree = "<group>";
 		};
 		214F3F102987249100DF06AE /* Domain */ = {
@@ -723,8 +723,8 @@
 			isa = PBXGroup;
 			children = (
 				21EA2759299859BE002F083B /* LoginStorageType.swift */,
-				214F3F0D2987179D00DF06AE /* UserDefaultsStorages */,
-				214F3F0C2987100B00DF06AE /* KeychainStorages */,
+				214F3F0D2987179D00DF06AE /* UserDefaultStorage */,
+				214F3F0C2987100B00DF06AE /* KeychainStorage */,
 			);
 			path = LoginStorage;
 			sourceTree = "<group>";
@@ -896,7 +896,7 @@
 				214F3E7929858E1E00DF06AE /* DataTransferService.swift in Sources */,
 				21DC85AB298AB1320051CFD2 /* LogoutUseCase.swift in Sources */,
 				2179192F2988609200D96313 /* BioRepository.swift in Sources */,
-				214F3F0B29870FFA00DF06AE /* KeychainHelper.swift in Sources */,
+				214F3F0B29870FFA00DF06AE /* LoginKeychainStorage.swift in Sources */,
 				214F3EA32985BB2A00DF06AE /* AppConfigurations.swift in Sources */,
 				21DC85AD298AB1960051CFD2 /* LogoutRepository.swift in Sources */,
 				214F3EC32985F77800DF06AE /* MovieListTableViewCell.swift in Sources */,

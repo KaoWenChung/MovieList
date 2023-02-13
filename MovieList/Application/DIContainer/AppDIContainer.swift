@@ -28,7 +28,7 @@ final class AppDIContainer {
     let imageCache = ImageCache()
 
     // MARK: - Keychain
-    let keychain = KeychainHelper()
+    let keychain = LoginKeychainStorage()
 
     // MARK: - UserDefaults
     let userdefault = LoginUserDefaultStorage()

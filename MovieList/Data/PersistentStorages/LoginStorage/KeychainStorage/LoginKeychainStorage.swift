@@ -7,13 +7,7 @@
 
 import Foundation
 
-protocol PasswordKeychainType {
-    func savePassword(_ password: String, account: String)
-    func readPassword(account: String) -> String?
-    func removePassword(account: String)
-}
-
-final class KeychainHelper {
+final class LoginKeychainStorage {
     // MARK: Private functions
     private func save(_ data: Data, service: String, account: String) {
         // Create query
@@ -45,7 +39,7 @@ final class KeychainHelper {
     }
 }
 
-extension KeychainHelper: PasswordKeychainType {
+extension LoginKeychainStorage: LoginKeychainStorageType {
     func savePassword(_ password: String, account: String) {
         let passwordData = Data(password.utf8)
         save(passwordData, service: "owenkao.MovieList", account: account)

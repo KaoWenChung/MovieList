@@ -8,11 +8,11 @@
 import FirebaseAuth
 
 struct RegisterRepository {
-    let userdefault: LoginStorageType
-    let keychain: PasswordKeychainType
+    let userdefault: LoginUserDefaultStorageType
+    let keychain: LoginKeychainStorageType
     
-    init(userdefault: LoginStorageType,
-         keychain: PasswordKeychainType) {
+    init(userdefault: LoginUserDefaultStorageType,
+         keychain: LoginKeychainStorageType) {
         self.userdefault = userdefault
         self.keychain = keychain
     }
