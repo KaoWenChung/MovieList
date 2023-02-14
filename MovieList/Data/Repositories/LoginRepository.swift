@@ -8,11 +8,14 @@
 import FirebaseAuth
 
 struct LoginRepository {
+    let firebase: FirebaseAuthenticationType
     let userdefault: LoginUserDefaultStorageType
     let keychain: LoginKeychainStorageType
     
-    init(userdefault: LoginUserDefaultStorageType,
+    init(firebase: FirebaseAuthenticationType = Auth.auth(),
+         userdefault: LoginUserDefaultStorageType,
          keychain: LoginKeychainStorageType) {
+        self.firebase = firebase
         self.userdefault = userdefault
         self.keychain = keychain
     }
@@ -21,7 +24,7 @@ struct LoginRepository {
 extension LoginRepository: LoginRepositoryType {
     public func login(value: LoginValue, completion: @escaping (Result<Void, Error>) -> Void) {
         let account = value.account
-        Auth.auth().signIn(withEmail: account.email, password: account.password) { (result, error) in
+        firebase.signIn(email: account.email, password: account.password) { (result, error) in
             if let error = error {
                 completion(.failure(error))
             } else {

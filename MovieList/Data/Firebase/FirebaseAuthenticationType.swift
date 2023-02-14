@@ -9,6 +9,19 @@ import FirebaseAuth
 
 protocol FirebaseAuthenticationType {
     func signOut() throws
+    func signIn(email: String, password: String, completion: ((FirebaseAuthDataResultType?, Error?) -> Void)?)
 }
 
-extension Auth: FirebaseAuthenticationType {}
+protocol FirebaseAuthDataResultType {
+    var user: User { get }
+}
+
+extension AuthDataResult: FirebaseAuthDataResultType {}
+
+extension Auth: FirebaseAuthenticationType {
+    func signIn(email: String, password: String, completion: ((FirebaseAuthDataResultType?, Error?) -> Void)?) {
+        signIn(withEmail: email, password: password, completion: completion)
+    }
+    
+    
+}
