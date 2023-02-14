@@ -8,11 +8,14 @@
 import FirebaseAuth
 
 struct RegisterRepository {
+    let firebase: FirebaseAuthenticationType
     let userdefault: LoginUserDefaultStorageType
     let keychain: LoginKeychainStorageType
     
-    init(userdefault: LoginUserDefaultStorageType,
+    init(firebase: FirebaseAuthenticationType = Auth.auth(),
+         userdefault: LoginUserDefaultStorageType,
          keychain: LoginKeychainStorageType) {
+        self.firebase = firebase
         self.userdefault = userdefault
         self.keychain = keychain
     }
@@ -20,7 +23,7 @@ struct RegisterRepository {
 
 extension RegisterRepository: RegisterRepositoryType {
     public func register(account: AccountValue, completion: @escaping (Result<Void, Error>) -> Void) {
-        Auth.auth().createUser(withEmail: account.email, password: account.password) { (authResult, error) in
+        firebase.createUser(email: account.email, password: account.password) { (authResult, error) in
             if let error = error {
                 completion(.failure(error))
             } else {
