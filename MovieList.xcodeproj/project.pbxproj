@@ -92,6 +92,7 @@
 		21EA275A299859BE002F083B /* LoginStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA2759299859BE002F083B /* LoginStorageType.swift */; };
 		21F9DA1D299BD69D00C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA1C299BD69D00C98DFA /* FirebaseAuth */; };
 		21F9DA21299BD87200C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA20299BD87200C98DFA /* FirebaseAuth */; };
+		21F9DA24299BDD9F00C98DFA /* FirebaseAuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA23299BDD9F00C98DFA /* FirebaseAuthenticationType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 		21EA275429967494002F083B /* FetchMoviesUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMoviesUseCaseMock.swift; sourceTree = "<group>"; };
 		21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCaseMock.swift; sourceTree = "<group>"; };
 		21EA2759299859BE002F083B /* LoginStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorageType.swift; sourceTree = "<group>"; };
+		21F9DA23299BDD9F00C98DFA /* FirebaseAuthenticationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +300,7 @@
 		214F3E6B298438C300DF06AE /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				21F9DA22299BDD8B00C98DFA /* Firebase */,
 				214F3E84298593DB00DF06AE /* Repositories */,
 				214F3E7329858BE600DF06AE /* Network */,
 				21DC85B0298B09F70051CFD2 /* PersistentStorages */,
@@ -729,6 +732,14 @@
 			path = LoginStorage;
 			sourceTree = "<group>";
 		};
+		21F9DA22299BDD8B00C98DFA /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				21F9DA23299BDD9F00C98DFA /* FirebaseAuthenticationType.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -900,6 +911,7 @@
 				214F3EA32985BB2A00DF06AE /* AppConfigurations.swift in Sources */,
 				21DC85AD298AB1960051CFD2 /* LogoutRepository.swift in Sources */,
 				214F3EC32985F77800DF06AE /* MovieListTableViewCell.swift in Sources */,
+				21F9DA24299BDD9F00C98DFA /* FirebaseAuthenticationType.swift in Sources */,
 				214F3EA12985BB1800DF06AE /* AppFlowCoordinator.swift in Sources */,
 				214F3ECD2985FE2900DF06AE /* UITableViewCell+.swift in Sources */,
 				21DC85AF298AB1D30051CFD2 /* LogoutRepositoryType.swift in Sources */,
