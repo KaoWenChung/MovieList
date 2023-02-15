@@ -1,7 +1,4 @@
 //
-//  FirebaseLoginRepository.swift
-//  MovieList
-//
 //  Created by wyn on 2023/1/29.
 //
 
@@ -19,6 +16,17 @@ struct LoginRepository {
         self.userdefault = userdefault
         self.keychain = keychain
     }
+
+    private func saveEmailIfNeeded(_ value: LoginValue) {
+        guard value.isEmailSaved == true || value.isBioAuthOn == true else { return }
+        userdefault.saveEmail(value.account.email)
+    }
+
+    private func savePasswordIfNeeded(_ value: LoginValue) {
+        guard value.isBioAuthOn == true else { return }
+        let account = value.account
+        keychain.savePassword(account.password, account: account.email)
+    }
 }
 
 extension LoginRepository: LoginRepositoryType {
@@ -28,12 +36,8 @@ extension LoginRepository: LoginRepositoryType {
             if let error = error {
                 completion(.failure(error))
             } else {
-                if value.isEmailSaved == true || value.isBioAuthOn == true {
-                    userdefault.saveEmail(account.email)
-                }
-                if value.isBioAuthOn == true {
-                    keychain.savePassword(account.password, account: account.email)
-                }
+                saveEmailIfNeeded(value)
+                savePasswordIfNeeded(value)
                 completion(.success(()))
             }
         }

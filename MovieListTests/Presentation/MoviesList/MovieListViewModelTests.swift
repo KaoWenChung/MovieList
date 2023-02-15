@@ -49,7 +49,7 @@ final class MovieListViewModelTests: XCTestCase {
         XCTAssertEqual(sut.movieList.value.count, 3)
     }
 
-    func test_searchMoviesUseCaseFetchDataFailed_viewModelContainsFailedLoadingMoviesError() {
+    func test_fetchMoviesUseCaseFetchDataFailed_viewModelContainsFailedLoadingMoviesError() {
         // given
         let fetchMoviesUseCaseMock = FetchMoviesUseCaseMock()
         fetchMoviesUseCaseMock.expectation = self.expectation(description: "contains failed error")

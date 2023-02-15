@@ -73,7 +73,7 @@
 		2153D7562988954C00485FCA /* Loadingable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7552988954C00485FCA /* Loadingable.swift */; };
 		2153D7582989555100485FCA /* LocalizedStringTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */; };
 		2153D75B2989582500485FCA /* UITableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D75A2989582500485FCA /* UITableViewCellTests.swift */; };
-		2153D75D29895DE800485FCA /* SearchMoviesUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D75C29895DE800485FCA /* SearchMoviesUseCaseTests.swift */; };
+		2153D75D29895DE800485FCA /* FetchMoviesUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D75C29895DE800485FCA /* FetchMoviesUseCaseTests.swift */; };
 		2153D7602989628100485FCA /* Movie+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D75F2989628100485FCA /* Movie+Stub.swift */; };
 		2153D7632989727C00485FCA /* MovieListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7622989727C00485FCA /* MovieListViewModelTests.swift */; };
 		2153D7652989A18600485FCA /* ImageRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2153D7642989A18600485FCA /* ImageRepositoryMock.swift */; };
@@ -93,6 +93,7 @@
 		21F9DA1D299BD69D00C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA1C299BD69D00C98DFA /* FirebaseAuth */; };
 		21F9DA21299BD87200C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA20299BD87200C98DFA /* FirebaseAuth */; };
 		21F9DA24299BDD9F00C98DFA /* FirebaseAuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA23299BDD9F00C98DFA /* FirebaseAuthenticationType.swift */; };
+		21F9DA26299D34A000C98DFA /* LoginRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA25299D34A000C98DFA /* LoginRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,7 +176,7 @@
 		2153D7552988954C00485FCA /* Loadingable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadingable.swift; sourceTree = "<group>"; };
 		2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringTypeTests.swift; sourceTree = "<group>"; };
 		2153D75A2989582500485FCA /* UITableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTests.swift; sourceTree = "<group>"; };
-		2153D75C29895DE800485FCA /* SearchMoviesUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesUseCaseTests.swift; sourceTree = "<group>"; };
+		2153D75C29895DE800485FCA /* FetchMoviesUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMoviesUseCaseTests.swift; sourceTree = "<group>"; };
 		2153D75F2989628100485FCA /* Movie+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+Stub.swift"; sourceTree = "<group>"; };
 		2153D7622989727C00485FCA /* MovieListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModelTests.swift; sourceTree = "<group>"; };
 		2153D7642989A18600485FCA /* ImageRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepositoryMock.swift; sourceTree = "<group>"; };
@@ -193,6 +194,7 @@
 		21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCaseMock.swift; sourceTree = "<group>"; };
 		21EA2759299859BE002F083B /* LoginStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorageType.swift; sourceTree = "<group>"; };
 		21F9DA23299BDD9F00C98DFA /* FirebaseAuthenticationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationType.swift; sourceTree = "<group>"; };
+		21F9DA25299D34A000C98DFA /* LoginRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -624,7 +626,8 @@
 		214F3F112987249A00DF06AE /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				2153D75C29895DE800485FCA /* SearchMoviesUseCaseTests.swift */,
+				2153D75C29895DE800485FCA /* FetchMoviesUseCaseTests.swift */,
+				21F9DA25299D34A000C98DFA /* LoginRepositoryTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21412FD2298F01420076EF11 /* UIImageViewTests.swift in Sources */,
+				21F9DA26299D34A000C98DFA /* LoginRepositoryTests.swift in Sources */,
 				218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */,
 				214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */,
 				214F3ED92986C28B00DF06AE /* StringTests.swift in Sources */,
@@ -931,7 +935,7 @@
 				2153D75B2989582500485FCA /* UITableViewCellTests.swift in Sources */,
 				214F3F172987250A00DF06AE /* NetworkConfigurableMock.swift in Sources */,
 				21EA275529967494002F083B /* FetchMoviesUseCaseMock.swift in Sources */,
-				2153D75D29895DE800485FCA /* SearchMoviesUseCaseTests.swift in Sources */,
+				2153D75D29895DE800485FCA /* FetchMoviesUseCaseTests.swift in Sources */,
 				2153D7602989628100485FCA /* Movie+Stub.swift in Sources */,
 				21EA2751299673E0002F083B /* XCTestCase+.swift in Sources */,
 				21EA275329967411002F083B /* MovieListViewControllerTests.swift in Sources */,

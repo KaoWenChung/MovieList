@@ -1,14 +1,11 @@
 //
-//  SearchMoviesUseCaseTests.swift
-//  MovieListTests
-//
 //  Created by wyn on 2023/1/31.
 //
 
 import XCTest
 @testable import MovieList
 
-final class SearchMoviesUseCaseTests: XCTestCase {
+final class FetchMoviesUseCaseTests: XCTestCase {
     let movies = [Movie.stub(title:"title0"), Movie.stub(title: "title1"), Movie.stub(title: "title2")]
     enum MoviesRepositorySuccessTestError: Error {
         case failedFetching
