@@ -17,12 +17,9 @@ protocol LoginUseCaseType {
 }
 
 struct LoginUseCase: LoginUseCaseType {
-    private let bioRepository: BioRepositoryType
     private let loginRepository: LoginRepositoryType
 
-    init(bioRepository: BioRepositoryType,
-         loginRepository: LoginRepositoryType) {
-        self.bioRepository = bioRepository
+    init(loginRepository: LoginRepositoryType) {
         self.loginRepository = loginRepository
     }
 
@@ -31,7 +28,7 @@ struct LoginUseCase: LoginUseCaseType {
     }
 
     func loginByBioAuth(completion: @escaping (Result<Void, Error>) -> Void) {
-        bioRepository.fetchAccount() { result in
+        loginRepository.fetchAccount() { result in
             switch result {
             case .success(let account):
                 let loginValue = LoginValue(isEmailSaved: nil, isBioAuthOn: nil, account: account)
@@ -43,22 +40,22 @@ struct LoginUseCase: LoginUseCaseType {
     }
 
     func fetchSavedEmail() -> String? {
-        bioRepository.fetchSavedEmail()
+        loginRepository.fetchSavedEmail()
     }
 
     func isBioAuthOn() -> Bool {
-        bioRepository.isBioAuthOn()
+        loginRepository.isBioAuthOn()
     }
 
     func toggleBioAuth(_ isOn: Bool) {
-        bioRepository.toggleBioAuth(isOn)
+        loginRepository.toggleBioAuth(isOn)
     }
 
     func isSaveEmailOn() -> Bool {
-        bioRepository.isSaveEmail()
+        loginRepository.isSaveEmail()
     }
 
     func toggleSaveEmail(_ isOn: Bool) {
-        bioRepository.toggleSaveEmail(isOn)
+        loginRepository.toggleSaveEmail(isOn)
     }
 }

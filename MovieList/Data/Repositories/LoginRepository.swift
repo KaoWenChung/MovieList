@@ -3,6 +3,7 @@
 //
 
 import FirebaseAuth
+import LocalAuthentication
 
 struct LoginRepository {
     let firebase: FirebaseAuthenticationType
@@ -39,6 +40,47 @@ extension LoginRepository: LoginRepositoryType {
                 saveEmailIfNeeded(value)
                 savePasswordIfNeeded(value)
                 completion(.success(()))
+            }
+        }
+    }
+    func isSaveEmail() -> Bool {
+        userdefault.readSaveEmail() ?? false
+    }
+
+    func toggleSaveEmail(_ isOn: Bool) {
+        userdefault.toggleSaveEmail(isOn)
+    }
+
+    func isBioAuthOn() -> Bool {
+        userdefault.readBioAuth() ?? false
+    }
+
+    func toggleBioAuth(_ isOn: Bool) {
+        userdefault.toggleBioAuth(isOn)
+    }
+    
+    func fetchSavedEmail() -> String? {
+        userdefault.readEmail()
+    }
+
+    func fetchAccount(completion: @escaping (Result<AccountValue, Error>) -> Void) {
+        let context = LAContext()
+        var error: NSError?
+        let reason = "Authenticate to login your app"
+        if context.canEvaluatePolicy (
+          .deviceOwnerAuthenticationWithBiometrics,
+          error: &error) {
+          context.evaluatePolicy(
+            .deviceOwnerAuthenticationWithBiometrics,
+            localizedReason: reason) { authenticated, error in
+                guard authenticated,
+                      let email = userdefault.readEmail(),
+                      let password = keychain.readPassword(account: email) else { return }
+                let account = AccountValue(email: email, password: password)
+                completion(.success(account))
+            }
+            if let error {
+                completion(.failure(error))
             }
         }
     }

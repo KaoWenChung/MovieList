@@ -21,7 +21,7 @@ final class AccountSceneDIContainer {
 
     // MARK: - Use Cases
     func makeLoginUseCase() -> LoginUseCaseType {
-        LoginUseCase(bioRepository: makeBioRepository(), loginRepository: makeLoginRepository())
+        LoginUseCase(loginRepository: makeLoginRepository())
     }
 
     func makeRegisterUseCase() -> RegisterUseCaseType {
@@ -55,9 +55,6 @@ final class AccountSceneDIContainer {
         RegisterRepository(userdefault: dependencies.userdefault, keychain: dependencies.keychain)
     }
 
-    func makeBioRepository() -> BioRepositoryType {
-        BioRepository(userdefault: dependencies.userdefault, keychain: dependencies.keychain)
-    }
     // MARK: - Flow Coordinators
     func makeAccountFlowCoordinator(navigationController: UINavigationController) -> AccountFlowCoordinator {
         AccountFlowCoordinator(navigationController: navigationController, dependencies: self)
