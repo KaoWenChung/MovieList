@@ -6,6 +6,10 @@ import XCTest
 @testable import MovieList
 
 final class LoginUseCaseTests: XCTestCase {
+    private enum LoginErrorMock: Error {
+        case someError
+    }
+
     struct LoginRepositoryMock: LoginRepositoryType {
         let result: Result<Void, Error>
         init(result: Result<Void, Error>) {
@@ -15,6 +19,7 @@ final class LoginUseCaseTests: XCTestCase {
             completion(result)
         }
     }
+
     class BioRepositoryMock: BioRepositoryType {
         var email: String?
         var result: Result<AccountValue, Error>
@@ -54,7 +59,7 @@ final class LoginUseCaseTests: XCTestCase {
             saveEmail = isOn
         }
     }
-    func testLoginUseCase_loginSuccessflly() {
+    func test_loginSuccessfully() {
         // give
         let expectation = self.expectation(description: "Login successfully")
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
@@ -69,6 +74,30 @@ final class LoginUseCaseTests: XCTestCase {
             }
         })
         // Then
-        waitForExpectations(timeout: 5, handler: nil)
+        wait(for: [expectation], timeout: 0.1)
+    }
+    func test_loginFailed() {
+        // give
+        let expectation = self.expectation(description: "Should throw login error")
+        let account = AccountValue(email: "test@gmail.com", password: "testPassword")
+        let bioRepo = BioRepositoryMock(result: .success(account), bioAuthOn: false, saveEmail: false)
+        let loginRepo = LoginRepositoryMock(result: .failure(LoginErrorMock.someError))
+        let sut = LoginUseCase(bioRepository: bioRepo, loginRepository: loginRepo)
+        // when
+        let value = LoginValue(isEmailSaved: false, isBioAuthOn: false, account: account)
+        sut.login(value: value, completion: { result in
+            do {
+                _ = try result.get()
+                XCTFail("Should not happen")
+            } catch let error {
+                if case LoginErrorMock.someError = error {
+                    expectation.fulfill()
+                } else {
+                    XCTFail("Wrong error")
+                }
+            }
+        })
+        // Then
+        wait(for: [expectation], timeout: 0.1)
     }
 }

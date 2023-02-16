@@ -13,7 +13,6 @@ private struct MockModel: Decodable {
 }
 
 final class DataTransferServiceTests: XCTestCase {
-    
     private enum DataTransferErrorMock: Error {
         case someError
     }
