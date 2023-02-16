@@ -8,8 +8,8 @@
 protocol LoginUseCaseType {
     func fetchSavedEmail() -> String?
     func login(value: LoginValue,
-               completion: @escaping (Result<Void, Error>) -> Void)
-    func loginByBioAuth(completion: @escaping (Result<Void, Error>) -> Void)
+               completion: @escaping (Error?) -> Void)
+    func loginByBioAuth(completion: @escaping (Error?) -> Void)
     func isBioAuthOn() -> Bool
     func toggleBioAuth(_ isOn: Bool)
     func isSaveEmailOn() -> Bool
@@ -23,18 +23,18 @@ struct LoginUseCase: LoginUseCaseType {
         self.loginRepository = loginRepository
     }
 
-    func login(value: LoginValue, completion: @escaping (Result<Void, Error>) -> Void) {
+    func login(value: LoginValue, completion: @escaping (Error?) -> Void) {
         loginRepository.login(value: value, completion: completion)
     }
 
-    func loginByBioAuth(completion: @escaping (Result<Void, Error>) -> Void) {
+    func loginByBioAuth(completion: @escaping (Error?) -> Void) {
         loginRepository.fetchAccount() { result in
             switch result {
             case .success(let account):
                 let loginValue = LoginValue(isEmailSaved: nil, isBioAuthOn: nil, account: account)
                 self.loginRepository.login(value: loginValue, completion: completion)
             case .failure(let error):
-                completion(.failure(error))
+                completion(error)
             }
         }
     }

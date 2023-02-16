@@ -56,12 +56,11 @@ final class LoginViewModel {
     private func login(_ account: AccountValue) {
         status.value = .loading
         let loginValue = LoginValue(isEmailSaved: isSaveEmail, isBioAuthOn: isBioLogin, account: account)
-        loginUseCase.login(value: loginValue) { result in
-            switch result {
-            case .success():
-                self.actions?.didLogin()
-            case .failure(let error):
+        loginUseCase.login(value: loginValue) { error in
+            if let error {
                 self.handle(error: error)
+            } else {
+                self.actions?.didLogin()
             }
             self.status.value = .normal
         }
@@ -69,12 +68,11 @@ final class LoginViewModel {
 
     private func loginByBioAuth() {
         guard isBioLogin else { return }
-        loginUseCase.loginByBioAuth() { result in
-            switch result {
-            case .success():
-                self.actions?.didLogin()
-            case .failure(let error):
+        loginUseCase.loginByBioAuth() { error in
+            if let error {
                 self.handle(error: error)
+            } else {
+                self.actions?.didLogin()
             }
         }
     }

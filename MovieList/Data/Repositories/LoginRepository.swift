@@ -31,15 +31,15 @@ struct LoginRepository {
 }
 
 extension LoginRepository: LoginRepositoryType {
-    public func login(value: LoginValue, completion: @escaping (Result<Void, Error>) -> Void) {
+    public func login(value: LoginValue, completion: @escaping (Error?) -> Void) {
         let account = value.account
         firebase.signIn(email: account.email, password: account.password) { (result, error) in
             if let error = error {
-                completion(.failure(error))
+                completion(error)
             } else {
                 saveEmailIfNeeded(value)
                 savePasswordIfNeeded(value)
-                completion(.success(()))
+                completion(nil)
             }
         }
     }

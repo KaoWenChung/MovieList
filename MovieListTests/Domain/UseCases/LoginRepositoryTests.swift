@@ -6,41 +6,44 @@ import XCTest
 @testable import MovieList
 
 final class LoginUseCaseTests: XCTestCase {
-    private enum LoginErrorMock: Error {
+    private enum LoginErrorMock: Error, Equatable {
         case someError
+        case loginFail
     }
 
-    struct LoginRepositoryMock: LoginRepositoryType {
-        let result: Result<Void, Error>
-        init(result: Result<Void, Error>) {
-            self.result = result
-        }
-        func login(value: LoginValue, completion: @escaping (Result<Void, Error>) -> Void) {
-            completion(result)
-        }
-    }
-
-    class BioRepositoryMock: BioRepositoryType {
+    class LoginRepositoryMock: LoginRepositoryType {
         var email: String?
-        var result: Result<AccountValue, Error>
+        var accountResult: Result<AccountValue, Error>?
         var bioAuthOn: Bool
         var saveEmail: Bool
+        var loginError: Error?
+
         init(email: String? = nil,
-             result: Result<AccountValue,
-             Error>,
-             bioAuthOn: Bool,
-             saveEmail: Bool) {
+             accountResult: Result<AccountValue, Error>? = nil,
+             bioAuthOn: Bool = false,
+             saveEmail: Bool = false,
+             loginError: Error?) {
             self.email = email
-            self.result = result
+            self.accountResult = accountResult
             self.bioAuthOn = bioAuthOn
             self.saveEmail = saveEmail
+            self.loginError = loginError
         }
+
+        func login(value: LoginValue, completion: @escaping (Error?) -> Void) {
+            completion(loginError)
+        }
+
         func fetchSavedEmail() -> String? {
             email
         }
         
         func fetchAccount(completion: @escaping (Result<AccountValue, Error>) -> Void) {
-            completion(result)
+            guard let accountResult else {
+                completion(.failure(LoginErrorMock.someError))
+                return
+            }
+            completion(accountResult)
         }
         
         func isBioAuthOn() -> Bool {
@@ -59,42 +62,40 @@ final class LoginUseCaseTests: XCTestCase {
             saveEmail = isOn
         }
     }
+
     func test_loginSuccessfully() {
         // give
         let expectation = self.expectation(description: "Login successfully")
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
-        let bioRepo = BioRepositoryMock(result: .success(account), bioAuthOn: false, saveEmail: false)
-        let loginRepo = LoginRepositoryMock(result: .success(()))
-        let sut = LoginUseCase(bioRepository: bioRepo, loginRepository: loginRepo)
+        let loginRepository = LoginRepositoryMock(loginError: nil)
+        let sut = LoginUseCase(loginRepository: loginRepository)
         // when
         let value = LoginValue(isEmailSaved: false, isBioAuthOn: false, account: account)
-        sut.login(value: value, completion: { result in
-            if case .success(_) = result {
-                expectation.fulfill()
+        sut.login(value: value, completion: { error in
+            guard error == nil else {
+                XCTFail("Should not happen")
+                return
             }
+            expectation.fulfill()
         })
         // Then
         wait(for: [expectation], timeout: 0.1)
     }
+
     func test_loginFailed() {
         // give
         let expectation = self.expectation(description: "Should throw login error")
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
-        let bioRepo = BioRepositoryMock(result: .success(account), bioAuthOn: false, saveEmail: false)
-        let loginRepo = LoginRepositoryMock(result: .failure(LoginErrorMock.someError))
-        let sut = LoginUseCase(bioRepository: bioRepo, loginRepository: loginRepo)
+        let loginRepo = LoginRepositoryMock(loginError: LoginErrorMock.loginFail)
+        let sut = LoginUseCase(loginRepository: loginRepo)
         // when
         let value = LoginValue(isEmailSaved: false, isBioAuthOn: false, account: account)
-        sut.login(value: value, completion: { result in
-            do {
-                _ = try result.get()
+        sut.login(value: value, completion: { error in
+            if let error = error as? LoginErrorMock,
+               error == LoginErrorMock.loginFail {
+                expectation.fulfill()
+            } else {
                 XCTFail("Should not happen")
-            } catch let error {
-                if case LoginErrorMock.someError = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
             }
         })
         // Then
