@@ -14,8 +14,8 @@ final class LoginUseCaseTests: XCTestCase {
     class LoginRepositoryMock: LoginRepositoryType {
         var email: String?
         var accountResult: Result<AccountValue, Error>?
-        var bioAuthOn: Bool
-        var saveEmail: Bool
+        private var bioAuthOn: Bool
+        private var saveEmail: Bool
         var loginError: Error?
 
         init(email: String? = nil,
@@ -31,6 +31,8 @@ final class LoginUseCaseTests: XCTestCase {
         }
 
         func login(value: LoginValue, completion: @escaping (Error?) -> Void) {
+            saveEmail = value.isEmailSaved ?? false
+            bioAuthOn = value.isBioAuthOn ?? false
             completion(loginError)
         }
 
@@ -73,6 +75,52 @@ final class LoginUseCaseTests: XCTestCase {
         let value = LoginValue(isEmailSaved: false, isBioAuthOn: false, account: account)
         sut.login(value: value, completion: { error in
             guard error == nil else {
+                XCTFail("Should not happen")
+                return
+            }
+            expectation.fulfill()
+        })
+        // Then
+        wait(for: [expectation], timeout: 0.1)
+    }
+
+    func test_loginWithEmailSavedSuccessfully_isSaveEmailOnReturnTrue() {
+        // give
+        let expectation = self.expectation(description: "Login and save email successfully")
+        let account = AccountValue(email: "test@gmail.com", password: "testPassword")
+        let loginRepository = LoginRepositoryMock(saveEmail: false, loginError: nil)
+        let sut = LoginUseCase(loginRepository: loginRepository)
+        // when
+        let value = LoginValue(isEmailSaved: true, isBioAuthOn: false, account: account)
+        sut.login(value: value, completion: { error in
+            guard error == nil else {
+                XCTFail("Should not happen")
+                return
+            }
+            guard sut.isSaveEmailOn() else {
+                XCTFail("Should not happen")
+                return
+            }
+            expectation.fulfill()
+        })
+        // Then
+        wait(for: [expectation], timeout: 0.1)
+    }
+
+    func test_loginWithBioAuthSuccessfully_isBioAuthOnReturnTrue() {
+        // give
+        let expectation = self.expectation(description: "Login and save email successfully")
+        let account = AccountValue(email: "test@gmail.com", password: "testPassword")
+        let loginRepository = LoginRepositoryMock(bioAuthOn: false, loginError: nil)
+        let sut = LoginUseCase(loginRepository: loginRepository)
+        // when
+        let value = LoginValue(isEmailSaved: false, isBioAuthOn: true, account: account)
+        sut.login(value: value, completion: { error in
+            guard error == nil else {
+                XCTFail("Should not happen")
+                return
+            }
+            guard sut.isBioAuthOn() else {
                 XCTFail("Should not happen")
                 return
             }
