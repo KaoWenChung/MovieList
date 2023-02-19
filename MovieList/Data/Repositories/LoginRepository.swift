@@ -3,19 +3,25 @@
 //
 
 import FirebaseAuth
-import LocalAuthentication
+
+enum LoginError: Error {
+    case noAccountData
+}
 
 struct LoginRepository {
-    let firebase: FirebaseAuthType
+    let firebaseAuth: FirebaseAuthType
     let userdefault: LoginUserDefaultStorageType
     let keychain: LoginKeychainStorageType
+    let bioAuth: BioAuthType
     
     init(firebase: FirebaseAuthType = Auth.auth(),
          userdefault: LoginUserDefaultStorageType,
-         keychain: LoginKeychainStorageType) {
-        self.firebase = firebase
+         keychain: LoginKeychainStorageType,
+         bioAuth: BioAuthType = BioAuth()) {
+        self.firebaseAuth = firebase
         self.userdefault = userdefault
         self.keychain = keychain
+        self.bioAuth = bioAuth
     }
 
     private func saveEmailIfNeeded(_ value: LoginValue) {
@@ -33,7 +39,7 @@ struct LoginRepository {
 extension LoginRepository: LoginRepositoryType {
     public func login(value: LoginValue, completion: @escaping (Error?) -> Void) {
         let account = value.account
-        firebase.signIn(email: account.email, password: account.password) { (result, error) in
+        firebaseAuth.signIn(email: account.email, password: account.password) { (result, error) in
             if let error = error {
                 completion(error)
             } else {
@@ -64,25 +70,12 @@ extension LoginRepository: LoginRepositoryType {
     }
 
     func fetchAccount(completion: @escaping (Result<AccountValue, Error>) -> Void) {
-        let context = LAContext()
-        var error: NSError?
-        let reason = "Authenticate to login your app"
-        if context.canEvaluatePolicy (
-          .deviceOwnerAuthenticationWithBiometrics,
-          error: &error) {
-          context.evaluatePolicy(
-            .deviceOwnerAuthenticationWithBiometrics,
-            localizedReason: reason) { authenticated, error in
-                guard authenticated,
-                      let email = userdefault.readEmail(),
-                      let password = keychain.readPassword(account: email) else { return }
-                let account = AccountValue(email: email, password: password)
-                completion(.success(account))
-            }
-            if let error {
-                completion(.failure(error))
-            }
-        }
+        guard let email = userdefault.readEmail(),
+              let password = keychain.readPassword(account: email) else {
+                  completion(.failure(LoginError.noAccountData))
+                  return
+              }
+        bioAuth.authenticationWithBiometrics(email: email, password: password, completion: completion)
     }
 }
 
@@ -92,7 +85,4 @@ struct LoginValue {
     let account: AccountValue
 }
 
-protocol BioAuthType {
-    func authenticationWithBiometrics()
-}
 

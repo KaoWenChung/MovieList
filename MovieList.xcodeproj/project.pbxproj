@@ -81,6 +81,7 @@
 		218A2BED29872BDD00663333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 218A2BEC29872BDD00663333 /* Localizable.strings */; };
 		218A2BEF29872BEF00663333 /* LocalizedStringType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BEE29872BEF00663333 /* LocalizedStringType.swift */; };
 		218A2BF129872C0600663333 /* CommonString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218A2BF029872C0600663333 /* CommonString.swift */; };
+		21D5698F29A2CB7B00E1D09A /* BioAuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5698E29A2CB7B00E1D09A /* BioAuthType.swift */; };
 		21DC85AB298AB1320051CFD2 /* LogoutUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC85AA298AB1320051CFD2 /* LogoutUseCase.swift */; };
 		21DC85AD298AB1960051CFD2 /* LogoutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC85AC298AB1960051CFD2 /* LogoutRepository.swift */; };
 		21DC85AF298AB1D30051CFD2 /* LogoutRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC85AE298AB1D30051CFD2 /* LogoutRepositoryType.swift */; };
@@ -183,6 +184,7 @@
 		218A2BEC29872BDD00663333 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		218A2BEE29872BEF00663333 /* LocalizedStringType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringType.swift; sourceTree = "<group>"; };
 		218A2BF029872C0600663333 /* CommonString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonString.swift; sourceTree = "<group>"; };
+		21D5698E29A2CB7B00E1D09A /* BioAuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioAuthType.swift; sourceTree = "<group>"; };
 		21DC85AA298AB1320051CFD2 /* LogoutUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCase.swift; sourceTree = "<group>"; };
 		21DC85AC298AB1960051CFD2 /* LogoutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRepository.swift; sourceTree = "<group>"; };
 		21DC85AE298AB1D30051CFD2 /* LogoutRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRepositoryType.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 		214F3E6B298438C300DF06AE /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				21D5698D29A2CB3300E1D09A /* LocalAuthentication */,
 				21F9DA22299BDD8B00C98DFA /* Firebase */,
 				214F3E84298593DB00DF06AE /* Repositories */,
 				214F3E7329858BE600DF06AE /* Network */,
@@ -714,6 +717,14 @@
 			path = Localized;
 			sourceTree = "<group>";
 		};
+		21D5698D29A2CB3300E1D09A /* LocalAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				21D5698E29A2CB7B00E1D09A /* BioAuthType.swift */,
+			);
+			path = LocalAuthentication;
+			sourceTree = "<group>";
+		};
 		21DC85B0298B09F70051CFD2 /* PersistentStorages */ = {
 			isa = PBXGroup;
 			children = (
@@ -881,6 +892,7 @@
 				214F3E722985503100DF06AE /* MoviesResponseDTO.swift in Sources */,
 				214F3EF02986DA4200DF06AE /* RegisterRepository.swift in Sources */,
 				218A2BEF29872BEF00663333 /* LocalizedStringType.swift in Sources */,
+				21D5698F29A2CB7B00E1D09A /* BioAuthType.swift in Sources */,
 				214F3EFD2986DD8500DF06AE /* LoginViewModel.swift in Sources */,
 				214F3F09298704C100DF06AE /* Alertable.swift in Sources */,
 				214F3E7B29858E3F00DF06AE /* NetworkService.swift in Sources */,
