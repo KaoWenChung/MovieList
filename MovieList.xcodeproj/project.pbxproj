@@ -91,7 +91,7 @@
 		21EA275A299859BE002F083B /* LoginStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA2759299859BE002F083B /* LoginStorageType.swift */; };
 		21F9DA1D299BD69D00C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA1C299BD69D00C98DFA /* FirebaseAuth */; };
 		21F9DA21299BD87200C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA20299BD87200C98DFA /* FirebaseAuth */; };
-		21F9DA24299BDD9F00C98DFA /* FirebaseAuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA23299BDD9F00C98DFA /* FirebaseAuthenticationType.swift */; };
+		21F9DA24299BDD9F00C98DFA /* FirebaseAuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA23299BDD9F00C98DFA /* FirebaseAuthType.swift */; };
 		21F9DA26299D34A000C98DFA /* LoginRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA25299D34A000C98DFA /* LoginRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -191,7 +191,7 @@
 		21EA275429967494002F083B /* FetchMoviesUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMoviesUseCaseMock.swift; sourceTree = "<group>"; };
 		21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCaseMock.swift; sourceTree = "<group>"; };
 		21EA2759299859BE002F083B /* LoginStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorageType.swift; sourceTree = "<group>"; };
-		21F9DA23299BDD9F00C98DFA /* FirebaseAuthenticationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationType.swift; sourceTree = "<group>"; };
+		21F9DA23299BDD9F00C98DFA /* FirebaseAuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthType.swift; sourceTree = "<group>"; };
 		21F9DA25299D34A000C98DFA /* LoginRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -667,6 +667,7 @@
 		2153D7592989581400485FCA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				21412FD1298F01420076EF11 /* UIImageViewTests.swift */,
 				214F3ED82986C28B00DF06AE /* StringTests.swift */,
 				2153D75A2989582500485FCA /* UITableViewCellTests.swift */,
 			);
@@ -696,10 +697,9 @@
 		218A2BE82987288600663333 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				21EA2750299673E0002F083B /* XCTestCase+.swift */,
 				2153D7592989581400485FCA /* Extension */,
+				21EA2750299673E0002F083B /* XCTestCase+.swift */,
 				2153D7572989555100485FCA /* LocalizedStringTypeTests.swift */,
-				21412FD1298F01420076EF11 /* UIImageViewTests.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -735,7 +735,7 @@
 		21F9DA22299BDD8B00C98DFA /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				21F9DA23299BDD9F00C98DFA /* FirebaseAuthenticationType.swift */,
+				21F9DA23299BDD9F00C98DFA /* FirebaseAuthType.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -910,7 +910,7 @@
 				214F3EA32985BB2A00DF06AE /* AppConfigurations.swift in Sources */,
 				21DC85AD298AB1960051CFD2 /* LogoutRepository.swift in Sources */,
 				214F3EC32985F77800DF06AE /* MovieListTableViewCell.swift in Sources */,
-				21F9DA24299BDD9F00C98DFA /* FirebaseAuthenticationType.swift in Sources */,
+				21F9DA24299BDD9F00C98DFA /* FirebaseAuthType.swift in Sources */,
 				214F3EA12985BB1800DF06AE /* AppFlowCoordinator.swift in Sources */,
 				214F3ECD2985FE2900DF06AE /* UITableViewCell+.swift in Sources */,
 				21DC85AF298AB1D30051CFD2 /* LogoutRepositoryType.swift in Sources */,

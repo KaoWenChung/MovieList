@@ -10,9 +10,9 @@ import FirebaseAuth
 struct LogoutRepository {
     let userdefault: LoginUserDefaultStorageType
     let keychain: LoginKeychainStorageType
-    let firebase: FirebaseAuthenticationType
+    let firebase: FirebaseAuthType
     
-    init(firebase: FirebaseAuthenticationType = Auth.auth(),
+    init(firebase: FirebaseAuthType = Auth.auth(),
          userdefault: LoginUserDefaultStorageType,
          keychain: LoginKeychainStorageType) {
         self.firebase = firebase
