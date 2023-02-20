@@ -7,8 +7,7 @@
 
 protocol LoginUseCaseType {
     func fetchSavedEmail() -> String?
-    func login(value: LoginValue,
-               completion: @escaping (Error?) -> Void)
+    func login(value: LoginValue, completion: @escaping (Error?) -> Void)
     func loginByBioAuth(completion: @escaping (Error?) -> Void)
     func isBioAuthOn() -> Bool
     func toggleBioAuth(_ isOn: Bool)

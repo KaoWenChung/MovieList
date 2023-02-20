@@ -7,12 +7,16 @@
 
 import LocalAuthentication
 
+enum BioAuthError: Error {
+    case noAuthenticated
+}
+
 protocol BioAuthType {
-    func authenticationWithBiometrics(email: String, password: String, completion: @escaping (Result<AccountValue, Error>) -> Void)
+    func authenticationWithBiometrics(completion: @escaping (Error?) -> Void)
 }
 
 struct BioAuth: BioAuthType {
-    func authenticationWithBiometrics(email: String, password: String, completion: @escaping (Result<AccountValue, Error>) -> Void) {
+    func authenticationWithBiometrics(completion: @escaping (Error?) -> Void) {
         let context = LAContext()
         var error: NSError?
         let reason = "Authenticate to login your app"
@@ -22,11 +26,14 @@ struct BioAuth: BioAuthType {
           context.evaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             localizedReason: reason) { authenticated, error in
-                let account = AccountValue(email: email, password: password)
-                completion(.success(account))
+                guard authenticated else {
+                    completion(BioAuthError.noAuthenticated)
+                    return
+                }
+                completion(nil)
             }
             if let error {
-                completion(.failure(error))
+                completion(error)
             }
         }
     }

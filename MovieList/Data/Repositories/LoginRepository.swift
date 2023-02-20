@@ -75,7 +75,12 @@ extension LoginRepository: LoginRepositoryType {
                   completion(.failure(LoginError.noAccountData))
                   return
               }
-        bioAuth.authenticationWithBiometrics(email: email, password: password, completion: completion)
+        bioAuth.authenticationWithBiometrics() { error in
+            if let error {
+                completion(.failure(error))
+            }
+            completion(.success(AccountValue(email: email, password: password)))
+        }
     }
 }
 
