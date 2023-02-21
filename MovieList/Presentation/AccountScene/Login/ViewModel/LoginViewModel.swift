@@ -98,11 +98,9 @@ extension LoginViewModel: LoginViewModelType {
 
     func setSaveEamil(_ isOn: Bool) {
         isSaveEmail = isOn
-        loginUseCase.toggleSaveEmail(isOn)
     }
     
     func setLoginByBio(_ isOn: Bool) {
         isBioLogin = isOn
-        loginUseCase.toggleBioAuth(isOn)
     }
 }

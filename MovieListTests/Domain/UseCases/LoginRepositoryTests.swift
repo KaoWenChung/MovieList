@@ -117,7 +117,6 @@ final class LoginUseCaseTests: XCTestCase {
         let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: userDefault, keychain: LoginKeychainStorageMock(), bioAuth: BioAuthMock())
         let sut = LoginUseCase(loginRepository: loginRepository)
         // when
-//        userDefault.toggleSaveEmail(false)
         let value = LoginValue(isEmailSaved: true, isBioAuthOn: false, account: account)
         sut.login(value: value, completion: { error in
             guard error == nil else {

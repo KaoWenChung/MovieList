@@ -10,9 +10,7 @@ protocol LoginUseCaseType {
     func login(value: LoginValue, completion: @escaping (Error?) -> Void)
     func loginByBioAuth(completion: @escaping (Error?) -> Void)
     func isBioAuthOn() -> Bool
-    func toggleBioAuth(_ isOn: Bool)
     func isSaveEmailOn() -> Bool
-    func toggleSaveEmail(_ isOn: Bool)
 }
 
 struct LoginUseCase: LoginUseCaseType {
@@ -46,15 +44,7 @@ struct LoginUseCase: LoginUseCaseType {
         loginRepository.isBioAuthOn()
     }
 
-    func toggleBioAuth(_ isOn: Bool) {
-        loginRepository.toggleBioAuth(isOn)
-    }
-
     func isSaveEmailOn() -> Bool {
         loginRepository.isSaveEmail()
-    }
-
-    func toggleSaveEmail(_ isOn: Bool) {
-        loginRepository.toggleSaveEmail(isOn)
     }
 }

@@ -26,11 +26,13 @@ struct LoginRepository {
 
     private func saveEmailIfNeeded(_ value: LoginValue) {
         guard value.isEmailSaved == true || value.isBioAuthOn == true else { return }
+        userdefault.toggleSaveEmail(true)
         userdefault.saveEmail(value.account.email)
     }
 
     private func savePasswordIfNeeded(_ value: LoginValue) {
         guard value.isBioAuthOn == true else { return }
+        userdefault.toggleBioAuth(true)
         let account = value.account
         keychain.savePassword(account.password, account: account.email)
     }
@@ -53,16 +55,8 @@ extension LoginRepository: LoginRepositoryType {
         userdefault.readSaveEmail() ?? false
     }
 
-    func toggleSaveEmail(_ isOn: Bool) {
-        userdefault.toggleSaveEmail(isOn)
-    }
-
     func isBioAuthOn() -> Bool {
         userdefault.readBioAuth() ?? false
-    }
-
-    func toggleBioAuth(_ isOn: Bool) {
-        userdefault.toggleBioAuth(isOn)
     }
     
     func fetchSavedEmail() -> String? {
@@ -88,6 +82,13 @@ struct LoginValue {
     let isEmailSaved: Bool?
     let isBioAuthOn: Bool?
     let account: AccountValue
+    init(isEmailSaved: Bool?,
+         isBioAuthOn: Bool?,
+         account: AccountValue) {
+        self.isEmailSaved = isEmailSaved
+        self.isBioAuthOn = isBioAuthOn
+        self.account = account
+    }
 }
 
 
