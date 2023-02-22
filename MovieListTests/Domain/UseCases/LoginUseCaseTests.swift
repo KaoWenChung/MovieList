@@ -94,7 +94,8 @@ final class LoginUseCaseTests: XCTestCase {
         // give
         let expectation = self.expectation(description: "Login successfully")
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
-        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: LoginUserDefaultStorageMock(), keychain: LoginKeychainStorageMock(), bioAuth: BioAuthMock())
+        let userdefault = LoginUserDefaultStorageMock()
+        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: userdefault, keychain: LoginKeychainStorageMock(), bioAuth: BioAuthMock())
         let sut = LoginUseCase(loginRepository: loginRepository)
         // when
         let value = LoginValue(isEmailSaved: false, isBioAuthOn: false, account: account)
@@ -103,17 +104,21 @@ final class LoginUseCaseTests: XCTestCase {
                 XCTFail("Should not happen")
                 return
             }
+            XCTAssertEqual(userdefault.isSaveEmail, false)
+            XCTAssertEqual(userdefault.isBioAuth, false)
             expectation.fulfill()
         })
         // Then
         wait(for: [expectation], timeout: 0.1)
     }
 
-    func test_loginWithEmailSavedSuccessfully_isSaveEmailOnReturnTrue() {
+    func test_loginWithEmailSaved_SavedEmail() {
         // give
         let expectation = self.expectation(description: "Login and save email successfully")
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
-        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: LoginUserDefaultStorageMock(), keychain: LoginKeychainStorageMock(), bioAuth: BioAuthMock())
+        let userdefault = LoginUserDefaultStorageMock()
+        let keychain = LoginKeychainStorageMock()
+        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: userdefault, keychain: keychain, bioAuth: BioAuthMock())
         let sut = LoginUseCase(loginRepository: loginRepository)
         // when
         let value = LoginValue(isEmailSaved: true, isBioAuthOn: false, account: account)
@@ -126,6 +131,35 @@ final class LoginUseCaseTests: XCTestCase {
                 XCTFail("Should not happen")
                 return
             }
+            XCTAssertEqual(userdefault.isSaveEmail, true)
+            XCTAssertEqual(userdefault.isBioAuth, false)
+            XCTAssertEqual(sut.fetchSavedEmail(), "test@gmail.com")
+            XCTAssertEqual(keychain.accountDic, [:])
+            expectation.fulfill()
+        })
+        // Then
+        wait(for: [expectation], timeout: 0.1)
+    }
+
+    func test_loginWithBioAuthOn_saveEmailPassword() {
+        // give
+        let expectation = self.expectation(description: "Login and save email successfully")
+        let account = AccountValue(email: "test@gmail.com", password: "testPassword")
+        let userdefault = LoginUserDefaultStorageMock()
+        let keychain = LoginKeychainStorageMock()
+        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: userdefault, keychain: keychain, bioAuth: BioAuthMock())
+        let sut = LoginUseCase(loginRepository: loginRepository)
+        // when
+        let value = LoginValue(isEmailSaved: false, isBioAuthOn: true, account: account)
+        sut.login(value: value, completion: { error in
+            guard error == nil else {
+                XCTFail("Should not happen")
+                return
+            }
+            XCTAssertEqual(userdefault.isSaveEmail, true)
+            XCTAssertEqual(userdefault.isBioAuth, true)
+            XCTAssertEqual(sut.fetchSavedEmail(), "test@gmail.com")
+            XCTAssertEqual(keychain.accountDic, ["test@gmail.com": "testPassword"])
             expectation.fulfill()
         })
         // Then
@@ -176,4 +210,6 @@ final class LoginUseCaseTests: XCTestCase {
         // Then
         wait(for: [expectation], timeout: 0.1)
     }
+
+    
 }

@@ -93,7 +93,7 @@
 		21F9DA1D299BD69D00C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA1C299BD69D00C98DFA /* FirebaseAuth */; };
 		21F9DA21299BD87200C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA20299BD87200C98DFA /* FirebaseAuth */; };
 		21F9DA24299BDD9F00C98DFA /* FirebaseAuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA23299BDD9F00C98DFA /* FirebaseAuthType.swift */; };
-		21F9DA26299D34A000C98DFA /* LoginRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA25299D34A000C98DFA /* LoginRepositoryTests.swift */; };
+		21F9DA26299D34A000C98DFA /* LoginUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA25299D34A000C98DFA /* LoginUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,7 +194,7 @@
 		21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCaseMock.swift; sourceTree = "<group>"; };
 		21EA2759299859BE002F083B /* LoginStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorageType.swift; sourceTree = "<group>"; };
 		21F9DA23299BDD9F00C98DFA /* FirebaseAuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthType.swift; sourceTree = "<group>"; };
-		21F9DA25299D34A000C98DFA /* LoginRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryTests.swift; sourceTree = "<group>"; };
+		21F9DA25299D34A000C98DFA /* LoginUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,7 +627,7 @@
 			isa = PBXGroup;
 			children = (
 				2153D75C29895DE800485FCA /* FetchMoviesUseCaseTests.swift */,
-				21F9DA25299D34A000C98DFA /* LoginRepositoryTests.swift */,
+				21F9DA25299D34A000C98DFA /* LoginUseCaseTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -934,7 +934,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21412FD2298F01420076EF11 /* UIImageViewTests.swift in Sources */,
-				21F9DA26299D34A000C98DFA /* LoginRepositoryTests.swift in Sources */,
+				21F9DA26299D34A000C98DFA /* LoginUseCaseTests.swift in Sources */,
 				218A2BEA298728F300663333 /* NetworkServiceTests.swift in Sources */,
 				214F3F1B2987258900DF06AE /* DataTransferServiceTests.swift in Sources */,
 				214F3ED92986C28B00DF06AE /* StringTests.swift in Sources */,
