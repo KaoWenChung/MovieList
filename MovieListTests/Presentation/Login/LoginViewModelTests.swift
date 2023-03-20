@@ -50,6 +50,7 @@ final class LoginViewModelTests: XCTestCase {
         // when
         sut.viewDidLoad()
         // then
+        XCTAssertEqual(sut.savedAccount, "user@mock.com")
         wait(for: [expectation], timeout: 0.1)
     }
 
@@ -65,5 +66,20 @@ final class LoginViewModelTests: XCTestCase {
         let sut = LoginViewModel(loginUseCase: loginUseCase, actions: actions)
         // when
         sut.viewDidLoad()
+        // then
+        XCTAssertEqual(sut.savedAccount, "user@mock.com")
+    }
+
+    func test_savedEmailOffViewDidLoad_savedAccountShouldBeNil() {
+        // given
+        let loginUseCase = LoginUseCaseMock()
+        loginUseCase.bioAuthOn = false
+        loginUseCase.saveEmailOn = false
+        let actions = LoginViewModelActions(didLogin: {}, didRegister: {})
+        let sut = LoginViewModel(loginUseCase: loginUseCase, actions: actions)
+        // when
+        sut.viewDidLoad()
+        // then
+        XCTAssertNil(sut.savedAccount)
     }
 }
