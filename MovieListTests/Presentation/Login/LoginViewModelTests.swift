@@ -36,7 +36,7 @@ final class LoginViewModelTests: XCTestCase {
         }
     }
     
-    func test_viewDidLoadLoginByBioAuthSuccessfully() {
+    func test_BioAuthLoginOnViewDidLoad_Success() {
         // given
         let loginUseCase = LoginUseCaseMock()
         loginUseCase.bioAuthOn = true
@@ -51,5 +51,19 @@ final class LoginViewModelTests: XCTestCase {
         sut.viewDidLoad()
         // then
         wait(for: [expectation], timeout: 0.1)
+    }
+
+    func test_BioAuthLoginOffViewDidLoad_NotLogin() {
+        // given
+        let loginUseCase = LoginUseCaseMock()
+        loginUseCase.bioAuthOn = false
+        loginUseCase.saveEmailOn = true
+        loginUseCase.savedEmail = "user@mock.com"
+        let actions = LoginViewModelActions(didLogin: {
+            XCTFail("Should not call this function")
+        }, didRegister: {})
+        let sut = LoginViewModel(loginUseCase: loginUseCase, actions: actions)
+        // when
+        sut.viewDidLoad()
     }
 }
