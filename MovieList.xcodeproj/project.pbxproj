@@ -90,6 +90,7 @@
 		21EA275529967494002F083B /* FetchMoviesUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA275429967494002F083B /* FetchMoviesUseCaseMock.swift */; };
 		21EA2757299674C8002F083B /* LogoutUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */; };
 		21EA275A299859BE002F083B /* LoginStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA2759299859BE002F083B /* LoginStorageType.swift */; };
+		21ED69C629C85F9700E9DDF3 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ED69C529C85F9700E9DDF3 /* LoginViewModelTests.swift */; };
 		21F9DA1D299BD69D00C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA1C299BD69D00C98DFA /* FirebaseAuth */; };
 		21F9DA21299BD87200C98DFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 21F9DA20299BD87200C98DFA /* FirebaseAuth */; };
 		21F9DA24299BDD9F00C98DFA /* FirebaseAuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F9DA23299BDD9F00C98DFA /* FirebaseAuthType.swift */; };
@@ -193,6 +194,7 @@
 		21EA275429967494002F083B /* FetchMoviesUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMoviesUseCaseMock.swift; sourceTree = "<group>"; };
 		21EA2756299674C8002F083B /* LogoutUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCaseMock.swift; sourceTree = "<group>"; };
 		21EA2759299859BE002F083B /* LoginStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorageType.swift; sourceTree = "<group>"; };
+		21ED69C529C85F9700E9DDF3 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		21F9DA23299BDD9F00C98DFA /* FirebaseAuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthType.swift; sourceTree = "<group>"; };
 		21F9DA25299D34A000C98DFA /* LoginUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -635,6 +637,7 @@
 		214F3F12298724B900DF06AE /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				21ED69C429C85F7300E9DDF3 /* Login */,
 				2153D7612989701100485FCA /* MoviesList */,
 			);
 			path = Presentation;
@@ -741,6 +744,14 @@
 				214F3F0C2987100B00DF06AE /* KeychainStorage */,
 			);
 			path = LoginStorage;
+			sourceTree = "<group>";
+		};
+		21ED69C429C85F7300E9DDF3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				21ED69C529C85F9700E9DDF3 /* LoginViewModelTests.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		21F9DA22299BDD8B00C98DFA /* Firebase */ = {
@@ -945,6 +956,7 @@
 				21EA275529967494002F083B /* FetchMoviesUseCaseMock.swift in Sources */,
 				2153D75D29895DE800485FCA /* FetchMoviesUseCaseTests.swift in Sources */,
 				2153D7602989628100485FCA /* Movie+Stub.swift in Sources */,
+				21ED69C629C85F9700E9DDF3 /* LoginViewModelTests.swift in Sources */,
 				21EA2751299673E0002F083B /* XCTestCase+.swift in Sources */,
 				21EA275329967411002F083B /* MovieListViewControllerTests.swift in Sources */,
 				214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */,
