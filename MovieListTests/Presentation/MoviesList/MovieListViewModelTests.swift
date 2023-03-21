@@ -63,4 +63,22 @@ final class MovieListViewModelTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(sut.error.value, "Failed loading movies")
     }
+
+    func test_loadNextPageSuccessfully_viewModelContains6Movies() {
+        // given
+        let fetchMoviesUseCaseMock = FetchMoviesUseCaseMock()
+        let expectation = self.expectation(description: "contains 6 movie's value")
+        expectation.expectedFulfillmentCount = 2
+        fetchMoviesUseCaseMock.expectation = expectation
+        fetchMoviesUseCaseMock.movieList = MovieList(totalResults: 0, movies: movies)
+        let didLogoutMock = {}
+        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
+        // when
+        sut.viewDidLoad()
+        sut.loadNextPage()
+        
+        // then
+        wait(for: [expectation], timeout: 0.5)
+        XCTAssertEqual(sut.movieList.value.count, 6)
+    }
 }
