@@ -49,8 +49,10 @@ final class MovieListViewModel {
     // MARK: Properties
     private var moviesLoadTask: CancellableType? { willSet { moviesLoadTask?.cancel() } }
     private var currentSearchYear = Content.defaultYear
+    /// The amount til the current search page
     private var currentSearchTotalResult = Content.defaultTotalResult
     private var currentPage: Int = Content.defaultPage
+    /// The total amount of movie result
     private var totalResults: Int = Content.defaultTotalResult
     private var hasMorePages: Bool { movieList.value.count < totalResults }
     private var nextPage: Int { hasMorePages ? currentPage + Content.aPage : currentPage }
@@ -98,11 +100,14 @@ final class MovieListViewModel {
         }
     }
 
-    private func updateCurrentSearchYear() {
+    private func checkSouldSearchNextYear() {
+        // Check whether the current result amount is already equal to the total number of the total amount of the specific year
         guard currentSearchTotalResult == totalResults else { return }
         guard let currentYear = Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year,
               currentSearchYear < currentYear else { return }
+        // set next year
         currentSearchYear += Content.aYear
+        // reset the condition of search amount
         currentSearchTotalResult = Content.defaultTotalResult
         currentPage = Content.defaultPage
     }
@@ -115,7 +120,7 @@ extension MovieListViewModel: MovieListViewModelType {
     }
     
     func loadNextPage() {
-        updateCurrentSearchYear()
+        checkSouldSearchNextYear()
         loadMovies()
     }
     
