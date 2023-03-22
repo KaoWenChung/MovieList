@@ -54,6 +54,20 @@ final class LoginViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 0.1)
     }
 
+    func test_didSelectRegister_sendEventToLoginViewModelActions() {
+        // given
+        let loginUseCase = LoginUseCaseMock()
+        let expectation = self.expectation(description: "Should execute didRegister")
+        let actions = LoginViewModelActions(didLogin: {}, didRegister: {
+            expectation.fulfill()
+        })
+        let sut = LoginViewModel(loginUseCase: loginUseCase, actions: actions)
+        // when
+        sut.didSelectRegister()
+        // then
+        wait(for: [expectation], timeout: 0.1)
+    }
+
     func test_BioAuthLoginOffViewDidLoad_NotLogin() {
         // given
         let loginUseCase = LoginUseCaseMock()
