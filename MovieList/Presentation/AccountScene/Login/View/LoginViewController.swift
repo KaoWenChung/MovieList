@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginViewController: UIViewController, Alertable, Loadingable {
+final class LoginViewController: MovieListCustomVC, Alertable, Loadingable {
     enum LoginViewString: LocalizedStringType {
         case title
     }
