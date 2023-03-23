@@ -14,7 +14,5 @@
 
 "LoginViewString.title" = "LOGIN";
 
-"RegisterViewString.title" = "REGISTER";
-
 "MovieListViewString.title" = "MOVIE LIST";
 "MovieListViewString.logout" = "Logout";

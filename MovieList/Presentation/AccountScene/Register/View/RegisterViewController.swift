@@ -7,10 +7,7 @@
 
 import UIKit
 
-final class RegisterViewController: UIViewController, Alertable, Loadingable {
-    enum RegisterViewString: LocalizedStringType {
-        case title
-    }
+final class RegisterViewController: MovieListCustomVC, Alertable, Loadingable {
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
     private let viewModel: RegisterViewModelType
@@ -26,7 +23,6 @@ final class RegisterViewController: UIViewController, Alertable, Loadingable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = RegisterViewString.title.text
         bind(to: viewModel)
     }
 

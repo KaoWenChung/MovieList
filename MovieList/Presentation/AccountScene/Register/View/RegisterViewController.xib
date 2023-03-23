@@ -22,10 +22,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zLh-3Z-UUD">
-                    <rect key="frame" x="75" y="341" width="240" height="162.33333333333337"/>
+                    <rect key="frame" x="75" y="301.66666666666669" width="240" height="240.66666666666669"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDh-jg-Yz8">
+                            <rect key="frame" x="59.666666666666657" y="0.0" width="121" height="38.333333333333336"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oST-bU-hCb">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="88"/>
+                            <rect key="frame" x="0.0" y="78.333333333333314" width="240" height="88"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Si3-7K-9RU">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="34"/>
@@ -46,7 +52,7 @@
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ex9-74-cnb">
-                            <rect key="frame" x="0.0" y="127.99999999999999" width="240" height="34.333333333333329"/>
+                            <rect key="frame" x="0.0" y="206.33333333333331" width="240" height="34.333333333333343"/>
                             <color key="backgroundColor" systemColor="systemMintColor"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>

@@ -29,7 +29,7 @@ final class LoginViewController: UIViewController, Alertable, Loadingable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = LoginViewString.title.text
+        navigationItem.backButtonTitle = LoginViewString.title.text
         bind(to: viewModel)
         viewModel.viewDidLoad()
         initConfigButtons()
