@@ -24,26 +24,30 @@ final class MovieListViewModelTests: XCTestCase {
         }
         let logoutUseCaseMockMock = LogoutUseCaseMock()
         logoutUseCaseMockMock.expectation = expectation(description: "logout successfully")
-        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: logoutUseCaseMockMock)
+        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(),
+                                     fetchMoviesUseCase: fetchMoviesUseCaseMock,
+                                     actions: MovieListViewModelActions(didLogout: didLogoutMock),
+                                     logoutUseCase: logoutUseCaseMockMock)
         // when
         sut.didSelectLogout()
-        
         // then
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(logoutUseCaseMockMock.isLogout, true)
         XCTAssertEqual(didSwitchToLoginView, true)
     }
-    
+
     func test_fetchMoviesUseCaseFetchDataSuccessfully_viewModelContains3Movies() {
         // given
         let fetchMoviesUseCaseMock = FetchMoviesUseCaseMock()
         fetchMoviesUseCaseMock.expectation = self.expectation(description: "contains 3 movie's value")
         fetchMoviesUseCaseMock.movieList = MovieList(totalResults: 0, movies: movies)
         let didLogoutMock = {}
-        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
+        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(),
+                                     fetchMoviesUseCase: fetchMoviesUseCaseMock,
+                                     actions: MovieListViewModelActions(didLogout: didLogoutMock),
+                                     logoutUseCase: LogoutUseCaseMock())
         // when
         sut.viewDidLoad()
-        
         // then
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(sut.movieList.value.count, 3)
@@ -55,10 +59,12 @@ final class MovieListViewModelTests: XCTestCase {
         fetchMoviesUseCaseMock.expectation = self.expectation(description: "contains failed error")
         fetchMoviesUseCaseMock.error = MovieListViewModelTestError.failedFetching
         let didLogoutMock = {}
-        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
+        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(),
+                                     fetchMoviesUseCase: fetchMoviesUseCaseMock,
+                                     actions: MovieListViewModelActions(didLogout: didLogoutMock),
+                                     logoutUseCase: LogoutUseCaseMock())
         // when
         sut.viewDidLoad()
-        
         // then
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(sut.error.value, "Failed loading movies")
@@ -72,11 +78,13 @@ final class MovieListViewModelTests: XCTestCase {
         fetchMoviesUseCaseMock.expectation = expectation
         fetchMoviesUseCaseMock.movieList = MovieList(totalResults: 0, movies: movies)
         let didLogoutMock = {}
-        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: fetchMoviesUseCaseMock, actions: MovieListViewModelActions(didLogout: didLogoutMock), logoutUseCase: LogoutUseCaseMock())
+        let sut = MovieListViewModel(imageRepository: ImageRepositoryMock(),
+                                     fetchMoviesUseCase: fetchMoviesUseCaseMock,
+                                     actions: MovieListViewModelActions(didLogout: didLogoutMock),
+                                     logoutUseCase: LogoutUseCaseMock())
         // when
         sut.viewDidLoad()
         sut.loadNextPage()
-        
         // then
         wait(for: [expectation], timeout: 0.5)
         XCTAssertEqual(sut.movieList.value.count, 6)

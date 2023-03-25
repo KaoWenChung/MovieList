@@ -11,7 +11,10 @@ import XCTest
 final class MovieListViewControllerTests: XCTestCase {
     func testIsMemoryLeaks() throws {
         assertDeallocation { () -> UIViewController in
-            let viewModel = MovieListViewModel(imageRepository: ImageRepositoryMock(), fetchMoviesUseCase: FetchMoviesUseCaseMock(), actions: MovieListViewModelActions(didLogout: {}), logoutUseCase: LogoutUseCaseMock())
+            let viewModel = MovieListViewModel(imageRepository: ImageRepositoryMock(),
+                                               fetchMoviesUseCase: FetchMoviesUseCaseMock(),
+                                               actions: MovieListViewModelActions(didLogout: {}),
+                                               logoutUseCase: LogoutUseCaseMock())
             let sut = MovieListViewController(viewModel: viewModel)
             return sut
         }

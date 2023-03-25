@@ -2,6 +2,7 @@
 This app allows users to get all movies released after the year 2000 and contain 'love' in their titles.
 * Users have to sign-up/sign in to an account before using the APP
 ![Screen Shot](Resources/ScreenShot.png)
+
 ## How to build the App
 1. Sign up [OMDb API](http://www.omdbapi.com/apikey.aspx) and copy the API Key.
 2. Search the keyword "{YOUR_API_KEY}" in `~/MovieList/MovieList/Application/AppConfigurations.swift` and paste the API Key.
