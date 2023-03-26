@@ -11,7 +11,7 @@ final class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak private var posterImageView: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var yearLabel: UILabel!
-    
+
     private var imageLoadTask: CancellableType?
 
     override func prepareForReuse() {
@@ -21,10 +21,11 @@ final class MovieListTableViewCell: UITableViewCell {
         titleLabel.text = nil
         yearLabel.text = nil
     }
-    
+
     func fill(_ cellViewModel: MovieListCellViewModel) {
         titleLabel.text = cellViewModel.title
         yearLabel.text = cellViewModel.year
-        imageLoadTask = posterImageView.downloaded(imageLoader: cellViewModel.imageRepository, from: cellViewModel.poster)
+        imageLoadTask = posterImageView.downloaded(imageLoader: cellViewModel.imageRepository,
+                                                   from: cellViewModel.poster)
     }
 }

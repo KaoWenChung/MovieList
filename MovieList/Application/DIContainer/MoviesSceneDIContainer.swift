@@ -15,9 +15,9 @@ final class MoviesSceneDIContainer {
         let keychain: LoginKeychainStorageType
         let imageCache: ImageCacheType
     }
-    
+
     private let dependencies: Dependencies
-    
+
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
@@ -35,7 +35,7 @@ final class MoviesSceneDIContainer {
     func makeMovieListViewController(actions: MovieListViewModelActions) -> MovieListViewController {
         MovieListViewController(viewModel: makeMovieListViewModel(actions: actions))
     }
-    
+
     func makeMovieListViewModel(actions: MovieListViewModelActions) -> MovieListViewModelType {
         MovieListViewModel(imageRepository: makeImagesRepository(),
                            fetchMoviesUseCase: makeFetchMoviesUseCase(),

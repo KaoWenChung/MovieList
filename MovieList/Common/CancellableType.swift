@@ -8,4 +8,3 @@
 public protocol CancellableType {
     func cancel()
 }
-

@@ -11,7 +11,7 @@ struct LogoutRepository {
     let userdefault: LoginUserDefaultStorageType
     let keychain: LoginKeychainStorageType
     let firebase: FirebaseAuthType
-    
+
     init(firebase: FirebaseAuthType = Auth.auth(),
          userdefault: LoginUserDefaultStorageType,
          keychain: LoginKeychainStorageType) {

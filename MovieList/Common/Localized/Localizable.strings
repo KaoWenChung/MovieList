@@ -7,7 +7,7 @@
 */
 
 "CommonString.error" = "ERROR";
-"CommonString.ok" = "OK";
+"CommonString.confirm" = "OK";
 
 "ErrorString.noInternet" = "No internet connection";
 "ErrorString.failLoadingMovies" = "Failed loading movies";

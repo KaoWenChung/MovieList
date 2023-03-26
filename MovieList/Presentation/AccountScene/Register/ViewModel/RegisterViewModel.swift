@@ -40,12 +40,11 @@ final class RegisterViewModel {
     }
     private func register(_ account: AccountValue) {
         status.value = .loading
-        registerUseCase.execute(requestValue: account) { result in
-            switch result {
-            case .success():
-                self.actions?.didRegister()
-            case .failure(let error):
+        registerUseCase.execute(requestValue: account) { error in
+            if let error {
                 self.handle(error: error)
+            } else {
+                self.actions?.didRegister()
             }
             self.status.value = .normal
         }

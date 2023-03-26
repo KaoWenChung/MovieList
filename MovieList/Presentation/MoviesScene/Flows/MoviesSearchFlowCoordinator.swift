@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MoviesSearchFlowCoordinatorDependencies  {
+protocol MoviesSearchFlowCoordinatorDependencies {
     func makeMovieListViewController(actions: MovieListViewModelActions) -> MovieListViewController
 }
 
@@ -27,9 +27,10 @@ final class MoviesSearchFlowCoordinator {
     }
 
     func start() {
-        let vc = dependencies.makeMovieListViewController(actions: MovieListViewModelActions(didLogout: didLogout))
+        let action = MovieListViewModelActions(didLogout: didLogout)
+        let movieListVC = dependencies.makeMovieListViewController(actions: action)
 
-        navigationController?.setViewControllers([vc], animated: true)
+        navigationController?.setViewControllers([movieListVC], animated: true)
     }
 
     private func didLogout() {

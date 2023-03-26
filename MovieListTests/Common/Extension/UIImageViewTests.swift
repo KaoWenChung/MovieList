@@ -40,7 +40,7 @@ final class UIImageViewTests: XCTestCase {
         imageRepository.expectation = self.expectation(description: "Should run error and present placeholer image")
 
         let sut = UIImageView()
-        
+
         _ = sut.downloaded(imageLoader: imageRepository, from: "url", placeholderImage: "noImage") {
             DispatchQueue.main.async {
                 XCTAssertEqual(sut.image, UIImage(named: "noImage"))

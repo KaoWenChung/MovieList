@@ -6,17 +6,20 @@ import XCTest
 @testable import MovieList
 
 final class FetchMoviesUseCaseTests: XCTestCase {
-    let movies = [Movie.stub(title:"title0"), Movie.stub(title: "title1"), Movie.stub(title: "title2")]
+    let movies = [Movie.stub(title: "title0"),
+                  Movie.stub(title: "title1"),
+                  Movie.stub(title: "title2")]
     enum MoviesRepositorySuccessTestError: Error {
         case failedFetching
     }
-    
+
     struct MoviesRepositoryMock: MoviesRepositoryType {
         let result: Result<MovieList, Error>
         init(result: Result<MovieList, Error>) {
             self.result = result
         }
-        func fetchMoviesList(request: FetchMoviesRequestValue, completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
+        func fetchMoviesList(request: FetchMoviesRequestValue,
+                             completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
             completion(result)
             return nil
         }
@@ -27,7 +30,7 @@ final class FetchMoviesUseCaseTests: XCTestCase {
         expectation.expectedFulfillmentCount = 2
         let repository = MoviesRepositoryMock(result: .success(MovieList(totalResults: 3, movies: movies)))
         let sut = FetchMoviesUseCase(moviesRepository: repository)
-        
+
         // when
         let requestValue = FetchMoviesRequestValue(search: "love", year: "2000", page: 1)
         var useCaseResult: MovieList?
@@ -43,7 +46,6 @@ final class FetchMoviesUseCaseTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(useCaseResult?.totalResults, 3)
         XCTAssertEqual(useCaseResult?.movies.first?.title, "title0")
-        
         XCTAssertEqual(repositoryResult?.totalResults, 3)
         XCTAssertEqual(repositoryResult?.movies.first?.title, "title0")
     }
@@ -54,7 +56,7 @@ final class FetchMoviesUseCaseTests: XCTestCase {
         expectation.expectedFulfillmentCount = 2
         let repository = MoviesRepositoryMock(result: .failure(MoviesRepositorySuccessTestError.failedFetching))
         let sut = FetchMoviesUseCase(moviesRepository: repository)
-        
+
         // when
         let requestValue = FetchMoviesRequestValue(search: "love", year: "2000", page: 1)
         var useCaseResult: MovieList?

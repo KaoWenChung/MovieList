@@ -30,7 +30,9 @@ extension XCTestCase {
             })
         }
         wait(for: [autoreleasepoolExpectation], timeout: 10.0)
-        wait(for: weakReferenceViewController == nil, timeout: 3.0, description: "The view controller should be deallocated since no strong reference points to it.")
+        wait(for: weakReferenceViewController == nil,
+             timeout: 3.0,
+             description: "The view controller should be deallocated since no strong reference points to it.")
     }
 
     /// Checks for the callback to be the expected value within the given timeout.
@@ -39,7 +41,11 @@ extension XCTestCase {
     ///   - condition: The condition to check for.
     ///   - timeout: The timeout in which the callback should return true.
     ///   - description: A string to display in the test log for this expectation, to help diagnose failures.
-    private func wait(for condition: @autoclosure @escaping () -> Bool, timeout: TimeInterval, description: String, file: StaticString = #file, line: UInt = #line) {
+    private func wait(for condition: @autoclosure @escaping () -> Bool,
+                      timeout: TimeInterval,
+                      description: String,
+                      file: StaticString = #file,
+                      line: UInt = #line) {
         let end = Date().addingTimeInterval(timeout)
         var value: Bool = false
         let closure: () -> Void = {

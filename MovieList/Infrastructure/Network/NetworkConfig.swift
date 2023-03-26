@@ -15,10 +15,10 @@ public protocol NetworkConfigurableType {
 
 public struct APIDataNetworkConfigurable: NetworkConfigurableType {
     public let baseURL: URL?
-    public let queryParameters: [String : String]
-    
+    public let queryParameters: [String: String]
+
     public init(baseURL: URL? = nil,
-                queryParameters: [String : String] = [:]) {
+                queryParameters: [String: String] = [:]) {
         self.baseURL = baseURL
         self.queryParameters = queryParameters
     }

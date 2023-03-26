@@ -15,7 +15,7 @@ final class LoginKeychainStorage {
             kSecValueData: data,
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
-            kSecAttrAccount: account,
+            kSecAttrAccount: account
         ] as CFDictionary
         // Add data in query to keychain
         let status = SecItemAdd(query, nil)
@@ -31,10 +31,10 @@ final class LoginKeychainStorage {
             kSecAttrService: service,
             kSecReturnData: true
         ] as CFDictionary
-        
+
         var result: AnyObject?
         SecItemCopyMatching(query, &result)
-        
+
         return (result as? Data)
     }
 }

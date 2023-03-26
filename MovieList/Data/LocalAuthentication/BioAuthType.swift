@@ -20,7 +20,7 @@ struct BioAuth: BioAuthType {
         let context = LAContext()
         var error: NSError?
         let reason = "Authenticate to login your app"
-        if context.canEvaluatePolicy (
+        if context.canEvaluatePolicy(
           .deviceOwnerAuthenticationWithBiometrics,
           error: &error) {
           context.evaluatePolicy(
@@ -28,6 +28,10 @@ struct BioAuth: BioAuthType {
             localizedReason: reason) { authenticated, error in
                 guard authenticated else {
                     completion(BioAuthError.noAuthenticated)
+                    return
+                }
+                if let error {
+                    completion(error)
                     return
                 }
                 completion(nil)

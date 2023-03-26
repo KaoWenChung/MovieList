@@ -9,7 +9,9 @@ import XCTest
 @testable import MovieList
 
 final class MovieListViewModelTests: XCTestCase {
-    let movies = [Movie.stub(title:"title0"), Movie.stub(title: "title1"), Movie.stub(title: "title2")]
+    let movies = [Movie.stub(title: "title0"),
+                  Movie.stub(title: "title1"),
+                  Movie.stub(title: "title2")]
 
     enum MovieListViewModelTestError: Error {
         case failedFetching

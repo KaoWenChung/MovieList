@@ -12,7 +12,7 @@ struct NetworkSessionManagerMock: NetworkSessionManagerType {
     let response: HTTPURLResponse?
     let data: Data?
     let error: Error?
-    
+
     func request(_ request: URLRequest,
                  completion: @escaping CompletionHandler) -> NetworkCancellableType {
         completion(data, response, error)

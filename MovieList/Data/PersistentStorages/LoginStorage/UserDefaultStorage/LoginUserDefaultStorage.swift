@@ -9,7 +9,7 @@ import Foundation
 
 final class LoginUserDefaultStorage {
     private let userDefault: UserDefaults
-    
+
     init(userDefault: UserDefaults = UserDefaults.standard) {
         self.userDefault = userDefault
     }

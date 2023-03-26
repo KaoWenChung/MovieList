@@ -74,7 +74,8 @@ final class MovieListViewModel {
     }
 
     private func handle(error: Error) {
-        self.error.value = error.isInternetConnectionError ? ErrorString.noInternet.text : ErrorString.failLoadingMovies.text
+        self.error.value = error.isInternetConnectionError ?
+        ErrorString.noInternet.text : ErrorString.failLoadingMovies.text
     }
 
     private func appendPage(_ page: MovieList) {
@@ -82,13 +83,17 @@ final class MovieListViewModel {
         currentPage += Content.aPage
         currentSearchTotalResult += page.movies.count
 
-        movieList.value.append(contentsOf: page.movies.map{ MovieListCellViewModel.init($0, imageRepository: imageRepository)})
+        movieList.value.append(contentsOf: page.movies.map {
+            MovieListCellViewModel.init($0, imageRepository: imageRepository)
+        })
     }
-    
+
     private func loadMovies() {
         guard status.value == .normal else { return }
         status.value = .loading
-        let request = FetchMoviesRequestValue(search: Content.defaultSearch, year: currentSearchYear.description, page: currentPage)
+        let request = FetchMoviesRequestValue(search: Content.defaultSearch,
+                                              year: currentSearchYear.description,
+                                              page: currentPage)
         moviesLoadTask = fetchMoviesUseCase.execute(requestValue: request) { result in
             switch result {
             case .success(let page):
@@ -101,7 +106,8 @@ final class MovieListViewModel {
     }
 
     private func checkSouldSearchNextYear() {
-        // Check whether the current result amount is already equal to the total number of the total amount of the specific year
+        /* Check the current result amount is already equal to the total number of the total amount of the specific year
+         */
         guard currentSearchTotalResult == totalResults else { return }
         guard let currentYear = Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year,
               currentSearchYear < currentYear else { return }
@@ -118,12 +124,12 @@ extension MovieListViewModel: MovieListViewModelType {
         logoutUseCase.execute()
         actions?.didLogout()
     }
-    
+
     func loadNextPage() {
         checkSouldSearchNextYear()
         loadMovies()
     }
-    
+
     func viewDidLoad() {
         loadMovies()
     }

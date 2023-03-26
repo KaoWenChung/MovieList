@@ -13,7 +13,7 @@ struct LoginRepository {
     let userdefault: LoginUserDefaultStorageType
     let keychain: LoginKeychainStorageType
     let bioAuth: BioAuthType
-    
+
     init(firebase: FirebaseAuthType = Auth.auth(),
          userdefault: LoginUserDefaultStorageType,
          keychain: LoginKeychainStorageType,
@@ -41,7 +41,8 @@ struct LoginRepository {
 extension LoginRepository: LoginRepositoryType {
     public func login(value: LoginValue, completion: @escaping (Error?) -> Void) {
         let account = value.account
-        firebaseAuth.signIn(email: account.email, password: account.password) { (result, error) in
+        firebaseAuth.signIn(email: account.email,
+                            password: account.password) { (_, error) in
             if let error = error {
                 completion(error)
             } else {
@@ -58,7 +59,7 @@ extension LoginRepository: LoginRepositoryType {
     func isBioAuthOn() -> Bool {
         userdefault.readBioAuth() ?? false
     }
-    
+
     func fetchSavedEmail() -> String? {
         userdefault.readEmail()
     }
@@ -69,7 +70,7 @@ extension LoginRepository: LoginRepositoryType {
                   completion(.failure(LoginError.noAccountData))
                   return
               }
-        bioAuth.authenticationWithBiometrics() { error in
+        bioAuth.authenticationWithBiometrics { error in
             if let error {
                 completion(.failure(error))
             }
@@ -90,5 +91,3 @@ struct LoginValue {
         self.account = account
     }
 }
-
-

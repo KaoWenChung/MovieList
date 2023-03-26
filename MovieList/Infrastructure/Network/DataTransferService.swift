@@ -18,7 +18,7 @@ public final class DataTransferService {
     private let networkService: NetworkServiceType
     private let errorResolver: DataTransferErrorResolverType
     private let errorLogger: DataTransferErrorLoggerType
-    
+
     public init(networkService: NetworkServiceType,
                 errorResolver: DataTransferErrorResolverType = DefaultDataTransferErrorResolver(),
                 errorLogger: DataTransferErrorLoggerType = DefaultDataTransferErrorLogger()) {
@@ -29,8 +29,9 @@ public final class DataTransferService {
 }
 
 extension DataTransferService: DataTransferServiceType {
-    public func request<T: Decodable, E: ResponseRequestableType>(with endpoint: E,
-                                                                  completion: @escaping CompletionHandler<T>) -> NetworkCancellableType? where E.Response == T {
+    public func request<T: Decodable, E: ResponseRequestableType>(
+        with endpoint: E,
+        completion: @escaping CompletionHandler<T>) -> NetworkCancellableType? where E.Response == T {
 
         return self.networkService.request(endpoint: endpoint) { result in
             switch result {
@@ -56,7 +57,7 @@ extension DataTransferService: DataTransferServiceType {
             return .failure(.parsing(error))
         }
     }
-    
+
     private func resolve(networkError error: NetworkError) -> DataTransferError {
         let resolvedError = self.errorResolver.resolve(error: error)
         return resolvedError is NetworkError ? .networkFailure(error) : .resolvedNetworkFailure(resolvedError)
@@ -66,7 +67,7 @@ extension DataTransferService: DataTransferServiceType {
 // MARK: - Logger
 public final class DefaultDataTransferErrorLogger: DataTransferErrorLoggerType {
     public init() { }
-    
+
     public func log(error: Error) {
         printIfDebug("-------------")
         printIfDebug("\(error)")
@@ -92,7 +93,7 @@ public class JSONResponseDecoder: ResponseDecoderType {
 
 public class RawDataResponseDecoder: ResponseDecoderType {
     public init() { }
-    
+
     enum CodingKeys: String, CodingKey {
         case `default` = ""
     }
@@ -100,7 +101,8 @@ public class RawDataResponseDecoder: ResponseDecoderType {
         if T.self is Data.Type, let data = data as? T {
             return data
         } else {
-            let context = DecodingError.Context(codingPath: [CodingKeys.default], debugDescription: "Expected Data type")
+            let context = DecodingError.Context(codingPath: [CodingKeys.default],
+                                                debugDescription: "Expected Data type")
             throw Swift.DecodingError.typeMismatch(T.self, context)
         }
     }

@@ -7,5 +7,5 @@
 
 protocol RegisterRepositoryType {
     func register(account: AccountValue,
-                  completion: @escaping (Result<Void, Error>) -> Void)
+                  completion: @escaping (Error?) -> Void)
 }

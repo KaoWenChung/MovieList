@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AccountFlowCoordinatorDependencies  {
+protocol AccountFlowCoordinatorDependencies {
     func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController
     func makeRegisterViewController(actions: RegisterViewModelActions) -> RegisterViewController
 }
@@ -29,16 +29,16 @@ final class AccountFlowCoordinator {
 
     func start() {
         let actions = LoginViewModelActions(didLogin: didLogin, didRegister: didSelectRegister)
-        let vc = dependencies.makeLoginViewController(actions: actions)
+        let loginVC = dependencies.makeLoginViewController(actions: actions)
 
-        navigationController?.setViewControllers([vc], animated: true)
+        navigationController?.setViewControllers([loginVC], animated: true)
     }
 
     private func didSelectRegister() {
         let actions = RegisterViewModelActions(didRegister: didRegister)
-        let vc = dependencies.makeRegisterViewController(actions: actions)
+        let registerVC = dependencies.makeRegisterViewController(actions: actions)
 
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(registerVC, animated: true)
     }
 
     private func didLogin() {

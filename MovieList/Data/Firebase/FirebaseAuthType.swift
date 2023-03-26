@@ -23,7 +23,7 @@ extension Auth: FirebaseAuthType {
     func createUser(email: String, password: String, completion: ((FirebaseAuthDataResultType?, Error?) -> Void)?) {
         createUser(withEmail: email, password: password, completion: completion)
     }
-    
+
     func signIn(email: String, password: String, completion: ((FirebaseAuthDataResultType?, Error?) -> Void)?) {
         signIn(withEmail: email, password: password, completion: completion)
     }

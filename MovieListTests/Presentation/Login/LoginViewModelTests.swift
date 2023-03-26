@@ -14,28 +14,28 @@ final class LoginViewModelTests: XCTestCase {
         var error: Error?
         var bioAuthOn = false
         var saveEmailOn = false
-        
+
         func fetchSavedEmail() -> String? {
             savedEmail
         }
-        
+
         func login(value: LoginValue, completion: @escaping (Error?) -> Void) {
             completion(error)
         }
-        
+
         func loginByBioAuth(completion: @escaping (Error?) -> Void) {
             completion(error)
         }
-        
+
         func isBioAuthOn() -> Bool {
             bioAuthOn
         }
-        
+
         func isSaveEmailOn() -> Bool {
             saveEmailOn
         }
     }
-    
+
     func test_BioAuthLoginOnViewDidLoad_Success() {
         // given
         let loginUseCase = LoginUseCaseMock()

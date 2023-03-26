@@ -12,9 +12,9 @@ final class AccountSceneDIContainer {
         let userdefault: LoginUserDefaultStorageType
         let keychain: LoginKeychainStorageType
     }
-    
+
     private let dependencies: Dependencies
-    
+
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }

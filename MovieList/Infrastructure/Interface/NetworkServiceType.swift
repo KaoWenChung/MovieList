@@ -9,13 +9,13 @@ import Foundation
 
 public protocol NetworkServiceType {
     typealias CompletionHandler = (Result<Data?, NetworkError>) -> Void
-    
+
     func request(endpoint: RequestableType, completion: @escaping CompletionHandler) -> NetworkCancellableType?
 }
 
 public protocol NetworkSessionManagerType {
     typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
-    
+
     func request(_ request: URLRequest,
                  completion: @escaping CompletionHandler) -> NetworkCancellableType
 }

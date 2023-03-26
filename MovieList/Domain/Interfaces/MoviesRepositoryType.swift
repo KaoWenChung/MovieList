@@ -10,4 +10,3 @@ protocol MoviesRepositoryType {
     func fetchMoviesList(request: FetchMoviesRequestValue,
                          completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType?
 }
-

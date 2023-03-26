@@ -15,18 +15,18 @@ final class LoginViewController: MovieListCustomVC, Alertable, Loadingable {
     @IBOutlet weak private var passwordTextField: UITextField!
     @IBOutlet weak private var saveMyEmailButton: UIButton!
     @IBOutlet weak private var loginByBioButton: UIButton!
-    
+
     private let viewModel: LoginViewModelType
-    
+
     init(viewModel: LoginViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = LoginViewString.title.text
@@ -48,14 +48,14 @@ final class LoginViewController: MovieListCustomVC, Alertable, Loadingable {
 
     private func showError(_ error: String) {
         guard !error.isEmpty else { return }
-        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: CommonString.ok.text)
+        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: CommonString.confirm.text)
     }
 
     @IBAction private func didSelectSaveMyEmail() {
         saveMyEmailButton.isSelected.toggle()
         viewModel.setSaveEamil(saveMyEmailButton.isSelected)
     }
-    
+
     @IBAction private func didSelectLoginByBio() {
         loginByBioButton.isSelected.toggle()
         viewModel.setLoginByBio(loginByBioButton.isSelected)

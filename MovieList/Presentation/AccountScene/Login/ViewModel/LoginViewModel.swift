@@ -40,7 +40,7 @@ final class LoginViewModel {
 
     private(set) var isBioLogin: Bool = false
     private(set) var isSaveEmail: Bool = false
-    private(set) var savedAccount: String? = nil
+    private(set) var savedAccount: String?
     private(set) var errorTitle: String = ""
 
     init(loginUseCase: LoginUseCaseType,
@@ -68,7 +68,7 @@ final class LoginViewModel {
 
     private func loginByBioAuth() {
         guard isBioLogin else { return }
-        loginUseCase.loginByBioAuth() { error in
+        loginUseCase.loginByBioAuth { error in
             if let error {
                 self.handle(error: error)
             } else {
@@ -87,11 +87,11 @@ extension LoginViewModel: LoginViewModelType {
         }
         loginByBioAuth()
     }
-    
+
     func didSelectRegister() {
         actions?.didRegister()
     }
-    
+
     func didSelectLogin(_ account: AccountValue) {
         login(account)
     }
@@ -99,7 +99,7 @@ extension LoginViewModel: LoginViewModelType {
     func setSaveEamil(_ isOn: Bool) {
         isSaveEmail = isOn
     }
-    
+
     func setLoginByBio(_ isOn: Bool) {
         isBioLogin = isOn
     }

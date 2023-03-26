@@ -17,4 +17,3 @@ public extension Error {
         return true
     }
 }
-

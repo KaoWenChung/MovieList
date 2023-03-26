@@ -42,4 +42,3 @@ extension ImageRepository: ImageRepositoryType {
         return task
     }
 }
-

@@ -14,7 +14,7 @@ final class AppConfiguration {
     let current: Environment
     private(set) var apiKey: String!
     private(set) var baseURL: String!
-    
+
     init() {
         #if DEBUG
         current = .debug
@@ -22,7 +22,7 @@ final class AppConfiguration {
         apiKey = getAPIKey()
         baseURL = getBaseURL()
     }
-    
+
     private func getAPIKey() -> String {
         #if DEBUG
         return "{YOUR_API_KEY}" // TODO: ADD API KEY HERE
@@ -35,4 +35,3 @@ final class AppConfiguration {
         #endif
     }
 }
-

@@ -26,7 +26,7 @@ public struct NetworkService {
     private let config: NetworkConfigurableType
     private let sessionManager: NetworkSessionManagerType
     private let logger: NetworkErrorLoggerType
-    
+
     public init(config: NetworkConfigurableType,
                 sessionManager: NetworkSessionManagerType = NetworkSessionManager(),
                 logger: NetworkErrorLoggerType = DefaultNetworkErrorLogger()) {
@@ -34,7 +34,7 @@ public struct NetworkService {
         self.config = config
         self.logger = logger
     }
-    
+
     private func request(request: URLRequest, completion: @escaping CompletionHandler) -> NetworkCancellableType {
         let sessionDataTask = sessionManager.request(request) { data, response, requestError in
             if let requestError = requestError {
@@ -44,7 +44,7 @@ public struct NetworkService {
                 } else {
                     error = self.resolve(error: requestError)
                 }
-                
+
                 self.logger.log(error: error)
                 completion(.failure(error))
             } else {
@@ -52,12 +52,12 @@ public struct NetworkService {
                 completion(.success(data))
             }
         }
-    
+
         logger.log(request: request)
 
         return sessionDataTask
     }
-    
+
     private func resolve(error: Error) -> NetworkError {
         let code = URLError.Code(rawValue: (error as NSError).code)
         switch code {
@@ -104,7 +104,9 @@ public final class DefaultNetworkErrorLogger: NetworkErrorLoggerType {
         print("request: \(request.url!)")
         print("headers: \(request.allHTTPHeaderFields!)")
         print("method: \(request.httpMethod!)")
-        if let httpBody = request.httpBody, let result = ((try? JSONSerialization.jsonObject(with: httpBody, options: []) as? [String: AnyObject]) as [String: AnyObject]??) {
+        if let httpBody = request.httpBody,
+           let result = ((try? JSONSerialization.jsonObject(with: httpBody,
+                                                            options: []) as? [String: AnyObject])) {
             printIfDebug("body: \(String(describing: result))")
         } else if let httpBody = request.httpBody, let resultString = String(data: httpBody, encoding: .utf8) {
             printIfDebug("body: \(String(describing: resultString))")
@@ -126,7 +128,7 @@ public final class DefaultNetworkErrorLogger: NetworkErrorLoggerType {
 // MARK: - NetworkError extension
 extension NetworkError {
     public var isNotFoundError: Bool { return hasStatusCode(404) }
-    
+
     public func hasStatusCode(_ codeError: Int) -> Bool {
         switch self {
         case let .error(code, _):

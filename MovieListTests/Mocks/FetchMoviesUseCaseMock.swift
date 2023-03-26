@@ -12,7 +12,8 @@ final class FetchMoviesUseCaseMock: FetchMoviesUseCaseType {
     var expectation: XCTestExpectation?
     var error: Error?
     var movieList = MovieList(totalResults: 0, movies: [])
-    func execute(requestValue: FetchMoviesRequestValue, completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
+    func execute(requestValue: FetchMoviesRequestValue,
+                 completion: @escaping (Result<MovieList, Error>) -> Void) -> CancellableType? {
         if let error = error {
             completion(.failure(error))
         } else {

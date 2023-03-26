@@ -10,13 +10,13 @@ import UIKit
 final class AppFlowCoordinator {
     var navigationController: UINavigationController
     private let appDIContainer: AppDIContainer
-    
+
     init(navigationController: UINavigationController,
          appDIContainer: AppDIContainer) {
         self.navigationController = navigationController
         self.appDIContainer = appDIContainer
     }
-    
+
     func startAccountScene() {
         let accountSceneDIContainer = appDIContainer.makeAccountSceneDIContainer()
         let flow = accountSceneDIContainer.makeAccountFlowCoordinator(navigationController: navigationController)
@@ -24,7 +24,7 @@ final class AppFlowCoordinator {
         flow.delegate = self
         flow.start()
     }
-    
+
     func startMoviesScene() {
         let moviesSceneDIContainer = appDIContainer.makeMoviesSceneDIContainer()
         let flow = moviesSceneDIContainer.makeMoviesSearchFlowCoordinator(navigationController: navigationController)

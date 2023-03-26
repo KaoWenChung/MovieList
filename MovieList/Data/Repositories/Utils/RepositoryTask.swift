@@ -8,7 +8,7 @@
 class RepositoryTask: CancellableType {
     var networkTask: NetworkCancellableType?
     var isCancelled: Bool = false
-    
+
     func cancel() {
         networkTask?.cancel()
         isCancelled = true

@@ -9,10 +9,12 @@ import Foundation
 
 public protocol DataTransferServiceType {
     typealias CompletionHandler<T> = (Result<T, DataTransferError>) -> Void
-    
+
     @discardableResult
-    func request<T: Decodable, E: ResponseRequestableType>(with endpoint: E,
-                                                           completion: @escaping CompletionHandler<T>) -> NetworkCancellableType? where E.Response == T
+    func request<T: Decodable, E: ResponseRequestableType>(
+        with endpoint: E,
+        completion: @escaping CompletionHandler<T>
+    ) -> NetworkCancellableType? where E.Response == T
 }
 
 public protocol DataTransferErrorResolverType {

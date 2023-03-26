@@ -16,15 +16,15 @@ final class LoginUseCaseTests: XCTestCase {
         var expectation: XCTestExpectation?
         var error: Error?
         var result: FirebaseAuthDataResultType?
-        
+
         func signOut() throws {
             isLogout = true
         }
-        
+
         func signIn(email: String, password: String, completion: ((FirebaseAuthDataResultType?, Error?) -> Void)?) {
             completion?(result, error)
         }
-        
+
         func createUser(email: String, password: String, completion: ((FirebaseAuthDataResultType?, Error?) -> Void)?) {
             completion?(result, error)
         }
@@ -37,27 +37,27 @@ final class LoginUseCaseTests: XCTestCase {
         func toggleBioAuth(_ isOn: Bool) {
             isBioAuth = isOn
         }
-        
+
         func readBioAuth() -> Bool? {
             isBioAuth
         }
-        
+
         func saveEmail(_ newValue: String) {
             email = newValue
         }
-        
+
         func readEmail() -> String? {
             email
         }
-        
+
         func toggleSaveEmail(_ isOn: Bool) {
             isSaveEmail = isOn
         }
-        
+
         func readSaveEmail() -> Bool? {
             isSaveEmail
         }
-        
+
         func removeUserData() {
             isBioAuth = false
             isSaveEmail = false
@@ -70,11 +70,11 @@ final class LoginUseCaseTests: XCTestCase {
         func savePassword(_ password: String, account: String) {
             accountDic[account] = password
         }
-        
+
         func readPassword(account: String) -> String? {
             accountDic[account]
         }
-        
+
         func removePassword(account: String) {
             accountDic[account] = nil
         }
@@ -95,7 +95,10 @@ final class LoginUseCaseTests: XCTestCase {
         let expectation = self.expectation(description: "Login successfully")
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
         let userdefault = LoginUserDefaultStorageMock()
-        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: userdefault, keychain: LoginKeychainStorageMock(), bioAuth: BioAuthMock())
+        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(),
+                                              userdefault: userdefault,
+                                              keychain: LoginKeychainStorageMock(),
+                                              bioAuth: BioAuthMock())
         let sut = LoginUseCase(loginRepository: loginRepository)
         // when
         let value = LoginValue(isEmailSaved: false, isBioAuthOn: false, account: account)
@@ -118,7 +121,10 @@ final class LoginUseCaseTests: XCTestCase {
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
         let userdefault = LoginUserDefaultStorageMock()
         let keychain = LoginKeychainStorageMock()
-        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: userdefault, keychain: keychain, bioAuth: BioAuthMock())
+        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(),
+                                              userdefault: userdefault,
+                                              keychain: keychain,
+                                              bioAuth: BioAuthMock())
         let sut = LoginUseCase(loginRepository: loginRepository)
         // when
         let value = LoginValue(isEmailSaved: true, isBioAuthOn: false, account: account)
@@ -147,7 +153,10 @@ final class LoginUseCaseTests: XCTestCase {
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
         let userdefault = LoginUserDefaultStorageMock()
         let keychain = LoginKeychainStorageMock()
-        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: userdefault, keychain: keychain, bioAuth: BioAuthMock())
+        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(),
+                                              userdefault: userdefault,
+                                              keychain: keychain,
+                                              bioAuth: BioAuthMock())
         let sut = LoginUseCase(loginRepository: loginRepository)
         // when
         let value = LoginValue(isEmailSaved: false, isBioAuthOn: true, account: account)
@@ -170,7 +179,10 @@ final class LoginUseCaseTests: XCTestCase {
         // give
         let expectation = self.expectation(description: "Login and save email successfully")
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
-        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(), userdefault: LoginUserDefaultStorageMock(), keychain: LoginKeychainStorageMock(), bioAuth: BioAuthMock())
+        let loginRepository = LoginRepository(firebase: FirebaseAuthMock(),
+                                              userdefault: LoginUserDefaultStorageMock(),
+                                              keychain: LoginKeychainStorageMock(),
+                                              bioAuth: BioAuthMock())
         let sut = LoginUseCase(loginRepository: loginRepository)
         // when
         let value = LoginValue(isEmailSaved: false, isBioAuthOn: true, account: account)
@@ -195,7 +207,10 @@ final class LoginUseCaseTests: XCTestCase {
         let account = AccountValue(email: "test@gmail.com", password: "testPassword")
         let firebase = FirebaseAuthMock()
         firebase.error = LoginErrorMock.loginFail
-        let loginRepository = LoginRepository(firebase: firebase, userdefault: LoginUserDefaultStorageMock(), keychain: LoginKeychainStorageMock(), bioAuth: BioAuthMock())
+        let loginRepository = LoginRepository(firebase: firebase,
+                                              userdefault: LoginUserDefaultStorageMock(),
+                                              keychain: LoginKeychainStorageMock(),
+                                              bioAuth: BioAuthMock())
         let sut = LoginUseCase(loginRepository: loginRepository)
         // when
         let value = LoginValue(isEmailSaved: false, isBioAuthOn: false, account: account)
@@ -211,5 +226,4 @@ final class LoginUseCaseTests: XCTestCase {
         wait(for: [expectation], timeout: 0.1)
     }
 
-    
 }

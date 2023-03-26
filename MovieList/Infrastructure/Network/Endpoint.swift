@@ -13,14 +13,14 @@ public enum HTTPMethod: String {
 
 public class Endpoint<R>: ResponseRequestableType {
     public typealias Response = R
-    
+
     public let path: String
     public let isFullPath: Bool
     public let method: HTTPMethod
     public let queryParametersEncodable: Encodable?
     public let queryParameters: [String: Any]
     public let responseDecoder: ResponseDecoderType
-    
+
     init(path: String,
          isFullPath: Bool = false,
          method: HTTPMethod,
@@ -42,7 +42,7 @@ public protocol RequestableType {
     var method: HTTPMethod { get }
     var queryParametersEncodable: Encodable? { get }
     var queryParameters: [String: Any] { get }
-    
+
     func urlRequest(with networkConfig: NetworkConfigurableType) throws -> URLRequest
 }
 
@@ -84,6 +84,6 @@ private extension Encodable {
     func toDictionary() throws -> [String: Any]? {
         let data = try JSONEncoder().encode(self)
         let jsonData = try JSONSerialization.jsonObject(with: data)
-        return jsonData as? [String : Any]
+        return jsonData as? [String: Any]
     }
 }

@@ -16,7 +16,7 @@ final class RegisterViewController: MovieListCustomVC, Alertable, Loadingable {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -33,7 +33,7 @@ final class RegisterViewController: MovieListCustomVC, Alertable, Loadingable {
 
     private func showError(_ error: String) {
         guard !error.isEmpty else { return }
-        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: CommonString.ok.text)
+        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: CommonString.confirm.text)
     }
 
     @IBAction private func didSelectRegisterHandler() {

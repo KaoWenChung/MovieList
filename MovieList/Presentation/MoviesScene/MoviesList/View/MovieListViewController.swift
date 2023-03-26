@@ -29,7 +29,9 @@ final class MovieListViewController: UIViewController, Alertable, Loadingable {
         title = MovieListViewString.title.text
         bind(to: viewModel)
         viewModel.viewDidLoad()
-        tableView.register(UINib(nibName: MovieListTableViewCell.name, bundle: nil), forCellReuseIdentifier: MovieListTableViewCell.name)
+        tableView.register(UINib(nibName: MovieListTableViewCell.name,
+                                 bundle: nil),
+                           forCellReuseIdentifier: MovieListTableViewCell.name)
         initNavigationItem()
     }
 
@@ -40,7 +42,10 @@ final class MovieListViewController: UIViewController, Alertable, Loadingable {
     }
 
     private func initNavigationItem() {
-        let logoutButton = UIBarButtonItem(title: MovieListViewString.logout.text, style: .plain, target: self, action: #selector(logout))
+        let logoutButton = UIBarButtonItem(title: MovieListViewString.logout.text,
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(logout))
         navigationItem.rightBarButtonItem = logoutButton
     }
 
@@ -50,7 +55,7 @@ final class MovieListViewController: UIViewController, Alertable, Loadingable {
 
     private func showError(_ error: String) {
         guard !error.isEmpty else { return }
-        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: CommonString.ok.text)
+        showAlert(style: .alert, title: viewModel.errorTitle, message: error, cancel: CommonString.confirm.text)
     }
 
     private func updateItems() {
@@ -64,9 +69,12 @@ extension MovieListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.movieList.value.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieListTableViewCell.name, for: indexPath) as? MovieListTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: MovieListTableViewCell.name,
+            for: indexPath
+        ) as? MovieListTableViewCell else { return UITableViewCell() }
         cell.fill(viewModel.movieList.value[indexPath.row])
         // load the next page if needed
         if indexPath.row == viewModel.movieList.value.count - 1 {

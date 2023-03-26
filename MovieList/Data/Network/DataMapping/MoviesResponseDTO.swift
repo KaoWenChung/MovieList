@@ -9,7 +9,7 @@ struct MoviesResponseDTO: Decodable {
     let response: String
     let search: [SearchDTO]
     let totalResults: String
-    
+
     enum CodingKeys: String, CodingKey {
         case response = "Response"
         case search = "Search"
@@ -17,21 +17,19 @@ struct MoviesResponseDTO: Decodable {
     }
 }
 
-extension MoviesResponseDTO {
-    struct SearchDTO: Decodable {
-        let poster: String?
-        let title: String?
-        let type: String?
-        let year: String?
-        let imdbID: String?
+struct SearchDTO: Decodable {
+    let poster: String?
+    let title: String?
+    let type: String?
+    let year: String?
+    let imdbID: String?
 
-        enum CodingKeys: String, CodingKey {
-            case poster = "Poster"
-            case title = "Title"
-            case type = "Type"
-            case year = "Year"
-            case imdbID
-        }
+    enum CodingKeys: String, CodingKey {
+        case poster = "Poster"
+        case title = "Title"
+        case type = "Type"
+        case year = "Year"
+        case imdbID
     }
 }
 
@@ -42,7 +40,7 @@ extension MoviesResponseDTO {
     }
 }
 
-extension MoviesResponseDTO.SearchDTO {
+extension SearchDTO {
     func toDomain() -> Movie {
         Movie(title: title, year: year, poster: poster)
     }
