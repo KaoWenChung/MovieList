@@ -29,9 +29,7 @@ final class MovieListViewController: UIViewController, Alertable, Loadingable {
         title = MovieListViewString.title.text
         bind(to: viewModel)
         viewModel.viewDidLoad()
-        tableView.register(UINib(nibName: MovieListTableViewCell.name,
-                                 bundle: nil),
-                           forCellReuseIdentifier: MovieListTableViewCell.name)
+        tableView.register(MovieListTableViewCell.self)
         initNavigationItem()
     }
 
@@ -71,10 +69,7 @@ extension MovieListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: MovieListTableViewCell.name,
-            for: indexPath
-        ) as? MovieListTableViewCell else { return UITableViewCell() }
+        let cell: MovieListTableViewCell = tableView.dequeueCell(indexPath)
         cell.fill(viewModel.movieList.value[indexPath.row])
         // load the next page if needed
         if indexPath.row == viewModel.movieList.value.count - 1 {
