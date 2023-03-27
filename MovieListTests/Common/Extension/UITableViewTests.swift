@@ -9,14 +9,13 @@ import XCTest
 @testable import MovieList
 
 final class UITableViewTests: XCTestCase {
-    private class MockCell: UITableViewCell {}
     func testRegisterCell() {
         // given
         let tableView = UITableView()
         // when
-        tableView.register(MockCell.self)
+        tableView.register(MovieListTableViewCell.self)
         // then
-        let cell = tableView.dequeueReusableCell(withIdentifier: MockCell.name)
-        XCTAssertNotNil(cell)
+        let registeredCell = tableView.dequeueReusableCell(withIdentifier: MovieListTableViewCell.name)
+        XCTAssertNotNil(registeredCell, "Failed to register cell type")
     }
 }
