@@ -10,7 +10,6 @@ import XCTest
 
 final class UITableViewCellTests: XCTestCase {
     func test_nameOfMockUITableViewCell_MockUITableViewCell() {
-        let sut = MockUITableViewCell()
         XCTAssertEqual(MockUITableViewCell.name, "MockUITableViewCell")
     }
 }

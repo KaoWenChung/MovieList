@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21412FD2298F01420076EF11 /* UIImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21412FD1298F01420076EF11 /* UIImageViewTests.swift */; };
 		214C656629D229AF00EF274E /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C656529D229AF00EF274E /* UITableView+.swift */; };
+		214C656829D22CBF00EF274E /* UITableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C656729D22CBF00EF274E /* UITableViewTests.swift */; };
 		214F3E50298434D000DF06AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F3E4F298434D000DF06AE /* AppDelegate.swift */; };
 		214F3E59298434D200DF06AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E58298434D200DF06AE /* Assets.xcassets */; };
 		214F3E5C298434D200DF06AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214F3E5A298434D200DF06AE /* LaunchScreen.storyboard */; };
@@ -112,6 +113,7 @@
 /* Begin PBXFileReference section */
 		21412FD1298F01420076EF11 /* UIImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewTests.swift; sourceTree = "<group>"; };
 		214C656529D229AF00EF274E /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		214C656729D22CBF00EF274E /* UITableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewTests.swift; sourceTree = "<group>"; };
 		214F3E4C298434D000DF06AE /* MovieList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		214F3E4F298434D000DF06AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		214F3E58298434D200DF06AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				21412FD1298F01420076EF11 /* UIImageViewTests.swift */,
 				214F3ED82986C28B00DF06AE /* StringTests.swift */,
 				2153D75A2989582500485FCA /* UITableViewCellTests.swift */,
+				214C656729D22CBF00EF274E /* UITableViewTests.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				214F3F192987253200DF06AE /* NetworkSessionManagerMock.swift in Sources */,
 				2153D7652989A18600485FCA /* ImageRepositoryMock.swift in Sources */,
 				21EA2757299674C8002F083B /* LogoutUseCaseMock.swift in Sources */,
+				214C656829D22CBF00EF274E /* UITableViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
