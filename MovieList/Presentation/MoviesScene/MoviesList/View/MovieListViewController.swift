@@ -69,7 +69,7 @@ extension MovieListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MovieListTableViewCell = tableView.dequeueCell(indexPath)
+        guard let cell: MovieListTableViewCell = tableView.dequeueCell(indexPath) else { return UITableViewCell() }
         cell.fill(viewModel.movieList.value[indexPath.row])
         // load the next page if needed
         if indexPath.row == viewModel.movieList.value.count - 1 {
